@@ -10,10 +10,6 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JayasreeSuryadevara/WatchTower/issues"
-  },
-  "homepage": "https://github.com/JayasreeSuryadevara/WatchTower#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
