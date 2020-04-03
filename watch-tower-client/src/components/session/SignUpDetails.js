@@ -3,6 +3,7 @@ import { SIGNUP_USER } from '../../graphql/mutations';
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
+import '../../styles/session/SignUpForm.css';
 
 export default () => {
   const [email, setEmail] = useState("")
@@ -26,47 +27,49 @@ export default () => {
     }
   )
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault()
-      signUpUser()
-    }} >
-      <h1>Sign Up for an Account</h1>
-      <div>
-        <section>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.currentTarget.value)}
-            placeholder="email"
-          />
-        </section>
-        <section>
-          <label htmlFor="name">First Name</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.currentTarget.value)}
-            placeholder="name"
-          />
-        </section>
-        <section>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.currentTarget.value)}
-            placeholder="password"
-          />
-        </section>
-        <input type="submit" value="Submit" disabled={loading}/>
+    <main className="signup-main">
+      <div className="signup-body">
+        <Link to="/" className="home-link"><i className="fas fa-home"></i>&nbsp;&nbsp;Home</Link>
+        <form className="signup-form" onSubmit={(e) => {
+          e.preventDefault()
+          signUpUser()
+        }} >
+          <h1>Free Registration</h1>
+          <div>
+            <section>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.currentTarget.value)}
+                placeholder="First Name (required)"
+                className="signup-form-input"
+              />
+            </section>
+            <section>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.currentTarget.value)}
+                placeholder="Email (required)"
+                className="signup-form-input"
+              />
+            </section>
+            <section>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.currentTarget.value)}
+                placeholder="Password (required)"
+                className="signup-form-input"
+              />
+            </section>
+            <input type="submit" value="SUBMIT" disabled={loading} className="submit-button" />
+          </div>
+          <div className="cancel-button">
+            <Link to="/"><button>CANCEL</button></Link>
+          </div>
+        </form>
       </div>
-      <div >
-        Already have an account? <Link to="/login">Log In</Link>
-      </div>
-    </form>
+    </main>
   )
 }
