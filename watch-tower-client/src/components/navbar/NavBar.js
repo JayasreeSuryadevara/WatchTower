@@ -23,15 +23,10 @@ export default () => {
                     <p>Latest</p>
                     <p>Watchlist</p>
                     <p>Techology</p>
+                    <p>Markets</p>
                     <p>Investing</p>
                 </div>
                 <div className="nav-bar-session-links">
-                    {/* <Link to={`/login`}>
-                        Login
-                    </Link>
-                    <Link to={`/signup`}>
-                        Signup
-                    </Link> */}
                     <div>
                         <ProtectedComp component={LogOutButton} />
                         <AuthComp component={LogInButton} />
