@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/navBar/NavBar.css';
+import '../../styles/navBar/DropDownAcc.css';
 import AuthComp from '../util/AuthComponent';
 import ProtectedComp from '../util/ProtectedComponent';
 import LogInButton from '../session/LogInButton'
 import LogOutButton from '../session/LogOutButton'
-import NavBarLogo from './wt-header.png'
+import NavBarLogo from './wt-header2.png'
+import AccDropDown from './AccDropDown'
 
 export default () => {
 
@@ -15,8 +17,8 @@ export default () => {
                 <div className="nav-bar-logo">
                     <i className="fas fa-bars"></i>&nbsp;&nbsp;
                 <Link to={`/`}>
-                    HomePage
-                    {/* <img src={NavBarLogo} alt="navlogo" height="20" width="40" /> */}
+                    {/* HomePage */}
+                    <img src={NavBarLogo} alt="navlogo"/>
                 </Link>
                 </div>
                 <div className="nav-bar-news-links">
@@ -31,9 +33,10 @@ export default () => {
                         <ProtectedComp component={LogOutButton} />
                         <AuthComp component={LogInButton} />
                     </div>
-                    <Link to="/me">
+                    {/* <Link to="/me">
                         <i className="far fa-user-circle"></i>
-                    </Link>
+                    </Link> */}
+                    <AccDropDown/>
                 </div>
                 <div>
                     <p><i className="fas fa-search"></i></p>
