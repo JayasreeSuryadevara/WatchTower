@@ -1,0 +1,36 @@
+{
+  "name": "watchtowerserver",
+  "version": "1.0.0",
+  "description": "Clone of Market Watch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "seeds": "node seeds/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JayasreeSuryadevara/WatchTower/issues"
+  },
+  "homepage": "https://github.com/JayasreeSuryadevara/WatchTower#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "graphql-playground-middleware-express": "^1.7.12",
+    "graphql-tools": "^4.0.7",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.7",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.2",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
+  }
+}
