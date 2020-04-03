@@ -16,10 +16,10 @@ export default () => {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <AuthRoute exact path="/signup" component={SignUpForm} />
-        <AuthRoute exact path="/login" component={LogInForm} />
+        <AuthRoute path="/signup" component={SignUpForm} />
+        <AuthRoute path="/login" component={LogInForm} />
         <ProtectedRoute exact path="/me" component={UserProfile} />
+        <Route exact path="/" component={HomePage} />
         <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>

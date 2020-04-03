@@ -34,9 +34,9 @@ export default () => {
 
   return (
     <main className="login-main">
-      <h1>{errorMessage}</h1>
-
-      <form className="login-form" onSubmit={(e) => {
+      <h1 className="login-error">{errorMessage}</h1>
+      <section className="login-form">
+      <form onSubmit={(e) => {
         e.preventDefault();
         loginUser();
       }}>
@@ -64,18 +64,19 @@ export default () => {
           />
         </section>
         <input type="submit" value="SIGN IN" disabled={loading} className="sign-in-button" />
-        <section>
+      </form>
+        <div>
           <button className="demo-login" onClick={(e) => {
             e.preventDefault();
-            loginUser({ email: "demo.email.com", password: password });
+            loginUser({ variables: { email: "demo.email.com", password: password }});
           }}>
             Login as Demo User
           </button>
-        </section>
+        </div>
         <div className="alternative">
           Not a member? <Link to="/signup" className="register-link">Register here.</Link>
         </div>
-      </form>
+      </section>
     </main>
   )
 }

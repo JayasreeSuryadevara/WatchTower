@@ -36,7 +36,7 @@ export default () => {
                         <ProtectedComp component={LogOutButton} />
                         <AuthComp component={LogInButton} />
                     </div>
-                    <Link to={"/me"}>
+                    <Link to="/me">
                         <i className="far fa-user-circle"></i>
                     </Link>
                 </div>
