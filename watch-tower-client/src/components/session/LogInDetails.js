@@ -68,7 +68,7 @@ export default () => {
         <div>
           <button className="demo-login" onClick={(e) => {
             e.preventDefault();
-            loginUser({ variables: { email: "demo.email.com", password: password }});
+            loginUser({ variables: { email: "demo@email.com", password: "password" }});
           }}>
             Login as Demo User
           </button>
