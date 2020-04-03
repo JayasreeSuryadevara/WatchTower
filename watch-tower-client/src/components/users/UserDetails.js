@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { CURRENT_USER } from '../../graphql/queries';
 // import { Link } from 'react-router-dom';
-import Logo from '../../pages/watchTowerLogo.png';
+import Logo from '../../pages/wt-logo.png';
 
 
 const UserDetails = () => {
@@ -21,18 +21,19 @@ const UserDetails = () => {
     return (
         <div className="user-profile">
             <img src={Logo} alt="logo" height="40" width="40" />
-            <h1>{user.name}</h1>
+            <section>
+                <h1>Welcome {user.name}</h1>
 
-            <div>
                 <div>
-                    <h2>Account</h2>    
+                    <div>
+                        <h2>Account</h2>    
+                    </div>
+                    <div>
+                        <p> Change Password</p>
+                        <p> Watch List </p>
+                    </div>
                 </div>
-                <div>
-                    <p> Change Password</p>
-                    <p> Watch List </p>
-                </div>
-            </div>
-
+            </section>
         </div>
     )
 }

@@ -1,0 +1,10 @@
+.user-profile-main {
+  display: flex;
+  justify-content: center;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  width: 960px;
+}
