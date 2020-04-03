@@ -5,15 +5,18 @@ import { CURRENT_USER } from '../../graphql/queries';
 import Logo from '../../pages/watchTowerLogo.png';
 
 
-export default () => {
-    const { data, loading, error } = useQuery(CURRENT_USER);
+const UserDetails = () => {
+    const { data, loading, error } = useQuery(
+        CURRENT_USER,
+        {
+            fetchPolicy: 'network-only'
+        }
+    )
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>ERROR</p>;
-    if (!data || !data.me) return <p>Not Found</p>;
-
-    const user = data.me;
-
+    if (loading) return <h1> Loading...</h1>
+    if (error) return <h1> Error </h1>
+    if (!data) return <h1> No user found </h1>
+    const user = data.me
 
     return (
         <div className="user-profile">
@@ -32,5 +35,5 @@ export default () => {
 
         </div>
     )
-
 }
+export default UserDetails;

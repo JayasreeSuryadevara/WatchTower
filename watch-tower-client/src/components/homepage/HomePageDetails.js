@@ -1,7 +1,10 @@
 import React from "react";
+import '../../styles/homePage/HomePage.css';
 
 export default () => {
   return(
-    <h1>Hello</h1>
+    <main className="home-page-main">
+      <h1>HOME PAGE</h1>
+    </main>
   )
 }
