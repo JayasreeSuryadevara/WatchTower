@@ -7,19 +7,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import gql from "graphql-tag";
 
-const client = createClient();
-
-if (process.env.NODE_ENV === 'development') {
-  window.client = client;
-  window.gql = gql;
-}
-
-ReactDOM.render(
-  <ApolloProvider client={client}> 
-    <App />
-  </ApolloProvider>,
-  document.getElementById("root")
-);
-
+createClient().then(client => {
+  if (process.env.NODE_ENV === 'development') {
+    window.client = client;
+    window.gql = gql;
+  }
+  ReactDOM.render(
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>,
+    document.getElementById("root")
+  );
+});
 
 serviceWorker.unregister();

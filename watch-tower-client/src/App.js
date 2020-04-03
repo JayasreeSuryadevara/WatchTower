@@ -8,6 +8,7 @@ import SignUpForm from './pages/session/SignUpForm';
 import UserProfile from './pages/users/UserProfile';
 import LogInForm from './pages/session/LogInForm';
 import NavBar from './components/navbar/NavBar';
+import ErrorPage from './pages/error/ErrorPage';
 
 
 export default () => {
@@ -19,6 +20,7 @@ export default () => {
         <AuthRoute exact path="/signup" component={SignUpForm} />
         <AuthRoute exact path="/login" component={LogInForm} />
         <AuthRoute exact path="/me" component={UserProfile} />
+        <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>
   );
