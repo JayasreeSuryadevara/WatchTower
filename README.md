@@ -40,6 +40,7 @@
       - Technology
       - Investing
     Search Bar - Search using Tickers or company names
+    Show Page to see details of one Stock based on the Ticker
   
   
   
