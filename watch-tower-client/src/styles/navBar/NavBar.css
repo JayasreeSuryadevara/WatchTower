@@ -1,0 +1,48 @@
+.nav-bar-main {
+  display: flex;
+  width: 100%;
+  background-color: #2e2e2e;
+  color: white;
+  height: 30px;
+  justify-content: center;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.nav-bar-container {
+  display: flex;
+  width: 960px;
+  align-items: center;
+  padding: 5px;
+  justify-content: space-between;
+}
+
+.nav-bar-logo {
+  font-size: 24px;
+  width: 20%;
+}
+
+.nav-bar-news-links {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.nav-bar-session-links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 20%;
+  align-items: center;
+}  
+
+.fa-user-circle {
+  font-size: 20px;
+}
+
+.fa-search {
+  font-size: 15px;
+}
+
+.fa-bars {
+  font-size: 20px;
+}
