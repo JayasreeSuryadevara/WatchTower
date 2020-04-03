@@ -1,0 +1,34 @@
+.err-page-main {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  background-image: url('./cones.png');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: 50% 75%;
+}
+
+.err-page-content {
+  display: -webkit-inline-flex;
+  flex-direction: column;
+  width: 900px;
+  text-align: center;
+  margin-top: 50px;
+  line-height: 2;
+  font-size: 30px;
+}
+
+.err.page-content img {
+  align-self: center;
+  width: 50px;
+  height: 25px;
+}
+
+.back-to-home-link {
+  margin-top: 25px;
+  text-decoration: underline;
+  color: #4DB74D;
+  font-size: 25px;
+}

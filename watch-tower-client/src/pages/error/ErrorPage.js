@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../styles/error/ErrorPage.css';
 
 function ErrorPage() {
 
@@ -10,7 +11,6 @@ function ErrorPage() {
         <p> The page you're looking for doesn't exist!</p>
         <br />
         <Link to='/' className="back-to-home-link">Back to Home Page</Link>
-
       </span>
     </div>
   )
