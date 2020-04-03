@@ -1,6 +1,6 @@
-import React from './node_modules/react';
+import React from 'react';
 import UserDetails from '../../components/users/UserDetails';
-import { useApolloClient } from './node_modules/@apollo/react-hooks';
+import { useApolloClient } from '@apollo/react-hooks';
 
 export default () => {
     const client = useApolloClient();

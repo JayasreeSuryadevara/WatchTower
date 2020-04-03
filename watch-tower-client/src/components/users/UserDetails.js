@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { CURRENT_USER } from '../../graphql/queries';
 // import { Link } from 'react-router-dom';
-import Logo from '../../pages/watchTowerLogo.png';
+import Logo from '../../wt-logo.png';
 
 
 export default () => {
