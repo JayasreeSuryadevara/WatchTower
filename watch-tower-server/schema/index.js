@@ -21,7 +21,7 @@ const typeDefs = `
     type WatchListItem {
         _id: ID!
         stock: Stock
-        addDate: String
+        addDate: Int
         addPrice: Int
         noOfShares: Int
     }
@@ -33,8 +33,8 @@ const typeDefs = `
     type Mutation {
       login(email: String!, password: String!): UserCredentials
       signup(email: String!, name: String!, password: String!): UserCredentials
-      addWatchListItem(stockId: ID!, addDate: String, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
-      removeWatchListItem(stockId: ID!): WatchListUpdateResponse
+      addWatchListItem(stockId: ID!, addDate: Int, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
+      removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
     }
     type UserCredentials {
       _id: ID!
@@ -46,7 +46,7 @@ const typeDefs = `
     type WatchListUpdateResponse {
         success: Boolean!
         message: String
-        watchList: [WatchListItem]
+        watchListItem: ID
     }
 `;
 
@@ -77,6 +77,7 @@ const resolvers = {
         },
         removeWatchListItem: async(_, { watchListItemId }, context) => {
             const loggedInUser = context.user;
+            console.log(loggedInUser)
             const watchListItem = await WatchListItem.findById(watchListItemId);
             return watchListItem.removeWatchListItem(loggedInUser);
         }

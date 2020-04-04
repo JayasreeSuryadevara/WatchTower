@@ -21,19 +21,20 @@ const WatchListItemSchema = new Schema({
   }
 });
 
-WatchListItemSchema.statics.addWatchlistItem = function (stockId, addDate, addPrice, noOfShares, loggedInUser) {
+WatchListItemSchema.statics.addWatchListItem = function (stockId, addDate, addPrice, noOfShares, loggedInUser) {
   const WatchListItem = this; //the model
   return (async () => {
     const stock = await Stock.findById(stockId);
     if (stock) {
-      const watchlistItem = new WatchListItem(stockId, addDate, addPrice, noOfShares);
-      await watchlistItem.save();
-      loggedInUser.watchList.addToSet(watchlistItem._id)
+      const watchListItem = new WatchListItem({stockId, addDate, addPrice, noOfShares});
+      await watchListItem.save();
+      loggedInUser.watchList.addToSet(watchListItem._id)
     }
+    await loggedInUser.save();
     return {
       success: true,
       message: "Successfullly added stock to watchlist.",
-      watchList
+      watchListItem
     };
   })();
 }
@@ -47,13 +48,13 @@ WatchListItemSchema.methods.removeWatchListItem = function (loggedInUser) {
       return {
         success: true,
         message: "Successfully removed stock from watchlist.",
-        watchList: [watchListItem]
+        watchListItem
       };
     } else {
       return {
         success: false,
         message: `Failed to remove stock with id:${this_id} from watchlist.`,
-        watchList: null
+        watchListItem
       };
     }
   })();
