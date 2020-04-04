@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const secretOrKey = require("../config/keys").secretOrKey;
-// const Stock = mongoose.model('Stock');
+// const WatchListItem = mongoose.model('WatchListItem');
 
 const UserSchema = new Schema({
     email: {
@@ -22,9 +22,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    stocks: [{
+    watchList: [{
         type: Schema.Types.ObjectId,
-        ref: 'Stock'
+        ref: 'WatchListItem'
     }]
 });
 

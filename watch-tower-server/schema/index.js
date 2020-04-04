@@ -3,6 +3,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 const { merge } = require('lodash');
 const User = mongoose.model("User");
 const Stock = mongoose.model("Stock");
+const WatchListItem = mongoose.model("WatchListItem");
 
 const typeDefs = `
     type User {
@@ -17,12 +18,23 @@ const typeDefs = `
         name: String!
         stock: Stock
     }
+    type WatchListItem {
+        _id: ID!
+        stock: Stock
+        addDate: String
+        addPrice: Int
+        noOfShares: Int
+    }
     type Query {
         me: User
+        watchListItem(_id: ID!): WatchListItem
+        watchListItems: [WatchListItem]
     }
     type Mutation {
       login(email: String!, password: String!): UserCredentials
       signup(email: String!, name: String!, password: String!): UserCredentials
+      addWatchListItem(stockId: ID!, addDate: String, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
+      removeWatchListItem(stockId: ID!): WatchListUpdateResponse
     }
     type UserCredentials {
       _id: ID!
@@ -31,12 +43,23 @@ const typeDefs = `
       token: String
       loggedIn: Boolean
     }
+    type WatchListUpdateResponse {
+        success: Boolean!
+        message: String
+        watchList: [WatchListItem]
+    }
 `;
 
 const resolvers = {
     Query: {
         me(_, __, context) {
             return context.user;
+        },
+        watchListItem(_, { _id }) {
+            return WatchListItem.findById(_id);
+        },
+        watchListItems(_, __) {
+            return WatchListItem.find({});
         }
     },
     Mutation: {
@@ -45,6 +68,17 @@ const resolvers = {
         },
         signup(_, { email, name, password }) {
             return User.signup(email, name, password);
+        },
+        addWatchListItem: async (_, {stockId, addDate, addPrice, noOfShares}, context) => {
+            const loggedInUser = context.user;
+            if (loggedInUser) {
+                return WatchListItem.addWatchListItem(stockId, addDate, addPrice, noOfShares, loggedInUser);
+            }
+        },
+        removeWatchListItem: async(_, { watchListItemId }, context) => {
+            const loggedInUser = context.user;
+            const watchListItem = await WatchListItem.findById(watchListItemId);
+            return watchListItem.removeWatchListItem(loggedInUser);
         }
     },
     User: {
