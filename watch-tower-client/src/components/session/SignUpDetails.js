@@ -30,9 +30,10 @@ export default () => {
     <main className="signup-main">
       <div className="signup-body">
         <Link to="/" className="home-link"><i className="fas fa-home"></i>&nbsp;&nbsp;Home</Link>
+        <h1 className="login-error">{errorMessage}</h1>
         <form className="signup-form" onSubmit={(e) => {
-          e.preventDefault()
-          signUpUser()
+          e.preventDefault();
+          signUpUser();
         }} >
           <h1>Free Registration</h1>
           <div>
