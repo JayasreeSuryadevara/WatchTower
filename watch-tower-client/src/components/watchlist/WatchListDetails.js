@@ -8,7 +8,14 @@ const WatchListDetails = () => {
     <section className="watch-list-left">
       <div className="add-to-watch-list">
         <h1>Add to watchlist</h1>
-        <button><p>+ ADD SYMBOL</p><i className="fas fa-search"></i></button>
+        <form className="add-to-watch-list-add-button">
+          <input
+            value=""
+            type="text"
+            placeholder="+ ADD SYMBOL"
+          />
+          <i className="fas fa-search"></i>
+        </form>
       </div>
       <div className="watch-list-items">
         {/* Need Stock and Company info
