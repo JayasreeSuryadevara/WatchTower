@@ -19,7 +19,7 @@ const AccDropLogged = () => {
 
   return (
     <section className="acc-drop-down">
-      <div className="acc-drop-down-header"> 
+      <div className="acc-drop-down-header">
         {user.name}
       </div>
       <div className="acc-drop-down-choices">

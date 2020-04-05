@@ -9,7 +9,7 @@ const AccDropDown= () => {
   return (
     <main className="acc-drop-down-main">
       <div>
-        <i className="far fa-user-circle"></i>
+        <i className="far fa-user-circle acc-drop-btn"></i>
       </div>
       <div>
         <ProtectedComponent component={AccDropLogged}/>

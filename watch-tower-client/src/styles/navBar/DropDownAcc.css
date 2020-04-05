@@ -1,19 +1,42 @@
-.acc-drop-down-main:hover .acc-drop-down {
-  display: block;
+.acc-drop-btn:hover {
+  cursor: pointer;
+}
+
+.acc-drop-down-main {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+  vertical-align: middle;
+  height: 25px;
 }
 
 .acc-drop-down {
   display: none;
   position: absolute;
-  width: 161px;
-  top: 50px;
   height: fit-content;
+  width: 161px;
+  min-width: 161px;
+  background-color: #fff;
   color: #202020;
-  background: #fff;
-  border: 1px solid #e1e1e1;
   padding: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,.1);
+  border: 1px solid #e1e1e1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+}
+
+.acc-drop-down-main:hover .acc-drop-down {
+  display: block;
+}
+
+.acc-drop-down-header,
+.acc-drop-down-choices,
+.acc-drop-down-logout,
+.acc-drop-down-choice-button {
+  display: block;
+}
+
+.acc-drop-down-main:hover .acc-drop-btn {
+  color: #3677A8;
 }
 
 .acc-drop-down-header {
@@ -29,7 +52,7 @@
 
 .acc-drop-down-login-logout {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
 }
 
 .acc-drop-down-choices {
@@ -41,7 +64,9 @@
   font-size: 12px;
   padding: 10px 0 5px;
 }
-.acc-drop-down-choice-button:hover {
+.acc-drop-down-choice-button:hover,
+.acc-drop-down-logout:hover,
+.acc-drop-down-login-logout-button:hover {
   color: #3677A8;
 }
 
@@ -53,7 +78,4 @@
 .acc-drop-down-login-logout-button {
   padding: 10px 0 7px;
   font-size: 12px;
-}
-.acc-drop-down-login-logout-button:hover {
-  color: #3677A8;
 }
