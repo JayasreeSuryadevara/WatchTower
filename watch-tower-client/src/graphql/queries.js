@@ -19,3 +19,18 @@ export const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `;
+
+// export const SearchResults = gql`
+//   query($searchQuery: String) {
+//     listCurrentStocks(filter: {
+//       searchField: {
+//         contains: $searchQuery
+//       }
+//     }) {
+//       stocks {
+//         name
+//         tocker
+//       }
+//     }
+//   }
+// `;
