@@ -33,6 +33,7 @@ const typeDefs = `
     type Mutation {
       login(email: String!, password: String!): UserCredentials
       signup(email: String!, name: String!, password: String!): UserCredentials
+      changePassword(oldPassword: String!, newPassword: String!): UserCredentials
       addWatchListItem(stockId: ID!, addDate: Int, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
       removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
     }
@@ -68,6 +69,12 @@ const resolvers = {
         },
         signup(_, { email, name, password }) {
             return User.signup(email, name, password);
+        },
+        changePassword(_, { oldPassword, newPassword }, context) {
+            const loggedInUser = context.user;
+            if (loggedInUser) {
+                return loggedInUser.changePassword(oldPassword, newPassword);
+            }
         },
         addWatchListItem: async (_, {stockId, addDate, addPrice, noOfShares}, context) => {
             const loggedInUser = context.user;

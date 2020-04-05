@@ -52,4 +52,15 @@ UserSchema.statics.signup = async function (email, name, password) {
     return null;
 };
 
+UserSchema.methods.changePassword = async function (oldPassword, newPassword) {
+    const user = this; //current user
+    if (await bcrypt.compare(oldPassword, user.password)) {
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        user.save();
+        return user;
+    }
+    return null;
+}
+
 module.exports = mongoose.model('User', UserSchema);
