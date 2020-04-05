@@ -9,6 +9,7 @@ import UserProfile from './pages/users/UserProfile';
 import LogInForm from './pages/session/LogInForm';
 import NavBar from './components/navbar/NavBar';
 import ErrorPage from './pages/error/ErrorPage';
+import WatchList from './pages/watchlist/WatchList';
 
 
 export default () => {
@@ -19,6 +20,7 @@ export default () => {
         <AuthRoute path="/signup" component={SignUpForm} />
         <AuthRoute path="/login" component={LogInForm} />
         <ProtectedRoute exact path="/me" component={UserProfile} />
+        <ProtectedRoute exact path="/watchlist" component={WatchList} />
         <Route exact path="/" component={HomePage} />
         <Route path="/" component={ErrorPage} />
       </Switch>

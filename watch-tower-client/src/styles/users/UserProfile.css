@@ -5,6 +5,66 @@
 
 .user-profile {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 960px;
+}
+
+.profile-header {
+  line-height: 45px;
+  padding-left: 5px;
+  padding-top: 5px;
+  color: #333;
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 1px solid #B4C9CA;
+  box-shadow: 0 5px 6px -6px #B4C9CA;
+}
+
+.profile-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-body-left {
+  width: 20%;
+}
+
+.profile-body-middle {
+  width: 60%;
+}
+
+.profile-body-middle h1 {
+  color: #33B52F;
+  font-size: 22px;
+  padding: 15px 5px;
+}
+
+.profile-details {
+  border-bottom: 1px solid #B4C9CA;
+  padding: 10px;
+  font-size: 11px;
+}
+
+.profile-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.detail-header {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.detail-info {
+  color: #004176;
+}
+
+.fa-chevron-right {
+  font-size: 7px;
+}
+
+.profile-body-right {
+  width: 20%;
 }
