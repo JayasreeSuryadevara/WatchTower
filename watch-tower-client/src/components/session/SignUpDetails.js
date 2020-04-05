@@ -6,24 +6,24 @@ import { Link } from 'react-router-dom';
 import '../../styles/session/SignUpForm.css';
 
 export default () => {
-  const [email, setEmail] = useState("")
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [signUpUser, { loading, error }] = useMutation(
     SIGNUP_USER,
     {
       variables: { email, name, password },
-      update(cache, { data: { signUp } }) {
-        if (!signUp) setErrorMessage('Invalid Credentials');
+      update(cache, { data: { signup } }) {
+        if (!signup) setErrorMessage('Invalid Credentials');
         else {
-          localStorage.setItem('token', signUp.token);
+          localStorage.setItem('token', signup.token);
         }
       },
       onError() {
         setErrorMessage('Something went wrong');
       },
-      refetchQueries: [{ query: IS_LOGGED_IN }, { query: CURRENT_USER }]
+      // refetchQueries: [{ query: IS_LOGGED_IN }, { query: CURRENT_USER }]
     }
   )
   return (

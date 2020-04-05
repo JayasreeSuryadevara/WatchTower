@@ -10,6 +10,7 @@ import LogInForm from './pages/session/LogInForm';
 import NavBar from './components/navbar/NavBar';
 import ErrorPage from './pages/error/ErrorPage';
 import WatchList from './pages/watchlist/WatchList';
+import PasswordChg from './pages/users/PasswordChg';
 
 
 export default () => {
@@ -21,6 +22,7 @@ export default () => {
         <AuthRoute path="/login" component={LogInForm} />
         <ProtectedRoute exact path="/me" component={UserProfile} />
         <ProtectedRoute exact path="/watchlist" component={WatchList} />
+        <ProtectedRoute exact path="/password" component={PasswordChg} />
         <Route exact path="/" component={HomePage} />
         <Route path="/" component={ErrorPage} />
       </Switch>
