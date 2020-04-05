@@ -1,0 +1,31 @@
+.bottom-border {
+  border-bottom: 1px solid #939393;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  color: #3677A8;
+  font-size: 24.0001px;
+  font-weight: 800;
+  font-family: Muli, sans-serif;
+  justify-content: left;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.update-message {
+  display: flex;
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 20px;
+  color: black;
+  font-family: Muli, sans-serif;
+}
+
+.articles-container {
+  position: relative; 
+  flex-direction: row;
+  display: flex; 
+  width: 100%;
+}

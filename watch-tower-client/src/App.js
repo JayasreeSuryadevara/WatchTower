@@ -9,6 +9,7 @@ import UserProfile from './pages/users/UserProfile';
 import LogInForm from './pages/session/LogInForm';
 import NavBar from './components/navbar/NavBar';
 import ErrorPage from './pages/error/ErrorPage';
+import NewsPage from './pages/news/NewsPage';
 
 
 export default () => {
@@ -17,6 +18,7 @@ export default () => {
       <NavBar />
       <Switch>
         <AuthRoute path="/signup" component={SignUpForm} />
+        <AuthRoute path="/news" component={NewsPage} />
         <AuthRoute path="/login" component={LogInForm} />
         <ProtectedRoute exact path="/me" component={UserProfile} />
         <Route exact path="/" component={HomePage} />
