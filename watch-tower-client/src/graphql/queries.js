@@ -19,3 +19,15 @@ export const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `;
+
+export const WATCH_LIST_ITEMS = gql`
+  query WatchListItems {
+    watchListItems {
+      _id
+      stock
+      addDate
+      addPrice
+      noOfShares
+    }
+  }
+`;
