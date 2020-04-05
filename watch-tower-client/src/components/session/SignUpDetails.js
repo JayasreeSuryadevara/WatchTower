@@ -42,8 +42,9 @@ export default () => {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.currentTarget.value)}
-                placeholder="First Name (required)"
+                placeholder="Name (required)"
                 className="signup-form-input"
+                required
               />
             </section>
             <section>
@@ -53,6 +54,7 @@ export default () => {
                 onChange={(e) => setEmail(e.currentTarget.value)}
                 placeholder="Email (required)"
                 className="signup-form-input"
+                required
               />
             </section>
             <section>
@@ -62,6 +64,7 @@ export default () => {
                 onChange={(e) => setPassword(e.currentTarget.value)}
                 placeholder="Password (required)"
                 className="signup-form-input"
+                required
               />
             </section>
             <input type="submit" value="SUBMIT" disabled={loading} className="submit-button" />
