@@ -8,22 +8,22 @@ export default () => {
         <main className="drop-down-main">
             <ul className="drop-down-links">
                 <li className="link-item">
-                    <Link to="/"> Home </Link>
+                    <Link to='/'> Home </Link>
                 </li>
                 <li className="link-item">
-                    <Link to="/" > Latest News</Link>
+                    <Link to='/' > Latest News</Link>
                 </li>
                 <li className="link-item">
-                    <Link to="/watchlist" >Watchlist</Link>
+                    <Link to='/watchlist' >Watchlist</Link>
                 </li>
                 <li className="link-item">
-                    <Link to="/" > Techology</Link>
+                    <Link to='/' > Techology</Link>
                 </li>
                 <li className="link-item">
-                    <Link to="/" > Markets</Link>
+                    <Link to='/' > Markets</Link>
                 </li>
                 <li className="link-item">
-                    <Link to="/" > Investing</Link>
+                    <Link to='/' > Investing</Link>
                 </li>
             </ul>
         </main>
