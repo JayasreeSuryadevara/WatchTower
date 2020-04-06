@@ -23,7 +23,7 @@ export default () => {
       onError() {
         setErrorMessage('Something went wrong');
       },
-      // refetchQueries: [{ query: IS_LOGGED_IN }, { query: CURRENT_USER }]
+      refetchQueries: [{ query: IS_LOGGED_IN }, { query: CURRENT_USER }]
     }
   )
   return (
