@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const secretOrKey = require("../config/keys").secretOrKey;
-// const Stock = mongoose.model('Stock');
+// const WatchListItem = mongoose.model('WatchListItem');
 
 const UserSchema = new Schema({
     email: {
@@ -22,9 +22,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    stocks: [{
+    watchList: [{
         type: Schema.Types.ObjectId,
-        ref: 'Stock'
+        ref: 'WatchListItem'
     }]
 });
 
@@ -51,5 +51,16 @@ UserSchema.statics.signup = async function (email, name, password) {
     }
     return null;
 };
+
+UserSchema.methods.changePassword = async function (oldPassword, newPassword) {
+    const user = this; //current user
+    if (await bcrypt.compare(oldPassword, user.password)) {
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedPassword;
+        user.save();
+        return user;
+    }
+    return null;
+}
 
 module.exports = mongoose.model('User', UserSchema);
