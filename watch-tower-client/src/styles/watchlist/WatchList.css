@@ -130,6 +130,7 @@
   font-weight: 400;
   color: grey;
   width: 620px;
+  padding: 5px;
 }
 .watch-list-item-chg {
   display: flex;
@@ -159,7 +160,6 @@
   box-sizing: border-box;
   width: 20px;
   height: 98px;
-  border: 1px solid #3677A8;
 }
 .watch-list-remove button {
   position: absolute;
@@ -171,8 +171,8 @@
   background-color: #3677A8;
   font-size: 10px;
   transform: rotate(-90deg);
-  top: 38px;
-  right: -40px;
+  top: 17px;
+  right: -25px;
 }
 /* ---------------NEWS----------------- */
 .watch-list-news {
