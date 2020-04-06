@@ -18,20 +18,17 @@ const typeDefs = `
         name: String!
         stock: Stock
     }
-<<<<<<< HEAD
     type WatchListItem {
         _id: ID!
         stock: Stock
         addDate: Int
         addPrice: Int
         noOfShares: Int
-=======
     type Company {
         _id: ID!
         name: String!
         desc: String!
         industry: String!
->>>>>>> c5709107c9a83d8174c0f573ed1519792b15f6a0
     }
     type Query {
         me: User
