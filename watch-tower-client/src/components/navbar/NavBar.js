@@ -27,7 +27,7 @@ export default () => {
                 </div>
                 <div className="nav-bar-news-links">
                     <p>Latest</p>
-                    <p>Watchlist</p>
+                    <Link to="/watchlist"><p>Watchlist</p></Link>
                     <p>Techology</p>
                     <p>Markets</p>
                     <p>Investing</p>

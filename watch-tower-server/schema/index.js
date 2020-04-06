@@ -16,7 +16,7 @@ const typeDefs = `
         _id: ID!
         ticker: String!
         name: String!
-        stock: Stock
+        company: Company
     }
     type WatchListItem {
         _id: ID!
@@ -24,6 +24,7 @@ const typeDefs = `
         addDate: Int
         addPrice: Int
         noOfShares: Int
+    }
     type Company {
         _id: ID!
         name: String!
@@ -105,13 +106,13 @@ const resolvers = {
             return null;
         }
     },
+    // Stock: {
+    //     stock: (_, {stockId}) => {
+    //         const stock = Stock.findById(stockId);
+    //         return stock;
+    //     }
+    // },
     Stock: {
-        stock: (_, {stockId}) => {
-            const stock = Stock.findById(stockId);
-            return stock;
-        }
-    },
-    Company: {
         company: (_, { companyId }) => {
             const company = Company.findById(companyId);
             return company;
