@@ -48,4 +48,38 @@
 
 .fa-bars {
   font-size: 20px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.drop-down-menu-icon:hover .drop-down-main{
+  display: block;
+}
+
+.fa-bars:hover {
+  background-color: #3677a8;
+}
+
+.drop-down-main {
+  display: none;
+  position: absolute;
+  height: 500px;
+  width: 240px;
+  background-color: #3677a8;
+  color: white;
+  font-size: 20px;
+}
+
+.drop-down-links {
+  display: block;
+}
+
+li {
+  height: 30px;
+  width: 200px;
+  padding: 20px;
+}
+
+.link-item:hover {
+  background-color: rgb(54, 125, 206);
 }

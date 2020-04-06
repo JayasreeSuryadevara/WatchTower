@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { COMPANY_DATA } from './fragments';
 
 export const CURRENT_USER = gql`
   query CurrentUser {
@@ -20,6 +21,7 @@ export const IS_LOGGED_IN = gql`
   }
 `;
 
+<<<<<<< HEAD
 export const WATCH_LIST_ITEMS = gql`
   query WatchListItems {
     watchListItems {
@@ -31,3 +33,28 @@ export const WATCH_LIST_ITEMS = gql`
     }
   }
 `;
+=======
+export const GET_COMPANY = gql`
+  query GetCompany($companyId: ID!) {
+    company(_id: $companyId) {
+      ...CompanyData
+    }
+  }
+  ${COMPANY_DATA}
+`;
+
+// export const SearchResults = gql`
+//   query($searchStr: String) {
+//     listCurrentStocks(filter: {
+//       searchField: {
+//         contains: $searchStr
+//       }
+//     }) {
+//       stocks {
+//         name
+//         ticker
+//       }
+//     }
+//   }
+// `;
+>>>>>>> c5709107c9a83d8174c0f573ed1519792b15f6a0
