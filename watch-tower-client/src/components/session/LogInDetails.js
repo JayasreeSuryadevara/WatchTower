@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../../graphql/mutations';
 import { Link } from 'react-router-dom';
-import { IS_LOGGED_IN, CURRENT_USER } from '../../graphql/queries';
+// import { IS_LOGGED_IN, CURRENT_USER } from '../../graphql/queries';
 import '../../styles/session/LogInForm.css';
 
 export default () => {

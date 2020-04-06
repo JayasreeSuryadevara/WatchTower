@@ -12,6 +12,7 @@ import ErrorPage from './pages/error/ErrorPage';
 import WatchList from './pages/watchlist/WatchList';
 import PasswordChg from './pages/users/PasswordChg';
 
+import SearchForm from './pages/search/SearchForm';
 
 export default () => {
   return (
@@ -24,6 +25,7 @@ export default () => {
         <ProtectedRoute exact path="/watchlist" component={WatchList} />
         <ProtectedRoute exact path="/password" component={PasswordChg} />
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/search" component={SearchForm} />
         <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>

@@ -4,10 +4,11 @@ import '../../styles/navBar/NavBar.css';
 import '../../styles/navBar/DropDownAcc.css';
 import AuthComp from '../util/AuthComponent';
 import ProtectedComp from '../util/ProtectedComponent';
-import LogInButton from '../session/LogInButton'
-import LogOutButton from '../session/LogOutButton'
-import NavBarLogo from './wt-header2.png'
-import AccDropDown from './AccDropDown'
+import LogInButton from '../session/LogInButton';
+import LogOutButton from '../session/LogOutButton';
+import NavBarLogo from './wt-header2.png';
+import AccDropDown from './AccDropDown';
+import DropDownMenu from '../dropdown/DropDownMenu';
 
 export default () => {
 
@@ -15,11 +16,14 @@ export default () => {
         <main className="nav-bar-main">
             <section className="nav-bar-container">
                 <div className="nav-bar-logo">
-                    <i className="fas fa-bars"></i>&nbsp;&nbsp;
-                <Link to={`/`}>
-                    {/* HomePage */}
-                    <img src={NavBarLogo} alt="navlogo"/>
-                </Link>
+                    <div className="drop-down-menu-icon">
+                        <i className="fas fa-bars"></i>&nbsp;&nbsp;
+                        <DropDownMenu />
+                    </div>
+                    <Link to={`/`}>
+                        {/* HomePage */}
+                        <img src={NavBarLogo} alt="navlogo"/>
+                    </Link>
                 </div>
                 <div className="nav-bar-news-links">
                     <p>Latest</p>
@@ -39,7 +43,9 @@ export default () => {
                     <AccDropDown/>
                 </div>
                 <div>
-                    <p><i className="fas fa-search"></i></p>
+                    <Link to="/search">
+                        <i className="fas fa-search"></i>
+                    </Link>
                 </div>
             </section>
         </main>
