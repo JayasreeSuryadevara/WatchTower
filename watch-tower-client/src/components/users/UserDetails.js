@@ -32,7 +32,9 @@ const UserDetails = () => {
                     </div>
                     <div className="profile-details profile-flex">
                         <p className="detail-header">PASSWORD</p>
-                        <p className="detail-info">Change Password <i className="fas fa-chevron-right"></i><i className="fas fa-chevron-right"></i></p>
+                        <Link to="/password">
+                            <p className="detail-info">Change Password <i className="fas fa-chevron-right"></i><i className="fas fa-chevron-right"></i></p>
+                        </Link>
                     </div>
                     <div className="profile-details profile-flex">
                         <p className="detail-header">WATCHLIST</p>
