@@ -26,10 +26,17 @@ const WatchListDetails = () => {
         {/* Each li in the list will look like: */}
           <li className="watch-list-item-indiv">
             <section className="indiv-main">
-              <div>
+              <div className="indiv-main-top">
                 <div className="watch-list-item-co-info">
                   <p className="watch-list-ticker">TICKR</p>
                   <p className="watch-list-co-name">Company Inc.</p>
+                </div>
+                <div className="watch-list-add-shares">
+                  <input
+                    value=""
+                    type="number"
+                    placeholder="+ ADD HOLDINGS"
+                  />
                 </div>
               </div>
               <div className="watch-list-item-data">
