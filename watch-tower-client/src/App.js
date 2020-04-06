@@ -11,6 +11,7 @@ import NavBar from './components/navbar/NavBar';
 import ErrorPage from './pages/error/ErrorPage';
 import WatchList from './pages/watchlist/WatchList';
 import PasswordChg from './pages/users/PasswordChg';
+import NewsPage from './pages/news/NewsPage';
 
 import SearchForm from './pages/search/SearchForm';
 
@@ -20,6 +21,7 @@ export default () => {
       <NavBar />
       <Switch>
         <AuthRoute path="/signup" component={SignUpForm} />
+        <AuthRoute path="/news" component={NewsPage} />
         <AuthRoute path="/login" component={LogInForm} />
         <ProtectedRoute exact path="/me" component={UserProfile} />
         <ProtectedRoute exact path="/watchlist" component={WatchList} />

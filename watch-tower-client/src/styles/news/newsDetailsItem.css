@@ -1,0 +1,6 @@
+.article-image-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-flow: row nowrap;
+}
