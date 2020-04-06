@@ -16,22 +16,20 @@ const typeDefs = `
         _id: ID!
         ticker: String!
         name: String!
-        stock: Stock
+        company: Company
     }
-<<<<<<< HEAD
     type WatchListItem {
         _id: ID!
         stock: Stock
         addDate: Int
         addPrice: Int
         noOfShares: Int
-=======
+    }
     type Company {
         _id: ID!
         name: String!
         desc: String!
         industry: String!
->>>>>>> c5709107c9a83d8174c0f573ed1519792b15f6a0
     }
     type Query {
         me: User
@@ -108,13 +106,13 @@ const resolvers = {
             return null;
         }
     },
+    // Stock: {
+    //     stock: (_, {stockId}) => {
+    //         const stock = Stock.findById(stockId);
+    //         return stock;
+    //     }
+    // },
     Stock: {
-        stock: (_, {stockId}) => {
-            const stock = Stock.findById(stockId);
-            return stock;
-        }
-    },
-    Company: {
         company: (_, { companyId }) => {
             const company = Company.findById(companyId);
             return company;
