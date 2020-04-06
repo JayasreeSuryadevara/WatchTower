@@ -1,0 +1,40 @@
+.search-bar-main {
+    background-color: black;
+    opacity: 0.8;
+    height: 3000px;
+    width: 100%;
+}
+.search-close-div {
+    display: flex;
+    justify-content: flex-end;
+}
+.search-close {
+    color: #eee; 
+}
+.search-bar-1 {
+    width: 1000px;
+    padding: 40px;
+}
+.search-bar-2 {
+    border-bottom: solid 1px #eee;
+    color: #eee;
+    width: 960px;
+    font-size: 24px;
+}
+.search-input {
+    width: 900px;
+}
+.seach-icon {
+    color: green;
+}
+.search-listings {
+    margin-bottom: solid 1px white;
+}
+.search-link-list li {
+    background-color: black;
+    height: 60px;
+    font-size: 24px;
+    width: 100%;
+}
+
+

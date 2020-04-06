@@ -9,7 +9,7 @@ import UserProfile from './pages/users/UserProfile';
 import LogInForm from './pages/session/LogInForm';
 import NavBar from './components/navbar/NavBar';
 import ErrorPage from './pages/error/ErrorPage';
-
+import SearchForm from './pages/search/SearchForm';
 
 export default () => {
   return (
@@ -20,6 +20,7 @@ export default () => {
         <AuthRoute path="/login" component={LogInForm} />
         <ProtectedRoute exact path="/me" component={UserProfile} />
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/search" component={SearchForm} />
         <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>

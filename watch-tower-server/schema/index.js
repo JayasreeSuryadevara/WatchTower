@@ -17,6 +17,12 @@ const typeDefs = `
         name: String!
         stock: Stock
     }
+    type Company {
+        _id: ID!
+        name: String!
+        desc: String!
+        industry: String!
+    }
     type Query {
         me: User
     }
@@ -62,6 +68,12 @@ const resolvers = {
         stock: (_, {stockId}) => {
             const stock = Stock.findById(stockId);
             return stock;
+        }
+    },
+    Company: {
+        company: (_, { companyId }) => {
+            const company = Company.findById(companyId);
+            return company;
         }
     }
 }
