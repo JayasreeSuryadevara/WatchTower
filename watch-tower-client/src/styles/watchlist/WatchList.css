@@ -95,9 +95,16 @@
 .indiv-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   box-sizing: border-box;
-  padding: 7px;
+  /* padding: 7px; */
+}
+
+.indiv-main-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .watch-list-item-co-info {
@@ -119,6 +126,15 @@
   font-size: 12px;
   font-weight: 700;
   align-self: center;
+}
+
+.watch-list-add-shares ::placeholder {
+  display: flex;
+  box-sizing: border-box;
+  border: solid 1px #e1e1e1;
+  font-size: 9px;
+  color: black;
+  font-weight: bold;
 }
 
 .watch-list-item-data {
@@ -172,7 +188,7 @@
   font-size: 10px;
   transform: rotate(-90deg);
   top: 17px;
-  right: -25px;
+  right: -38px;
 }
 /* ---------------NEWS----------------- */
 .watch-list-news {
