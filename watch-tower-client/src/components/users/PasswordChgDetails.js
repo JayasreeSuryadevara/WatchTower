@@ -19,14 +19,14 @@ export default () => {
     CHANGE_PASSWORD,
     {
       variables: { oldPassword, newPassword },
-      onError() {},
-      update(cache, { data: { changePassword }}) {
-        if (!changePassword) setErrorMessage('Invalid Credentials')
-        const data = cache.readQuery({ query: CURRENT_USER })
-        console.log(data)
-        const me = Object.assign({}, data.me)
-        cache.writeQuery( { query: CURRENT_USER, data: { me: me }});
-      },
+      onError() { setErrorMessage('Something went wrong');},
+      // update(cache, { data: { changePassword }}) {
+      //   if (!changePassword) setErrorMessage('Invalid Credentials')
+      //   const data = cache.readQuery({ query: CURRENT_USER })
+      //   console.log(data)
+      //   const me = Object.assign({}, data.me)
+      //   cache.writeQuery( { query: CURRENT_USER, data: { me: me }});
+      // },
       refetchQueries: [{ query: IS_LOGGED_IN }, { query: CURRENT_USER }]
     }
   )
