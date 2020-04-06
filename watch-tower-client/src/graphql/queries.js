@@ -21,6 +21,19 @@ export const IS_LOGGED_IN = gql`
   }
 `;
 
+<<<<<<< HEAD
+export const WATCH_LIST_ITEMS = gql`
+  query WatchListItems {
+    watchListItems {
+      _id
+      stock
+      addDate
+      addPrice
+      noOfShares
+    }
+  }
+`;
+=======
 export const GET_COMPANY = gql`
   query GetCompany($companyId: ID!) {
     company(_id: $companyId) {
@@ -44,3 +57,4 @@ export const GET_COMPANY = gql`
 //     }
 //   }
 // `;
+>>>>>>> c5709107c9a83d8174c0f573ed1519792b15f6a0
