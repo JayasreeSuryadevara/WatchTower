@@ -7,10 +7,6 @@ const WatchListItemSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Stock'
   },
-  addDate: {
-    type: Date,
-    required: true
-  },
   addPrice: {
     type: Number,
     required: true
@@ -21,12 +17,12 @@ const WatchListItemSchema = new Schema({
   }
 });
 
-WatchListItemSchema.statics.addWatchListItem = function (stockId, addDate, addPrice, noOfShares, loggedInUser) {
+WatchListItemSchema.statics.addWatchListItem = function (stockId, addPrice, noOfShares, loggedInUser) {
   const WatchListItem = this; //the model
   return (async () => {
     const stock = await Stock.findById(stockId);
     if (stock) {
-      const watchListItem = new WatchListItem({stockId, addDate, addPrice, noOfShares});
+      const watchListItem = new WatchListItem({stockId, addPrice, noOfShares});
       await watchListItem.save();
       loggedInUser.watchList.addToSet(watchListItem._id)
     }

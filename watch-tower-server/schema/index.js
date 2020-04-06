@@ -21,7 +21,6 @@ const typeDefs = `
     type WatchListItem {
         _id: ID!
         stock: Stock
-        addDate: Int
         addPrice: Int
         noOfShares: Int
     }
@@ -40,7 +39,7 @@ const typeDefs = `
       login(email: String!, password: String!): UserCredentials
       signup(email: String!, name: String!, password: String!): UserCredentials
       changePassword(oldPassword: String!, newPassword: String!): UserCredentials
-      addWatchListItem(stockId: ID!, addDate: Int, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
+      addWatchListItem(stockId: ID!, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
       removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
     }
     type UserCredentials {
@@ -82,10 +81,10 @@ const resolvers = {
                 return loggedInUser.changePassword(oldPassword, newPassword);
             }
         },
-        addWatchListItem: async (_, {stockId, addDate, addPrice, noOfShares}, context) => {
+        addWatchListItem: async (_, {stockId, addPrice, noOfShares}, context) => {
             const loggedInUser = context.user;
             if (loggedInUser) {
-                return WatchListItem.addWatchListItem(stockId, addDate, addPrice, noOfShares, loggedInUser);
+                return WatchListItem.addWatchListItem(stockId, addPrice, noOfShares, loggedInUser);
             }
         },
         removeWatchListItem: async(_, { watchListItemId }, context) => {
