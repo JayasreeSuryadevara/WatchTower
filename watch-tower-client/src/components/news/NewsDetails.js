@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import {currentNews} from '../util/CurrentNews';
 import {companyNews} from '../util/CurrentNews';
+import {technologyNews} from '../util/CurrentNews';
 import NewsDetailsItem from './NewsDetailsItem';
 
 export default () => { 
   const [latestNews, setLatestNews] = useState([]);
-  const [AllCompanyNews, setCompanyNews] = useState([]);
+  const [allCompanyNews, setCompanyNews] = useState([]);
+  const [allTechnologyNews, setTechnologyNews] = useState([]);
 
   async function fetchCurrentNews() {
-    const news = await currentNews("apple")
+    const news = await currentNews()
       setLatestNews(news) 
   }
 
   async function fetchCompanyNews() {
-    const news = await companyNews("tesla", "2020-04-02")
+    const news = await companyNews("tesla")
       setCompanyNews(news) 
+  }
+
+  async function fetchTechnologyNews() {
+    const news = await technologyNews()
+      setTechnologyNews(news) 
   }
 
   useEffect(() => {
@@ -25,13 +32,18 @@ export default () => {
     fetchCompanyNews()
   }, [])
 
-  console.log(latestNews)
-  console.log(AllCompanyNews)
+  useEffect(() => {
+    fetchTechnologyNews()
+  }, [])
+
+  // console.log(latestNews) 
+  // console.log(allCompanyNews)
+  console.log(allTechnologyNews)
 
   return (
       <ul>
         {latestNews.map(article => (
-          <li key={article.title}>
+          <li key={latestNews.indexOf(article)}>
             <NewsDetailsItem title={article.title} description={article.description}
               author={article.author} url={article.url} urlToImage={article.urlToImage} 
               publishedAt={article.publishedAt}/>
