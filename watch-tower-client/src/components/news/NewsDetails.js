@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {currentNews} from '../util/CurrentNews';
-import {companyNews} from '../util/CurrentNews';
 import {technologyNews} from '../util/CurrentNews';
 import NewsDetailsItem from './NewsDetailsItem';
 
@@ -26,10 +25,6 @@ export default () => {
 
   useEffect(() => {
     fetchCurrentNews()
-  }, [])
-
-  useEffect(() => {
-    fetchCompanyNews()
   }, [])
 
   useEffect(() => {
