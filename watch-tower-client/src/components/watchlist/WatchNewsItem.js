@@ -2,7 +2,7 @@ import React from "react";
 
 const WatchNewsItem = (props) => {
   const today = new Date(props.publishedAt);
-  const useDate = today.toString();
+  const useDate = today.toUTCString();
   return (
   <>
     <div className="watch-list-news-date">

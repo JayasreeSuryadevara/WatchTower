@@ -89,7 +89,7 @@ const resolvers = {
             return WatchListItem.find({});
         },
         stock(_, { ticker }) {
-            return Stock.find({ ticker: ticker });
+            return Stock.findOne({ ticker: ticker });
         },
         // stocks(_, __)
     },
