@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const { makeExecutableSchema } = require('graphql-tools');
-const { merge } = require('lodash');
 const User = mongoose.model("User");
 const Stock = mongoose.model("Stock");
 const WatchListItem = mongoose.model("WatchListItem");
+const Company = mongoose.model("Company");
 
 const typeDefs = `
     type User {
@@ -27,6 +27,8 @@ const typeDefs = `
         stock: Stock
         name: String!
         desc: String!
+        dividend: Int
+        yield: Int
         industry: String
         sector: String
     }
@@ -35,7 +37,7 @@ const typeDefs = `
         watchListItem(_id: ID!): WatchListItem
         watchList: [WatchListItem]
         stock(ticker: String!): Stock
-        // stocks: [Stock]
+        stocks: [Stock]
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -43,20 +45,19 @@ const typeDefs = `
         changePassword(oldPassword: String!, newPassword: String!): UserCredentials
         addWatchListItem(stockId: ID!, addDate: Int, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
-        fetchStock(ticker: String!): HistoricalData
         addStock(ticker: String!): HistoricalData
-        addCompany(stcokId: ID!, name: String!, desc: String, industry: String, sector: String): CompanyResponse
+        addCompany(ticker: String!, name: String!, desc: String, dividend: Int, yield: Int, industry: String, sector: String): CompanyResponse
     }
     type HistoricalData {
         _id: ID
+        open: Int
+        dayHigh: Int
+        dayLow: Int
+        currentPrice: Int!
+        volume: Int
+        changePercent: String
+        fetchSuccess: Boolean
         stock: Stock
-        currentPrice: Number!
-        dividend: Number
-        yield: Number
-        open: Number
-        dayHigh: Number
-        dayLow: Number
-        Volume: Int
     }
     type UserCredentials {
         _id: ID!
@@ -73,7 +74,8 @@ const typeDefs = `
     type CompanyResponse {
         success: Boolean!
         message: String
-        companyId: ID
+        stock: Stock
+        company: Company
     }
 `;
 
@@ -91,7 +93,9 @@ const resolvers = {
         stock(_, { ticker }) {
             return Stock.find({ ticker: ticker });
         },
-        // stocks(_, __)
+        stocks(_, __) {
+            return Stock.find({});
+        }
     },
     Mutation: {
         login(_, { email, password}) {
@@ -118,33 +122,30 @@ const resolvers = {
             const watchListItem = await WatchListItem.findById(watchListItemId);
             return watchListItem.removeWatchListItem(loggedInUser);
         },
-        addStock: async(_, { ticker, currentPrice, dividend, yield, companyId, historicalDataId}, context) => {
-            const loggedInUser = context.user;
-            if (loggedInUser) {
-                const company = 
-                return Stock.addStock(ticker, currentPrice, dividend, yield, companyId, historicalDataId);
-            }
+        addStock: async(_, { ticker }) => {
+            return Stock.addStock(ticker);
+        },
+        addCompany: async(_ ,{ ticker, name, desc, dividend, yield, industry, sector}) => {
+            const stock = await Stock.addStock({ticker: ticker});
+            return Company.addCompany({stock: stock, name: name, desc: desc, dividend: dividend, yield: yield, industry: industry, sector: sector});
         }
     },
     User: {
-        stocks: async (parentValue, _, context) => {
+        watchList: async (parentValue, _, context) => {
             const queriedUser = parentValue;
             const loggedInUser = context.user;
             if (loggedInUser && queriedUser._id === loggedInUser._id) {
-                await loggedInUser.populate('stocks').execPopulate();
-                return loggedInUser.stocks;
+                await loggedInUser.populate('watchList').execPopulate();
+                return loggedInUser.watchList;
             }
             return null;
         }
     },
-    Stock: {
-        company: (_, { companyId }) => {
-            const company = Company.findById(companyId);
-            return company;
-        },
-        historicalData: (_, { historicalDataId }) => {
-            const historicalData = HistoricalData.findById(historicalDataId);
-            return historicalData;
+    Company: {
+        stock: async (parentValue, _) => {
+            const company = parentValue;
+            await company.populate('stock').execPopulate();
+            return company.stock;
         }
     }
 }
