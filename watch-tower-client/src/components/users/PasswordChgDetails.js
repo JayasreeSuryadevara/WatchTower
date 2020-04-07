@@ -18,7 +18,7 @@ export default () => {
 
   let history = useHistory();
 
-  const [changePassword, {mutationloading, mutationerror}] = useMutation(
+  const [changePassword, {loading: mutationloading, error: mutationerror}] = useMutation(
     CHANGE_PASSWORD,
     {
       variables: { oldPassword, newPassword },

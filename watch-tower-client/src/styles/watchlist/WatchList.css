@@ -128,13 +128,22 @@
   align-self: center;
 }
 
-.watch-list-add-shares ::placeholder {
+.watch-list-add-shares {
+  margin-right: 10px;
+}
+
+.add-shares-input {
   display: flex;
   box-sizing: border-box;
   border: solid 1px #e1e1e1;
+  width: 120px;
+}
+.watch-list-add-shares ::placeholder {
   font-size: 9px;
   color: black;
   font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .watch-list-item-data {
