@@ -95,9 +95,16 @@
 .indiv-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   box-sizing: border-box;
-  padding: 7px;
+  /* padding: 7px; */
+}
+
+.indiv-main-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .watch-list-item-co-info {
@@ -121,6 +128,24 @@
   align-self: center;
 }
 
+.watch-list-add-shares {
+  margin-right: 10px;
+}
+
+.add-shares-input {
+  display: flex;
+  box-sizing: border-box;
+  border: solid 1px #e1e1e1;
+  width: 120px;
+}
+.watch-list-add-shares ::placeholder {
+  font-size: 9px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .watch-list-item-data {
   display: flex;
   flex-direction: row;
@@ -130,6 +155,7 @@
   font-weight: 400;
   color: grey;
   width: 620px;
+  padding: 5px;
 }
 .watch-list-item-chg {
   display: flex;
@@ -159,7 +185,6 @@
   box-sizing: border-box;
   width: 20px;
   height: 98px;
-  border: 1px solid #3677A8;
 }
 .watch-list-remove button {
   position: absolute;
@@ -171,8 +196,8 @@
   background-color: #3677A8;
   font-size: 10px;
   transform: rotate(-90deg);
-  top: 38px;
-  right: -40px;
+  top: 17px;
+  right: -38px;
 }
 /* ---------------NEWS----------------- */
 .watch-list-news {
@@ -197,10 +222,11 @@
   border: 1px solid #e1e1e1;
   background-color: #f7f7f7;
   width: 100%;
+  height: fit-content;
 }
-.watch-list-news-list div {
+.watch-list-news-list li {
   margin: 0 0 10px;
-  padding: 0 0 10px;
+  padding: 10px;
   background: 0 0;
   border-bottom: solid 1px #e1e1e1;
   font-family: lato, sans-serif;

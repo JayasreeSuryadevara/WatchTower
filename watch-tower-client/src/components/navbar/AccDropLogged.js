@@ -24,7 +24,7 @@ const AccDropLogged = () => {
       </div>
       <div className="acc-drop-down-choices">
         <Link to="/me" className="acc-drop-down-choice-button">Profile</Link>
-        <p className="acc-drop-down-choice-button"> Watch List</p>
+        <Link to="/watchlist"><p className="acc-drop-down-choice-button"> Watch List</p></Link>
         <p className="acc-drop-down-choice-button"> Email & Alerts</p>
         <p className="acc-drop-down-choice-button"> Games</p>
       </div>
