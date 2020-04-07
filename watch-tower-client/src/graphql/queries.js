@@ -7,9 +7,8 @@ export const CURRENT_USER = gql`
       _id
       email
       name
-      stocks {
+      watchList {
         _id
-        ticker
       }
     }
   }
@@ -27,8 +26,10 @@ export const IS_LOGGED_IN = gql`
 //     me {
 //       name
 //       watchList {
-//         _id
-//         ticker
+//        _id
+//        stock {
+          //   ticker
+          // }
 //       }
 //     },
 //     company {
