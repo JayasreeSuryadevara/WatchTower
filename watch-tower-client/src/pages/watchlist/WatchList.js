@@ -14,7 +14,7 @@ export default () => {
           <WatchListDetails />
         </div>
         <div className="watch-list-news">
-          <h3 className="watch-list-news-header">WATCHLIST NEWS</h3>
+          <h3 className="watch-list-news-header">LATEST NEWS</h3>
           <div className="watch-list-news-list">
             {/* This will be a link to the news later.  It is hard-coded for now. */}
             <div>

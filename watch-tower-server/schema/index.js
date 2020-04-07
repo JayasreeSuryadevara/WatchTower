@@ -41,8 +41,9 @@ const typeDefs = `
         login(email: String!, password: String!): UserCredentials
         signup(email: String!, name: String!, password: String!): UserCredentials
         changePassword(oldPassword: String!, newPassword: String!): UserCredentials
-        addWatchListItem(stockId: ID!, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
+        addWatchListItem(ticker: String!): WatchListUpdateResponse
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
+        updateWatchListItem(noOfShares: Int): WatchListUpdateResponse
         fetchStock(ticker: String!): HistoricalData
         addStock(ticker: String!): HistoricalData
         addCompany(stcokId: ID!, name: String!, desc: String, industry: String, sector: String): CompanyResponse
@@ -106,18 +107,22 @@ const resolvers = {
                 return loggedInUser.changePassword(oldPassword, newPassword);
             }
         },
-        addWatchListItem: async (_, {stockId, addPrice, noOfShares}, context) => {
+        addWatchListItem: async (_, { ticker }, context) => {
             const loggedInUser = context.user;
             if (loggedInUser) {
-                return WatchListItem.addWatchListItem(stockId, addPrice, noOfShares, loggedInUser);
+                return WatchListItem.addWatchListItem(ticker, loggedInUser);
             }
         },
         removeWatchListItem: async(_, { watchListItemId }, context) => {
             const loggedInUser = context.user;
-            console.log(loggedInUser)
             const watchListItem = await WatchListItem.findById(watchListItemId);
             return watchListItem.removeWatchListItem(loggedInUser);
         },
+        // updateWatchListItem: async(_, { noOfShares, watchListItemId }, context) => {
+        //     const loggedInUser = context.user;
+        //     const watchListItem = await WatchListItem.findById(watchListItemId);
+        //     ???????
+        // },
         // addStock: async(_, { ticker, currentPrice, dividend, yield, companyId, historicalDataId}, context) => {
         //     const loggedInUser = context.user;
         //     if (loggedInUser) {
