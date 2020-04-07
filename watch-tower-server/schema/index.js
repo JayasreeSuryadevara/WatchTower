@@ -37,14 +37,15 @@ const typeDefs = `
         watchListItem(_id: ID!): WatchListItem
         watchList: [WatchListItem]
         stock(ticker: String!): Stock
-        stocks: [Stock]
+        stocks: [stock]
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
         signup(email: String!, name: String!, password: String!): UserCredentials
         changePassword(oldPassword: String!, newPassword: String!): UserCredentials
-        addWatchListItem(stockId: ID!, addDate: Int, addPrice: Int, noOfShares: Int): WatchListUpdateResponse
+        addWatchListItem(ticker: String!): WatchListUpdateResponse
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
+        updateWatchListItem(newNoOfShares: Int, watchListItemId: ID!): WatchListUpdateResponse
         addStock(ticker: String!): HistoricalData
         addCompany(ticker: String!, name: String!, desc: String, dividend: Int, yield: Int, industry: String, sector: String): CompanyResponse
     }
@@ -58,6 +59,13 @@ const typeDefs = `
         changePercent: String
         fetchSuccess: Boolean
         stock: Stock
+        currentPrice: Int!
+        dividend: Int
+        yield: Int
+        open: Int
+        dayHigh: Int
+        dayLow: Int
+        Volume: Int
     }
     type UserCredentials {
         _id: ID!
@@ -110,15 +118,14 @@ const resolvers = {
                 return loggedInUser.changePassword(oldPassword, newPassword);
             }
         },
-        addWatchListItem: async (_, {stockId, addDate, addPrice, noOfShares}, context) => {
+        addWatchListItem: async (_, { ticker }, context) => {
             const loggedInUser = context.user;
             if (loggedInUser) {
-                return WatchListItem.addWatchListItem(stockId, addDate, addPrice, noOfShares, loggedInUser);
+                return WatchListItem.addWatchListItem(ticker, loggedInUser);
             }
         },
         removeWatchListItem: async(_, { watchListItemId }, context) => {
             const loggedInUser = context.user;
-            console.log(loggedInUser)
             const watchListItem = await WatchListItem.findById(watchListItemId);
             return watchListItem.removeWatchListItem(loggedInUser);
         },
@@ -147,6 +154,18 @@ const resolvers = {
             await company.populate('stock').execPopulate();
             return company.stock;
         }
+    },
+    updateWatchListItem: async(_, { newNoOfShares, watchListItemId }, context) => {
+        const loggedInUser = context.user;
+        const watchListItem = await WatchListItem.findById(watchListItemId);
+        watchListItem.noOfShares = newNoOfShares;
+        await watchListItem.save();
+        return {
+            success: true,
+            message: "Number of shares changed.",
+            watchListItem: watchListItem._id
+        }
+        //////////
     }
 }
 
