@@ -1,3 +1,4 @@
+.env
 config/keys.js
 /node_modules
 .env
