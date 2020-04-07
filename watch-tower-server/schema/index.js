@@ -35,7 +35,6 @@ const typeDefs = `
         watchListItem(_id: ID!): WatchListItem
         watchList: [WatchListItem]
         stock(ticker: String!): Stock
-        // stocks: [Stock]
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -43,7 +42,7 @@ const typeDefs = `
         changePassword(oldPassword: String!, newPassword: String!): UserCredentials
         addWatchListItem(ticker: String!): WatchListUpdateResponse
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
-        updateWatchListItem(noOfShares: Int): WatchListUpdateResponse
+        updateWatchListItem(newNoOfShares: Int, watchListItemId: ID!): WatchListUpdateResponse
         fetchStock(ticker: String!): HistoricalData
         addStock(ticker: String!): HistoricalData
         addCompany(stcokId: ID!, name: String!, desc: String, industry: String, sector: String): CompanyResponse
@@ -51,12 +50,12 @@ const typeDefs = `
     type HistoricalData {
         _id: ID
         stock: Stock
-        currentPrice: Number!
-        dividend: Number
-        yield: Number
-        open: Number
-        dayHigh: Number
-        dayLow: Number
+        currentPrice: Int!
+        dividend: Int
+        yield: Int
+        open: Int
+        dayHigh: Int
+        dayLow: Int
         Volume: Int
     }
     type UserCredentials {
@@ -118,11 +117,18 @@ const resolvers = {
             const watchListItem = await WatchListItem.findById(watchListItemId);
             return watchListItem.removeWatchListItem(loggedInUser);
         },
-        // updateWatchListItem: async(_, { noOfShares, watchListItemId }, context) => {
-        //     const loggedInUser = context.user;
-        //     const watchListItem = await WatchListItem.findById(watchListItemId);
-        //     ???????
-        // },
+        updateWatchListItem: async(_, { newNoOfShares, watchListItemId }, context) => {
+            const loggedInUser = context.user;
+            const watchListItem = await WatchListItem.findById(watchListItemId);
+            watchListItem.noOfShares = newNoOfShares;
+            await watchListItem.save();
+            return {
+                success: true,
+                message: "Number of shares changed.",
+                watchListItem: watchListItem._id
+            }
+            //////////
+        },
         // addStock: async(_, { ticker, currentPrice, dividend, yield, companyId, historicalDataId}, context) => {
         //     const loggedInUser = context.user;
         //     if (loggedInUser) {
@@ -131,27 +137,27 @@ const resolvers = {
         //     }
         // }
     },
-    User: {
-        stocks: async (parentValue, _, context) => {
-            const queriedUser = parentValue;
-            const loggedInUser = context.user;
-            if (loggedInUser && queriedUser._id === loggedInUser._id) {
-                await loggedInUser.populate('stocks').execPopulate();
-                return loggedInUser.stocks;
-            }
-            return null;
-        }
-    },
-    Stock: {
-        company: (_, { companyId }) => {
-            const company = Company.findById(companyId);
-            return company;
-        },
-        historicalData: (_, { historicalDataId }) => {
-            const historicalData = HistoricalData.findById(historicalDataId);
-            return historicalData;
-        }
-    }
+    // User: {
+    //     stocks: async (parentValue, _, context) => {
+    //         const queriedUser = parentValue;
+    //         const loggedInUser = context.user;
+    //         if (loggedInUser && queriedUser._id === loggedInUser._id) {
+    //             await loggedInUser.populate('stocks').execPopulate();
+    //             return loggedInUser.stocks;
+    //         }
+    //         return null;
+    //     }
+    // },
+    // Stock: {
+    //     company: (_, { companyId }) => {
+    //         const company = Company.findById(companyId);
+    //         return company;
+    //     },
+    //     historicalData: (_, { historicalDataId }) => {
+    //         const historicalData = HistoricalData.findById(historicalDataId);
+    //         return historicalData;
+    //     }
+    // }
 }
 
 module.exports = {

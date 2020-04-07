@@ -45,3 +45,12 @@ export const REMOVE_WATCH_LIST_ITEM = gql`
   }
   ${WATCHLIST_DATA}
 `;
+
+export const UPDATE_WATCH_LIST_ITEM = gql`
+  mutation UpdateWatchListItem($newNoOfShares: Int, $watchListItemId: ID!) {
+    updateWatchListItem(newNoOfShares: $newNoOfShares, watchListItemId: $watchListItemId) {
+      ...WatchListData
+    }
+  }
+  ${WATCHLIST_DATA}
+`;

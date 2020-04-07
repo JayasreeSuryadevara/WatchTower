@@ -222,10 +222,11 @@
   border: 1px solid #e1e1e1;
   background-color: #f7f7f7;
   width: 100%;
+  height: fit-content;
 }
-.watch-list-news-list div {
+.watch-list-news-list li {
   margin: 0 0 10px;
-  padding: 0 0 10px;
+  padding: 10px;
   background: 0 0;
   border-bottom: solid 1px #e1e1e1;
   font-family: lato, sans-serif;
