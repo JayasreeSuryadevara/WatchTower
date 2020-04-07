@@ -2,7 +2,7 @@
     A website to monitor Finance Markets focusing on Technology sector
 
 # Inspired by 
-    https://www.marketwatch.com/
+    https://www.marketwatch.com
 
 # Team Members
     Jayasree Suryadevara
