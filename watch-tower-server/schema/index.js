@@ -15,7 +15,7 @@ const typeDefs = `
     type WatchListItem {
         _id: ID!
         stock: Stock
-        addPrice: Int
+        addPrice: Float
         noOfShares: Int
     }
     type Stock {
@@ -27,8 +27,8 @@ const typeDefs = `
         stock: Stock
         name: String!
         desc: String!
-        dividend: Int
-        yield: Int
+        dividend: Float
+        yield: Float
         industry: String
         sector: String
     }
@@ -38,6 +38,8 @@ const typeDefs = `
         watchList: [WatchListItem]
         stock(ticker: String!): Stock
         stocks: [Stock]
+        company(name: String!): Company
+        companies: [Company]
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -47,7 +49,7 @@ const typeDefs = `
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
         updateWatchListItem(newNoOfShares: Int, watchListItemId: ID!): WatchListUpdateResponse
         addStock(ticker: String!): HistoricalData
-        addCompany(stock: Stock, name: String!, desc: String, dividend: Int, yield: Int, industry: String, sector: String): CompanyResponse
+        addCompany(ticker: String!, name: String!, desc: String, dividend: Int, yield: Int, industry: String, sector: String): CompanyResponse
     }
     type HistoricalData {
         _id: ID
@@ -75,7 +77,6 @@ const typeDefs = `
     type CompanyResponse {
         success: Boolean!
         message: String
-        stock: Stock
         company: Company
     }
 `;
@@ -92,10 +93,16 @@ const resolvers = {
             return WatchListItem.find({});
         },
         stock(_, { ticker }) {
-            return Stock.find({ ticker: ticker });
+            return Stock.findOne({ ticker: ticker });
         },
         stocks(_, __) {
             return Stock.find({});
+        },
+        company(_, { name }) {
+            return Company.findOne({ name: name })
+        },
+        companies(_, __) {
+            return Company.find({});
         }
     },
     Mutation: {

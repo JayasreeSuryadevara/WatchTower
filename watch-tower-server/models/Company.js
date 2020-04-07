@@ -38,7 +38,6 @@ CompanySchema.statics.addCompany = async function( stock, name, desc, dividend, 
   if (company.save()) {
     company.success = true;
     company.message = "Succesfully created a Company"
-    company.stock = stock;
     return company;
   } else {
     return null;
