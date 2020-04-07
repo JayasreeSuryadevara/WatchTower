@@ -47,7 +47,7 @@ const typeDefs = `
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
         updateWatchListItem(newNoOfShares: Int, watchListItemId: ID!): WatchListUpdateResponse
         addStock(ticker: String!): HistoricalData
-        addCompany(ticker: String!, name: String!, desc: String, dividend: Int, yield: Int, industry: String, sector: String): CompanyResponse
+        addCompany(stock: Stock, name: String!, desc: String, dividend: Int, yield: Int, industry: String, sector: String): CompanyResponse
     }
     type HistoricalData {
         _id: ID
@@ -59,13 +59,6 @@ const typeDefs = `
         changePercent: String
         fetchSuccess: Boolean
         stock: Stock
-        currentPrice: Int!
-        dividend: Int
-        yield: Int
-        open: Int
-        dayHigh: Int
-        dayLow: Int
-        Volume: Int
     }
     type UserCredentials {
         _id: ID!
