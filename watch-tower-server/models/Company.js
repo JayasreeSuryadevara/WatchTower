@@ -15,11 +15,11 @@ const CompanySchema = new Schema({
     required: true
   },
   dividend: {
-    type: Int,
+    type: Number,
     required: true
   },
   yield: {
-    type: Int,
+    type: Number,
     required: true
   },
   industry: {

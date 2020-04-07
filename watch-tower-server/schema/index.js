@@ -37,7 +37,7 @@ const typeDefs = `
         watchListItem(_id: ID!): WatchListItem
         watchList: [WatchListItem]
         stock(ticker: String!): Stock
-        stocks: [stock]
+        stocks: [Stock]
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -122,6 +122,18 @@ const resolvers = {
             const watchListItem = await WatchListItem.findById(watchListItemId);
             return watchListItem.removeWatchListItem(loggedInUser);
         },
+        updateWatchListItem: async (_, { newNoOfShares, watchListItemId }, context) => {
+            const loggedInUser = context.user;
+            const watchListItem = await WatchListItem.findById(watchListItemId);
+            watchListItem.noOfShares = newNoOfShares;
+            await watchListItem.save();
+            return {
+                success: true,
+                message: "Number of shares changed.",
+                watchListItem: watchListItem._id
+            }
+            //////////
+        },
         addStock: async(_, { ticker }) => {
             return Stock.addStock(ticker);
         },
@@ -147,18 +159,6 @@ const resolvers = {
             await company.populate('stock').execPopulate();
             return company.stock;
         }
-    },
-    updateWatchListItem: async(_, { newNoOfShares, watchListItemId }, context) => {
-        const loggedInUser = context.user;
-        const watchListItem = await WatchListItem.findById(watchListItemId);
-        watchListItem.noOfShares = newNoOfShares;
-        await watchListItem.save();
-        return {
-            success: true,
-            message: "Number of shares changed.",
-            watchListItem: watchListItem._id
-        }
-        //////////
     }
 }
 
