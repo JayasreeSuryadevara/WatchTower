@@ -36,10 +36,6 @@ export default () => {
     fetchTechnologyNews()
   }, [])
 
-  // console.log(latestNews) 
-  // console.log(allCompanyNews)
-  console.log(allTechnologyNews)
-
   return (
       <ul>
         {latestNews.map(article => (
