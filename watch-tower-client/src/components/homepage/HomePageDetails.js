@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../../styles/homePage/HomePage.css';
 import { headlineNews } from '../util/CurrentNews';
 import NewsDetailsItem from '../news/NewsDetailsItem';
+import FirstNewsItem from '../news/FirstNewsItem';
 import '../../styles/homePage/HomePageDetails.css';
 
 export default () => {
@@ -16,14 +17,23 @@ export default () => {
     fetchHeadlineNews()
   }, [])
 
-  const items = headlines.map(article => {
+  const items = headlines.map((article, idx) => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
-    return (
-      <NewsDetailsItem title={article.title} description={article.description}
-        author={article.author} url={article.url} urlToImage={article.urlToImage}
-        publishedAt={date} time={time} key={headlines.indexOf(article)} />
-    )
+
+    if (idx === 0) {
+      return (
+        <FirstNewsItem title={article.title} description={article.description}
+          author={article.author} url={article.url} urlToImage={article.urlToImage}
+          publishedAt={date} time={time} key={headlines.indexOf(article)} />
+      )
+    } else {
+      return (
+        <NewsDetailsItem title={article.title} description={article.description}
+          author={article.author} url={article.url} urlToImage={article.urlToImage}
+          publishedAt={date} time={time} key={headlines.indexOf(article)} />
+      )
+    }
   })
 
   return(
@@ -49,6 +59,24 @@ export default () => {
             <p>graph</p>
           </div>
         </div>
+        <div className="latest-news-container">
+          <div className="latest-news-items">
+            <p>Latest News</p>
+            <p>Coronavirus</p>
+            <p>New York</p>
+            <p>Gold</p>
+            <p>S&P 500 Futures</p>
+            <p>AAPL</p>
+            <p>BA</p>
+            <p>CCL</p>
+            <p>DIS</p>
+            <p>TSLA</p>
+            <p>ZM</p>
+          </div>
+        </div>
+        <ul>
+          {items}
+        </ul>
       </div>
     </div>
   )

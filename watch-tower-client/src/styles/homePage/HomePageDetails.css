@@ -54,3 +54,20 @@
 .graph {
   margin: 80px;
 }
+
+.latest-news-items {
+  display: flex;
+  width: 800;
+  justify-content: space-evenly;
+  background-color: gray;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+.latest-news-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: solid black;
+  border-bottom: solid black;
+}

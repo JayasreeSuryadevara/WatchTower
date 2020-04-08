@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {currentNews} from '../util/CurrentNews';
 import {technologyNews} from '../util/CurrentNews';
 import NewsDetailsItem from './NewsDetailsItem';
-import '../../styles/news/newsDetails.css';
+import '../../styles/news/NewsDetails.css';
 
 export default () => { 
   const [latestNews, setLatestNews] = useState([]);
@@ -30,10 +30,11 @@ export default () => {
   const items = latestNews.map(article => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
+
     return (
-    <NewsDetailsItem title={article.title} description={article.description}
+      <NewsDetailsItem title={article.title} description={article.description}
       author={article.author} url={article.url} urlToImage={article.urlToImage}
-      publishedAt={date} time={time} key={latestNews.indexOf(article)}/>
+      publishedAt={date} time={time} key={latestNews.indexOf(article)} />
     )
   })
 
