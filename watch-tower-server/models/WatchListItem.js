@@ -26,7 +26,7 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, loggedInUser) {
     const stock = await Stock.findOne({ ticker: ticker.toUpperCase()});
     const data = fetchStockData(ticker);
     const currentPrice = data.currentPrice;
-    console.log(stock);
+    // console.log(stock);
     if (stock) {
       const stockId = stock._id;
       const noOfShares = 1;

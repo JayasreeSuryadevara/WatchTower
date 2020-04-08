@@ -41,6 +41,7 @@ const typeDefs = `
         stocks: [Stock]
         company(name: String!): Company
         companies: [Company]
+        companyByTicker(ticker: String!): Company
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -107,6 +108,10 @@ const resolvers = {
         },
         companies(_, __) {
             return Company.find({});
+        },
+        companyByTicker(_, { ticker }){
+            const stock = Stock.findOne({ ticker: ticker });
+            return Company.findOne({ stock: stock._id });
         }
     },
     Mutation: {
