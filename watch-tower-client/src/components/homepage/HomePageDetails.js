@@ -4,6 +4,7 @@ import { headlineNews } from '../util/CurrentNews';
 import NewsDetailsItem from '../news/NewsDetailsItem';
 import FirstNewsItem from '../news/FirstNewsItem';
 import BulletListItem from '../news/BulletListItem';
+import ClipNewsItem from '../news/ClipNewsItem';
 import '../../styles/homePage/HomePageDetails.css';
 
 export default () => {
@@ -18,7 +19,7 @@ export default () => {
     fetchHeadlineNews()
   }, [])
 
-  const items = headlines.map((article, idx) => {
+  const items = headlines.slice(0, 7).map((article, idx) => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
 
@@ -34,13 +35,14 @@ export default () => {
           author={article.author} url={article.url} urlToImage={article.urlToImage}
           publishedAt={date} time={time} key={headlines.indexOf(article)} />
       )
-    } else {
-      return (
-        <NewsDetailsItem title={article.title} description={article.description}
-          author={article.author} url={article.url} urlToImage={article.urlToImage}
-          publishedAt={date} time={time} key={headlines.indexOf(article)} />
-      )
     }
+  })
+
+  const newsClips = headlines.slice(7, -1).map(article => {
+    return (
+      <ClipNewsItem title={article.title} author={article.author} url={article.url}
+        urlToImage={article.urlToImage} key={headlines.indexOf(article)} />
+    )
   })
 
   return(
@@ -68,7 +70,7 @@ export default () => {
         </div>
         <div className="latest-news-container">
           <div className="latest-news-items">
-            <p>Latest News</p>
+            <p className="latest-item">Latest News</p>
             <p>Coronavirus</p>
             <p>New York</p>
             <p>Gold</p>
@@ -81,8 +83,13 @@ export default () => {
             <p>ZM</p>
           </div>
         </div>
-        <ul>
-          {items}
+        <div>
+          <ul>
+            {items}
+          </ul>
+        </div>
+        <ul className="clip-list-container">
+          {newsClips}
         </ul>
       </div>
     </div>
