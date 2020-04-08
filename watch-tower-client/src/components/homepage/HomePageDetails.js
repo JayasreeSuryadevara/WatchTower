@@ -3,6 +3,7 @@ import '../../styles/homePage/HomePage.css';
 import { headlineNews } from '../util/CurrentNews';
 import NewsDetailsItem from '../news/NewsDetailsItem';
 import FirstNewsItem from '../news/FirstNewsItem';
+import BulletListItem from '../news/BulletListItem';
 import '../../styles/homePage/HomePageDetails.css';
 
 export default () => {
@@ -24,6 +25,12 @@ export default () => {
     if (idx === 0) {
       return (
         <FirstNewsItem title={article.title} description={article.description}
+          author={article.author} url={article.url} urlToImage={article.urlToImage}
+          publishedAt={date} time={time} key={headlines.indexOf(article)} />
+      )
+    } else if(idx > 0 && idx < 7) {
+      return (
+        <BulletListItem title={article.title} description={article.description}
           author={article.author} url={article.url} urlToImage={article.urlToImage}
           publishedAt={date} time={time} key={headlines.indexOf(article)} />
       )
