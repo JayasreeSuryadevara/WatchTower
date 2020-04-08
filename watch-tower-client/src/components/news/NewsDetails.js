@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {currentNews} from '../util/CurrentNews';
-import {companyNews} from '../util/CurrentNews';
 import {technologyNews} from '../util/CurrentNews';
 import NewsDetailsItem from './NewsDetailsItem';
+import '../../styles/news/newsDetails.css';
 
 export default () => { 
   const [latestNews, setLatestNews] = useState([]);
@@ -12,11 +12,6 @@ export default () => {
   async function fetchCurrentNews() {
     const news = await currentNews()
       setLatestNews(news) 
-  }
-
-  async function fetchCompanyNews() {
-    const news = await companyNews("tesla")
-      setCompanyNews(news) 
   }
 
   async function fetchTechnologyNews() {
@@ -29,26 +24,25 @@ export default () => {
   }, [])
 
   useEffect(() => {
-    fetchCompanyNews()
-  }, [])
-
-  useEffect(() => {
     fetchTechnologyNews()
   }, [])
 
-  // console.log(latestNews) 
-  // console.log(allCompanyNews)
-  console.log(allTechnologyNews)
+  const items = latestNews.map(article => {
+    const date = article.publishedAt.slice(0, 10);
+    const time = article.publishedAt.slice(11, 16);
+    return (
+    <NewsDetailsItem title={article.title} description={article.description}
+      author={article.author} url={article.url} urlToImage={article.urlToImage}
+      publishedAt={date} time={time} key={latestNews.indexOf(article)}/>
+    )
+  })
 
   return (
+    <div>
+      <div className="latest-news-title">Latest News</div>
       <ul>
-        {latestNews.map(article => (
-          <li key={latestNews.indexOf(article)}>
-            <NewsDetailsItem title={article.title} description={article.description}
-              author={article.author} url={article.url} urlToImage={article.urlToImage} 
-              publishedAt={article.publishedAt}/>
-          </li>
-        ))}
+        {items}
       </ul>
+    </div>
   )
 }
