@@ -3,15 +3,33 @@ import '../../styles/news/newsDetailsItem.css';
 
 const NewsDetailsItem = (props) => (
   <>
-    <div className="news-object">
-      <div className="articles-container">
-        <div className="article-item">
-          <div className="article-image-container">
-            <a href={props.url}><img className="article-thumbnail" src={props.urlToImage} /></a>
+    <div className="main-page">
+      <div className="main-container">
+        <div className="img-container">
+          <div className="img-url-container">
+            <a href={props.url}><img className="img-url" src={props.urlToImage} /></a>
           </div>
-          <div className="article-content">
-            <a href={props.url}><span className="article-title">{props.title}</span></a>
-            <span className="article-data">{props.publishedAt}</span>
+        </div>
+        <div className="title-date-container">
+          <div className="title-container">
+            <div className="title-item">
+              <a href={props.url}><span>{props.title}</span></a>
+            </div>
+          </div>
+          <div className="date-container">
+            <div className="date-item">
+              <span>{props.publishedAt}</span>
+            </div>
+            <div className="time-container">
+              <div className="time-item">
+                <span>at {props.time}</span>
+              </div>
+            </div>
+            <div className="author-container">
+              <div className="author-item">
+                <span>by: {props.author}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
