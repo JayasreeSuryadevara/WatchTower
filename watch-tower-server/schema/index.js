@@ -109,8 +109,9 @@ const resolvers = {
         companies(_, __) {
             return Company.find({});
         },
-        companyByTicker(_, { ticker }){
-            const stock = Stock.findOne({ ticker: ticker });
+        companyByTicker: async(_, { ticker }) => {
+            console.log("ticker", ticker)
+            const stock = await Stock.findOne({ ticker: ticker });
             return Company.findOne({ stock: stock._id });
         }
     },
