@@ -1,0 +1,19 @@
+.first-main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.first-title-container {
+  display: flex;
+  width: 500px;
+  color: black;
+  font-size: 42px;
+  font-weight: bolder;
+  font-family: Muli, sans-serif;
+}
+
+.first-img-container {
+  display: flex;
+  width: 500px;
+}
