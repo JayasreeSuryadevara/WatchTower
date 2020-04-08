@@ -11,14 +11,8 @@ export const USER_CREDENTIALS_DATA = gql`
 `;
 
 export const WATCHLIST_DATA = gql`
-  fragment WatchListData on WatchList {
-    _id
-    stock {
-      _id
-      ticker
-    }
-    addPrice
-    noOfShares
+  fragment WatchListData on WatchListUpdateResponse {
+    watchListItem 
   }
   `;
 

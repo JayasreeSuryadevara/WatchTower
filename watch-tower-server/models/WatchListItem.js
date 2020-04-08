@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Stock = mongoose.model('Stock')
+const { fetchStockData } = require('../schema/fetch-stock-resolver');
 
 const WatchListItemSchema = new Schema({
   stock: {
@@ -20,14 +21,16 @@ const WatchListItemSchema = new Schema({
 
 WatchListItemSchema.statics.addWatchListItem = function (ticker, loggedInUser) {
   const WatchListItem = this;
-  const tickerUpCase = ticker.toUpperCase();
   return (async () => {
-    const stock = await Stock.find({ticker: tickerUpcase});
+    // const stock = await Stock.findOne({ ticker: ticker});
+    const stock = await Stock.findOne({ ticker: ticker.toUpperCase()});
+    const data = fetchStockData(ticker);
+    const currentPrice = data.currentPrice;
+    console.log(stock);
     if (stock) {
       const stockId = stock._id;
       const noOfShares = 1;
-      //need work over here to get addPrice
-      //.......or we don't worry about the addPrice....
+      const addPrice = currentPrice;
       const watchListItem = new WatchListItem({stockId, addPrice, noOfShares});
       await watchListItem.save();
       loggedInUser.watchList.addToSet(watchListItem._id)

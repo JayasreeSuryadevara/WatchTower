@@ -20,26 +20,16 @@ export const IS_LOGGED_IN = gql`
   }
 `;
 
-// Work-in-progress
-// export const CURRENT_USER_WITH_WATCHLIST = gql`
-//   query CurrentUserWithWatchList {
-//     me {
-//       name
-//       watchList {
-//        _id
-//        stock {
-          //   ticker
-          // }
-//       }
-//     },
-//     company {
-//       name
-//       currentPrice (this will come from server cache)
-//       volume (from server cache)
-//       dayRange (from server cache)
-//     }
-//   }
-// `;
+export const WATCH_LIST_ITEM_STOCK_INFO = gql`
+  query WatchListItemStockInfo {
+    watchListItemStock {
+      dayHigh
+      dayLow
+      currentPrice
+      volume
+    }
+  }
+`;
 
 export const WATCH_LIST_ITEMS = gql`
   query WatchListItems {

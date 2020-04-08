@@ -36,6 +36,7 @@ const typeDefs = `
         me: User
         watchListItem(_id: ID!): WatchListItem
         watchList: [WatchListItem]
+        watchListItemStock(stockId: ID!): Stock
         stock(ticker: String!): Stock
         stocks: [Stock]
         company(name: String!): Company
@@ -72,7 +73,7 @@ const typeDefs = `
     type WatchListUpdateResponse {
         success: Boolean!
         message: String
-        watchListItem: ID
+        watchListItem: WatchListItem
     }
     type CompanyResponse {
         success: Boolean!
@@ -91,6 +92,9 @@ const resolvers = {
         },
         watchList(_, __) {
             return WatchListItem.find({});
+        },
+        watchListItemStock(_, { stockId }) {
+            return Stock.findById({ stockId });
         },
         stock(_, { ticker }) {
             return Stock.findOne({ ticker: ticker });

@@ -27,7 +27,7 @@ const WatchListDetails = () => {
 
 
         {/* From -------remove this part when we have queries in place */}
-        <li className="watch-list-item-indiv">
+        {/* <li className="watch-list-item-indiv">
           <section className="indiv-main">
             <div className="indiv-main-top">
               <div className="watch-list-item-co-info">
@@ -59,13 +59,13 @@ const WatchListDetails = () => {
           <section className="watch-list-remove">
             <button>Remove ^</button>
           </section>
-        </li>
+        </li> */}
         {/* To -------remove this part when we have queries in place */}
 
 
         <ul>
           {user.watchList && user.watchList.map(watchListItem => (
-            <WatchListItem />
+            <WatchListItem user={user} watchListItem={watchListItem}/>
           ))}
         </ul>
       </div>
