@@ -1,0 +1,56 @@
+.main-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.graph-header-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: green;
+  padding: 10px;
+  border-bottom: solid black;
+  width: 800px;
+}
+
+.graph-header-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 400px;
+  background-color: red;
+}
+
+.graph-header-item {
+  padding: 3px;
+}
+
+.movers-latest-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: royalblue;
+}
+
+.movers-latest-item {
+  padding: 3px;
+}
+
+.graph-container {
+  display: flex;
+  justify-content: center;
+  width: 800;
+  height: 200px;
+  background-color: springgreen;
+  border-bottom: solid black;
+}
+
+.graph {
+  margin: 80px;
+}
