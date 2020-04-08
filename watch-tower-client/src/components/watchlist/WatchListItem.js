@@ -2,72 +2,88 @@ import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import RemoveFromListBtn from './RemoveFromListBtn';
 import UpdateButton from './UpdateButton';
-import { WATCH_LIST_ITEM_STOCK_INFO } from '../../graphql/queries';
+import { COMPANY_BY_STOCK_ID } from '../../graphql/queries';
 
-// import { Link } from 'react-router-dom';//each item will be wrapped in Link its Stock/Ticker Show Page
 
 const WatchListItem = ({ watchListItem }) => {
 
+  const stockId = watchListItem.stock._id;
+
   const { data, loading, error } = useQuery(
-    WATCH_LIST_ITEM_STOCK_INFO,
+    COMPANY_BY_STOCK_ID,
     {
-      variables: { stockId: watchListItem.stock}
+      variables: { stockId: stockId }
     }
-    );
-  const stock = data.watchListItemStock;
-  // const company = data.companies.filter({stock._id: currentStock._id})
+  );
+  if (loading) return <h1> Loading...</h1>
+  if (error) return <h1> Error </h1>
+  if (!data) return <h1> Not found </h1>
+
+  const company = data.companyByStockId;
+  const stock = company.stock;
   const listItem = watchListItem;
+  // function calcChange() {
+  //   var currentPrice = stock.currentPrice * listItem.noOfShares;
+  //   var addPrice = listItem.addPrice * listItem.noOfShares
+  //   var chg = currentPrice - addPrice;
+  //   if (chg < 0) {
+  //     chg.style.color = "red";
+  //   } else {
+  //     chg.style.color = "green";
+  //   }
+  //   return chg;
+  // }
 
-  function calcChange() {
-    var currentPrice = stock.currentPrice * listItem.noOfShares;
-    var addPrice = listItem.addPrice * listItem.noOfShares
-    var chg = currentPrice - addPrice;
-    if (chg < 0) {
-      chg.style.color = "red";
-    } else {
-      chg.style.color = "green";
-    }
-    return chg;
-  }
-
-  function calcChangePercent() {
-    var currentPrice = stock.currentPrice
-    var addPrice = listItem.addPrice
-    var chg = currentPrice - addPrice;
-    var chgP = ((chg / listItem.addPrice)*100).toFixed(2);
-    if (chgP < 0) {
-      chgP.style.color = "red";
-    } else {
-      chgP.style.color = "green";
-    }
-    return chgP;
-  }
+  // function calcChangePercent() {
+  //   var currentPrice = stock.currentPrice
+  //   var addPrice = listItem.addPrice
+  //   var chg = currentPrice - addPrice;
+  //   var chgP = ((chg / listItem.addPrice)*100).toFixed(2);
+  //   if (chgP < 0) {
+  //     chgP.style.color = "red";
+  //   } else {
+  //     chgP.style.color = "green";
+  //   }
+  //   return chgP;
+  // }
 
   return (
     <div className="watch-list-item-indiv">
       <section className="indiv-main">
         <div className="indiv-main-top">
           <div className="watch-list-item-co-info">
-            <p className="watch-list-ticker">TICKR</p>
-            <p className="watch-list-co-name">Company Inc.</p>
+            <p className="watch-list-ticker">{stock.ticker}</p>
+            <p className="watch-list-co-name">{company.name} (No. of shares: {watchListItem.noOfShares})</p>
           </div>
-          <UpdateButton/>
+          <UpdateButton watchListItem={watchListItem}/>
         </div>
         <div className="watch-list-item-data">
           <div className="watch-list-item-chg">
-            <p>LAST {listItem.addPrice}</p>
-            <p>CHG {calcChange}</p>
-            <p>%CHG {calcChangePercent}</p>
+            <div>
+              <p className="result-headers">LAST</p>
+              <p className="results">${watchListItem.addPrice * watchListItem.noOfShares}</p>
+            </div>
+            <div>
+              <p className="result-headers">CHG</p>
+              {/* <p>calcChange}</p> */}
+            </div>
+            <div>
+              <p className="result-headers">%CHG</p>
+              {/* <p>{calcChangePercent} %</p> */}
+            </div>
           </div>
           <div className="watch-list-item-vol">
-            <p>VOLUME</p>
-            <p>AVG VOL</p>
+            <p className="result-headers">VOLUME</p>
+            {/* <p className="results">{stock.volume}</p> */}
           </div>
-          <div className="watch-list-item-range">DAY RANGE</div>
+          <div className="watch-list-item-range">
+            <p className="result-headers">DAY RANGE</p>
+            {/* <p className="results">{stock.dayHigh} -- {stock.dayLow}</p> */}
+          </div>
         </div>
       </section>
       <section className="watch-list-remove">
-        <button><RemoveFromListBtn /></button>
+        <RemoveFromListBtn watchListItem={watchListItem}/>
       </section>
     </div>
   )

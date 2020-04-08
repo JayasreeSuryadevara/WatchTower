@@ -38,8 +38,8 @@ export const ADD_WATCH_LIST_ITEM = gql`
 `;
 
 export const REMOVE_WATCH_LIST_ITEM = gql`
-  mutation RemoveWatchListItem($stockId: ID!) {
-    removeWatchListItem(stockId: $stockId) {
+  mutation RemoveWatchListItem($watchListItemId: ID!) {
+    removeWatchListItem(watchListItemId: $watchListItemId) {
       ...WatchListData
     }
   }

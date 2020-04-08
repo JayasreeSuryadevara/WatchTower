@@ -75,20 +75,25 @@
 
 /* -----------INDIVIDUAL STOCK--------------- */
 
-.watch-list-items {
-  padding-top: 10px;
-}
+/* .watch-list-items {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  height: 500px;
+} */
 
 .watch-list-item-indiv {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
   border: solid 1px #e1e1e1;
-  width: 640px;
+  width: 620px;
   height: 98px;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  padding-right: 0px;
+  margin-left: 0px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding-right: 10px;
   justify-content: space-between;
 }
 
@@ -97,14 +102,14 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  /* padding: 7px; */
+  padding: 7px;
 }
 
 .indiv-main-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 
 .watch-list-item-co-info {
@@ -132,11 +137,13 @@
   margin-right: 10px;
 }
 
-.add-shares-input {
+.watch-list-add-shares input {
   display: flex;
   box-sizing: border-box;
   border: solid 1px #e1e1e1;
   width: 120px;
+  font-size: 12px;
+  text-align: center;
 }
 .watch-list-add-shares ::placeholder {
   font-size: 9px;
@@ -150,10 +157,10 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  height: 37px;
+  height: 45px;
   font-size: 9px;
   font-weight: 400;
-  color: grey;
+  /* color: grey; */
   width: 620px;
   padding: 5px;
 }
@@ -179,6 +186,17 @@
   justify-content: center;
 }
 
+.result-headers {
+  color: grey;
+}
+
+.results {
+  padding-top: 7px;
+  color: black;
+  font-size: 12px;
+  font-weight: 900;
+}
+
 .watch-list-remove {
   display: block;
   position: relative;
@@ -196,8 +214,8 @@
   background-color: #3677A8;
   font-size: 10px;
   transform: rotate(-90deg);
-  top: 17px;
-  right: -38px;
+  top: 38px;
+  right: -25px;
 }
 /* ---------------NEWS----------------- */
 .watch-list-news {

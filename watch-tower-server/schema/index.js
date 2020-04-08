@@ -42,6 +42,7 @@ const typeDefs = `
         company(name: String!): Company
         companies: [Company]
         companyByTicker(ticker: String!): Company
+        companyByStockId(stockId: ID!): Company
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -113,6 +114,9 @@ const resolvers = {
             console.log("ticker", ticker)
             const stock = await Stock.findOne({ ticker: ticker });
             return Company.findOne({ stock: stock._id });
+        },
+        companyByStockId(_, { stockId }) {
+            return Company.findOne({ stock: stockId });
         }
     },
     Mutation: {
@@ -174,6 +178,13 @@ const resolvers = {
             const company = parentValue;
             await company.populate('stock').execPopulate();
             return company.stock;
+        }
+    },
+    WatchListItem: {
+        stock: async (parentValue, _) => {
+            const watchListItem = parentValue;
+            await watchListItem.populate('stock').execPopulate();
+            return watchListItem.stock;
         }
     }
 }
