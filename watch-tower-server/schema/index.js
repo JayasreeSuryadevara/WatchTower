@@ -53,9 +53,12 @@ const typeDefs = `
         stocks: [Stock]
         company(name: String!): Company
         companies: [Company]
+<<<<<<< HEAD
         companyByTicker(ticker: String!): Company
         companyByStockId(stockId: ID!): Company
+=======
         historicalData(ticker: String!): HistoricalData
+>>>>>>> 9cd0b651b9824031dd75ad12abfc865db31f7793
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -67,7 +70,7 @@ const typeDefs = `
         addStock(ticker: String!): StockDataResponse
         addCompany(ticker: String!, name: String!, desc: String, dividend: Float, yield: Float, industry: String, sector: String): CompanyResponse
         addHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
-        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
+        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String): HistoricalDataResponse
         fetchAndUpdateHistData(): updateResponse
     }
     type UserCredentials {
@@ -179,8 +182,7 @@ const resolvers = {
         },
         addStock: async(_, { ticker }) => {
            const stock =  Stock.addStock(ticker);
-           const stocks = [stock];
-           const result = updateHistData(stocks);
+           const result = updateHistData(stock);
            if (result.success){
                return {
                    success: true,
@@ -219,9 +221,8 @@ const resolvers = {
                 stockId: stockId
             });
         },
-        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent, stockId }) {
-            const historicalData = HistoricalData.find({ stockId: stockId });
-            return historicalData.updateHistoricalData({
+        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent }) {
+            return HistoricalData.updateHistoricalData({
                 open: open,
                 dayHigh: dayHigh,
                 dayLow: dayLow,
