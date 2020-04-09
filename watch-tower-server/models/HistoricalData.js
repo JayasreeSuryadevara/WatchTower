@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const fetchStockData = require('../schema/fetch-stock-resolver');
 
 const HistoricalDataSchema = new Schema({
   open: {

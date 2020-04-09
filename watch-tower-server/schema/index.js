@@ -5,7 +5,6 @@ const Stock = mongoose.model("Stock");
 const WatchListItem = mongoose.model("WatchListItem");
 const Company = mongoose.model("Company");
 const HistoricalData = mongoose.model("HistoricalData");
-const updateHistData = require('./updateHistData');
 
 const typeDefs = `
     type User {
@@ -65,7 +64,6 @@ const typeDefs = `
         addCompany(ticker: String!, name: String!, desc: String, dividend: Float, yield: Float, industry: String, sector: String): CompanyResponse
         addHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
         updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
-        fetchAndUpdateHistData(): updateResponse
     }
     type UserCredentials {
         _id: ID!
@@ -166,8 +164,6 @@ const resolvers = {
         },
         addStock: async(_, { ticker }) => {
            const stock =  Stock.addStock(ticker);
-           const stocks = [stock];
-           const result = updateHistData(stocks);
            if (result.success){
                return {
                    success: true,
@@ -216,10 +212,6 @@ const resolvers = {
                 volume: volume,
                 changePercent: changePercent
             });
-        },
-        fetchAndUpdateHistData: async (_,__) => {
-            const stocks = await Stock.find({})
-            return updateHistData(stocks);
         }
     },
     User: {
