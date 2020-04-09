@@ -4,6 +4,7 @@ const User = mongoose.model("User");
 const Stock = mongoose.model("Stock");
 const WatchListItem = mongoose.model("WatchListItem");
 const Company = mongoose.model("Company");
+const HistoricalData = mongoose.model("HistoricalData");
 
 const typeDefs = `
     type User {
@@ -32,6 +33,16 @@ const typeDefs = `
         industry: String
         sector: String
     }
+    type HistoricalData {
+        _id: ID!
+        open: Float
+        dayHigh: Float
+        dayLow: Float
+        currentPrice: Float
+        volume: Float
+        changePercent: String
+        stockId: ID!
+    }
     type Query {
         me: User
         watchListItem(_id: ID!): WatchListItem
@@ -40,6 +51,7 @@ const typeDefs = `
         stocks: [Stock]
         company(name: String!): Company
         companies: [Company]
+        historicalData(ticker: String!): HistoricalData
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -48,19 +60,10 @@ const typeDefs = `
         addWatchListItem(ticker: String!): WatchListUpdateResponse
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
         updateWatchListItem(newNoOfShares: Int, watchListItemId: ID!): WatchListUpdateResponse
-        addStock(ticker: String!): HistoricalData
-        addCompany(ticker: String!, name: String!, desc: String, dividend: Int, yield: Int, industry: String, sector: String): CompanyResponse
-    }
-    type HistoricalData {
-        _id: ID
-        open: Int
-        dayHigh: Int
-        dayLow: Int
-        currentPrice: Int!
-        volume: Int
-        changePercent: String
-        fetchSuccess: Boolean
-        stock: Stock
+        addStock(ticker: String!): StockDataResponse
+        addCompany(ticker: String!, name: String!, desc: String, dividend: Float, yield: Float, industry: String, sector: String): CompanyResponse
+        addHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
+        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
     }
     type UserCredentials {
         _id: ID!
@@ -78,6 +81,20 @@ const typeDefs = `
         success: Boolean!
         message: String
         company: Company
+    }
+    type StockDataResponse {
+        success: Boolean!
+        stock: Stock
+    }
+    type HistoricalDataResponse {
+        success: Boolean!
+        message: String
+        historicalData: HistoricalData
+    }
+    type updateResponse {
+        success: Boolean!
+        message: String
+        allData: [HistoricalDataResponse]
     }
 `;
 
@@ -103,6 +120,10 @@ const resolvers = {
         },
         companies(_, __) {
             return Company.find({});
+        },
+        historicalData: async (_, { ticker }) => {
+            const stock = await Stock.findOne({ ticker: ticker });
+            return HistoricalData.findOne({ stockId: stock._id })
         }
     },
     Mutation: {
@@ -142,11 +163,55 @@ const resolvers = {
             //////////
         },
         addStock: async(_, { ticker }) => {
-            return Stock.addStock(ticker);
+           const stock =  Stock.addStock(ticker);
+           if (result.success){
+               return {
+                   success: true,
+                   stock: stock
+               }
+           } else {
+               return {
+                   success: false,
+                   stock: stock
+               }
+           }
         },
         addCompany: async(_ ,{ ticker, name, desc, dividend, yield, industry, sector}) => {
-            const stock = await Stock.addStock({ticker: ticker});
-            return Company.addCompany({stock: stock, name: name, desc: desc, dividend: dividend, yield: yield, industry: industry, sector: sector});
+            let stock = await Stock.findOne({ticker: ticker});
+            if (!stock){
+                stock = await Stock.addStock({ticker: ticker});
+            }
+            return Company.addCompany({
+                stock: stock, 
+                name: name, 
+                desc: desc, 
+                dividend: dividend, 
+                yield: yield, 
+                industry: industry, 
+                sector: sector
+            });
+        },
+        addHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent, stockId}) {
+            return HistoricalData.addHistoricalData({
+                open: open,
+                dayHigh: dayHigh,
+                dayLow: dayLow,
+                currentPrice: currentPrice,
+                volume: volume,
+                changePercent: changePercent,
+                stockId: stockId
+            });
+        },
+        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent, stockId }) {
+            const historicalData = HistoricalData.find({ stockId: stockId });
+            return historicalData.updateHistoricalData({
+                open: open,
+                dayHigh: dayHigh,
+                dayLow: dayLow,
+                currentPrice: currentPrice,
+                volume: volume,
+                changePercent: changePercent
+            });
         }
     },
     User: {

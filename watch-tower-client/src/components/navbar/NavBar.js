@@ -26,11 +26,11 @@ export default () => {
                     </Link>
                 </div>
                 <div className="nav-bar-news-links">
-                    <p>Latest</p>
+                    <Link to="/news"><p>Latest</p></Link>
                     <Link to="/watchlist"><p>Watchlist</p></Link>
                     <p>Techology</p>
                     <p>Markets</p>
-                    <p>Investing</p>
+                    <Link to="/investing"><p>Investing</p></Link>
                 </div>
                 <div className="nav-bar-session-links">
                     <div>

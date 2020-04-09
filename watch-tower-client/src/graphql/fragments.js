@@ -25,8 +25,31 @@ export const WATCHLIST_DATA = gql`
 export const COMPANY_DATA = gql`
   fragment CompanyData on Company {
     _id
+    stock {
+      _id
+      ticker
+    }
     name
     desc
+    dividend
+    yield
     industry
+    sector
   }
 `;
+
+export const HISTORICAL_DATA = gql`
+  fragment StockData on HistoricalData {
+    _id
+    open
+    dayHigh
+    dayLow
+    currentPrice
+    volume
+    changePercent
+    stock {
+      _id
+      ticker
+    }
+  }
+`

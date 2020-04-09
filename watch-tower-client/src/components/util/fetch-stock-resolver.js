@@ -1,4 +1,6 @@
-module.exports = function (_, args) {
+const fetch = require('node-fetch');
+
+module.exports = function (args) {
   const API_CALL = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + args.ticker + "&apikey=" + process.env.REACT_APP_AV_API_KEY;
   return fetch(API_CALL)
     .then(
@@ -7,6 +9,7 @@ module.exports = function (_, args) {
     )
     .then(
       (data) => {
+        console.log("data", data);
         data.open = data["Global Quote"]["02. open"];
         data.dayHigh = data["Global Quote"]["03. high"];
         data.dayLow = data["Global Quote"]["04. low"];
