@@ -6,6 +6,7 @@ import FirstNewsItem from '../news/FirstNewsItem';
 import BulletListItem from '../news/BulletListItem';
 import ClipNewsItem from '../news/ClipNewsItem';
 import '../../styles/homePage/HomePageDetails.css';
+import { Link } from 'react-router-dom';
 
 export default () => {
   const [headlines, setHeadlineNews] = useState([]);
@@ -27,9 +28,9 @@ export default () => {
       return (
         <FirstNewsItem title={article.title} description={article.description}
           author={article.author} url={article.url} urlToImage={article.urlToImage}
-          publishedAt={date} time={time} key={headlines.indexOf(article)} />
+          publishedAt={date} time={time} key={idx} />
       )
-    } else if(idx > 0 && idx < 7) {
+    } else if (idx > 0 && idx < 7) {
       return (
         <BulletListItem title={article.title} description={article.description}
           author={article.author} url={article.url} urlToImage={article.urlToImage}
@@ -38,10 +39,10 @@ export default () => {
     }
   })
 
-  const newsClips = headlines.slice(7, -1).map(article => {
+  const newsClips = headlines.slice(7, -1).map((article, idx) => {
     return (
       <ClipNewsItem title={article.title} author={article.author} url={article.url}
-        urlToImage={article.urlToImage} key={headlines.indexOf(article)} />
+        urlToImage={article.urlToImage} key={idx} />
     )
   })
 
@@ -70,7 +71,7 @@ export default () => {
         </div>
         <div className="latest-news-container">
           <div className="latest-news-items">
-            <p className="latest-item">Latest News</p>
+            <Link to={`/news`}><p className="latest-item">Latest News</p></Link>
             <p>Coronavirus</p>
             <p>New York</p>
             <p>Gold</p>
