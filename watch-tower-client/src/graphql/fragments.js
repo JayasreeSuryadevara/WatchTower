@@ -47,7 +47,6 @@ export const HISTORICAL_DATA = gql`
     currentPrice
     volume
     changePercent
-    fetchSuccess
     stock {
       _id
       ticker

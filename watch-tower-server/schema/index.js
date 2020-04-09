@@ -64,7 +64,7 @@ const typeDefs = `
         addStock(ticker: String!): StockDataResponse
         addCompany(ticker: String!, name: String!, desc: String, dividend: Float, yield: Float, industry: String, sector: String): CompanyResponse
         addHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
-        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String): HistoricalDataResponse
+        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
         fetchAndUpdateHistData(): updateResponse
     }
     type UserCredentials {
@@ -166,7 +166,8 @@ const resolvers = {
         },
         addStock: async(_, { ticker }) => {
            const stock =  Stock.addStock(ticker);
-           const result = updateHistData(stock);
+           const stocks = [stock];
+           const result = updateHistData(stocks);
            if (result.success){
                return {
                    success: true,
@@ -205,8 +206,9 @@ const resolvers = {
                 stockId: stockId
             });
         },
-        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent }) {
-            return HistoricalData.updateHistoricalData({
+        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent, stockId }) {
+            const historicalData = HistoricalData.find({ stockId: stockId });
+            return historicalData.updateHistoricalData({
                 open: open,
                 dayHigh: dayHigh,
                 dayLow: dayLow,
