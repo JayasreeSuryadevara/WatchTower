@@ -5,7 +5,6 @@ const Stock = mongoose.model("Stock");
 const WatchListItem = mongoose.model("WatchListItem");
 const Company = mongoose.model("Company");
 const HistoricalData = mongoose.model("HistoricalData");
-const updateHistData = require('./updateHistData');
 
 const typeDefs = `
     type User {
@@ -53,12 +52,9 @@ const typeDefs = `
         stocks: [Stock]
         company(name: String!): Company
         companies: [Company]
-<<<<<<< HEAD
         companyByTicker(ticker: String!): Company
         companyByStockId(stockId: ID!): Company
-=======
         historicalData(ticker: String!): HistoricalData
->>>>>>> 9cd0b651b9824031dd75ad12abfc865db31f7793
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -72,6 +68,7 @@ const typeDefs = `
         addHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
         updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String): HistoricalDataResponse
         fetchAndUpdateHistData(): updateResponse
+        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
     }
     type UserCredentials {
         _id: ID!
@@ -230,10 +227,6 @@ const resolvers = {
                 volume: volume,
                 changePercent: changePercent
             });
-        },
-        fetchAndUpdateHistData: async (_,__) => {
-            const stocks = await Stock.find({})
-            return updateHistData(stocks);
         }
     },
     User: {
