@@ -53,8 +53,8 @@ export const WATCH_LIST_ITEMS = gql`
   }
 `;
 export const GET_COMPANY = gql`
-  query GetCompany($companyId: ID!) {
-    company(_id: $companyId) {
+  query GetCompany($name: String!) {
+    company(name: $name) {
       ...CompanyData
     }
   }
@@ -69,9 +69,14 @@ export const GET_COMPANY = gql`
 //       }
 //     }) {
 //       stocks {
-//         name
 //         ticker
 //       }
 //     }
+//   }
+// `;
+
+// export const HistoricalData = gql`
+//   query historicalData($stockId: ID!) {
+
 //   }
 // `;
