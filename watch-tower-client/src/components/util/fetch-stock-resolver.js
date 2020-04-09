@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 module.exports = function (args) {
   const API_CALL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + args.ticker + "&apikey=" + process.env.REACT_APP_AV_API_KEY;
   console.log(API_CALL);

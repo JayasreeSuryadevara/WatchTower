@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import fetchSectorData from '../util/fetch-sector-resolver';
 
 export default () => {
 
-  const data = fetchSectorData();
+  const [data, setData] = useState({});
+
+  const data = fetchSectorData()
+    .then (
+      (newdata) => {
+        setData(newdata);
+        console.log("newdata", newdata);
+      }
+    )
 
   return (
     <div>
