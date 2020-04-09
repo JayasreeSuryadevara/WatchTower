@@ -53,12 +53,9 @@ const typeDefs = `
         stocks: [Stock]
         company(name: String!): Company
         companies: [Company]
-<<<<<<< HEAD
         companyByTicker(ticker: String!): Company
         companyByStockId(stockId: ID!): Company
-=======
         historicalData(ticker: String!): HistoricalData
->>>>>>> 9cd0b651b9824031dd75ad12abfc865db31f7793
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -132,7 +129,6 @@ const resolvers = {
         companies(_, __) {
             return Company.find({});
         },
-<<<<<<< HEAD
         companyByTicker: async(_, { ticker }) => {
             console.log("ticker", ticker)
             const stock = await Stock.findOne({ ticker: ticker });
@@ -140,11 +136,10 @@ const resolvers = {
         },
         companyByStockId(_, { stockId }) {
             return Company.findOne({ stock: stockId });
-=======
+        },
         historicalData: async (_, { ticker }) => {
             const stock = await Stock.findOne({ ticker: ticker });
             return HistoricalData.findOne({ stockId: stock._id })
->>>>>>> 9cd0b651b9824031dd75ad12abfc865db31f7793
         }
     },
     Mutation: {
