@@ -6,7 +6,7 @@ export default () => {
     <div>
       <p> Test Quote </p>
       <div>
-        <InvestDetails />
+        {/* <InvestDetails /> */}
       </div>
     </div>
   )

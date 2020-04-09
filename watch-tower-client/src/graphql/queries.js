@@ -95,7 +95,7 @@ export const COMPANY_BY_STOCK_ID = gql`
 //   }
 // `;
 export const ALL_STOCKS = gql`
-  query stocks() {
+  query stocks {
     stocks {
       _id
       ticker

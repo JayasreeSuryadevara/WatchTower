@@ -52,6 +52,7 @@ const typeDefs = `
         company(name: String!): Company
         companies: [Company]
         historicalData(ticker: String!): HistoricalData
+        companyByStockId(stockId: ID!): Company
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -124,6 +125,9 @@ const resolvers = {
         historicalData: async (_, { ticker }) => {
             const stock = await Stock.findOne({ ticker: ticker });
             return HistoricalData.findOne({ stockId: stock._id })
+        },
+        companyByStockId(_, { stockId }) {
+            return Company.findOne({ stock: stockId })
         }
     },
     Mutation: {
