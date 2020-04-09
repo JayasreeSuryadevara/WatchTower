@@ -217,7 +217,7 @@ const resolvers = {
         },
         fetchAndUpdateHistData: async (_,__) => {
             const stocks = await Stock.find({})
-            return await updateHistData(stocks);
+            return updateHistData(stocks);
         }
     },
     User: {

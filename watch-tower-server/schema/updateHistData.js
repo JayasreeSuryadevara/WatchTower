@@ -7,9 +7,6 @@ module.exports = async function (stocks) {
   // do a fetch for each to update histotical data
   // 5 calls for min using AV so set a wait after 5 calls
   console.log("Starting 5-req/m db historical data update");
-  // if (!stocks){
-  //   stocks = await Stock.find({});
-  // }
   console.log("stocks",stocks);
   const createdData = await stocks.map((stock, i) => {
       console.log("stock :", stock.ticker);
