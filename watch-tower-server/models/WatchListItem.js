@@ -50,6 +50,7 @@ WatchListItemSchema.methods.removeWatchListItem = function (loggedInUser) {
     console.log("loggedInUser", loggedInUser)
     if (loggedInUser && loggedInUser.watchList.includes(this._id)) {
       loggedInUser.watchList.remove(this._id);
+      watchListItem.remove();
       await loggedInUser.save();
       return {
         success: true,

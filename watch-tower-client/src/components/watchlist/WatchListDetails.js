@@ -26,9 +26,7 @@ const WatchListDetails = () => {
       <div>
         <ul className="watch-list-items">
           {user.watchList && user.watchList.map(watchListItem => (
-            // <li key={watchListItem._id}>
-              <WatchListItem watchListItem={watchListItem}/>
-            // </li>
+              <WatchListItem watchListItem={watchListItem} key={watchListItem._id}/>
           ))}
         </ul>
       </div>

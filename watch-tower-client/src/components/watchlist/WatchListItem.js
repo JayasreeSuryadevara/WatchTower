@@ -47,6 +47,13 @@ const WatchListItem = ({ watchListItem }) => {
   //   return chgP;
   // }
 
+  var formatter = new Intl.NumberFormat('en-Us', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
+  const lastAmount = formatter.format(watchListItem.addPrice * watchListItem.noOfShares)
+
   return (
     <div className="watch-list-item-indiv">
       <section className="indiv-main">
@@ -61,7 +68,7 @@ const WatchListItem = ({ watchListItem }) => {
           <div className="watch-list-item-chg">
             <div>
               <p className="result-headers">LAST</p>
-              <p className="results">${watchListItem.addPrice * watchListItem.noOfShares}</p>
+              <p className="results">{lastAmount}</p>
             </div>
             <div>
               <p className="result-headers">CHG</p>
