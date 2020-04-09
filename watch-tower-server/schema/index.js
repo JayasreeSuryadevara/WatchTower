@@ -55,6 +55,7 @@ const typeDefs = `
         companyByTicker(ticker: String!): Company
         companyByStockId(stockId: ID!): Company
         historicalData(ticker: String!): HistoricalData
+        historicalDataByStockId(stockId: ID!): HistoricalData
     }
     type Mutation {
         login(email: String!, password: String!): UserCredentials
@@ -96,11 +97,6 @@ const typeDefs = `
         message: String
         historicalData: HistoricalData
     }
-    type updateResponse {
-        success: Boolean!
-        message: String
-        allData: [HistoricalDataResponse]
-    }
 `;
 
 const resolvers = {
@@ -140,6 +136,9 @@ const resolvers = {
         historicalData: async (_, { ticker }) => {
             const stock = await Stock.findOne({ ticker: ticker });
             return HistoricalData.findOne({ stockId: stock._id })
+        },
+        historicalDataByStockId(_, { stockId }) {
+            return HistoricalData.findOne({ stockId: stockId })
         }
     },
     Mutation: {
