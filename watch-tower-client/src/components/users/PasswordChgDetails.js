@@ -3,7 +3,8 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { CHANGE_PASSWORD } from '../../graphql/mutations';
 import { CURRENT_USER, IS_LOGGED_IN } from '../../graphql/queries';
 import WTLogo from '../../wt-logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
 export default () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -15,7 +16,9 @@ export default () => {
   if (!data) return <h1> No user found </h1>
   const user = data.me
 
-  const [changePassword, {mutationloading, mutationerror}] = useMutation(
+  let history = useHistory();
+
+  const [changePassword, {loading: mutationloading, error: mutationerror}] = useMutation(
     CHANGE_PASSWORD,
     {
       variables: { oldPassword, newPassword },
@@ -42,6 +45,7 @@ export default () => {
       <form className="pwd-chg-form" onSubmit={(e) => {
         e.preventDefault();
         changePassword();
+        history.push("/");
       }}>
         <h1>Password</h1>
         <section className="pwd-chg-input-section">

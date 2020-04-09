@@ -1,44 +1,30 @@
 const mongoose = require("mongoose"); 
 const Schema = mongoose.Schema;
+const { fetchStockData } = require('../schema/fetch-stock-resolver');
 
 const StockSchema = new Schema({
   ticker: {
     type: String,
     required: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    required: true
-  },
-  currentPrice: {
-    type: Number,
-    required: true
-  },
-  openingPrice: {
-    type: Number,
-    required: true
-  },
-  yield: {
-    type: Number,
-    required: true
-  },
-  dividend: {
-    type: Number,
-    required: true
-  },
-  totalShares: {
-    type: Number,
-    required: true
-  },
-  avgVolume: {
-    type: Number,
-    required: true
   }
 });
 
+StockSchema.statics.addStock = async function (ticker) {
+  const Stock = this; 
+  const stock = await Stock.create({ ticker: ticker });
+  if(stock.save()){
+    const data = fetchStockData(ticker);
+    stock.open = data.open;
+    stock.dayHigh = data.dayHigh;
+    stock.dayLow = data.dayLow;
+    stock.currentPrice = data.currentPrice;
+    stock.volume = data.volume;
+    stock.changePercent = data.changePercent;
+    stock.fetchSuccess = true;
+    return stock;
+  } else {
+    return null;
+  }
+}
 
 module.exports = mongoose.model('Stock', StockSchema);

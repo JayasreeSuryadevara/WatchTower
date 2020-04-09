@@ -7,9 +7,8 @@ export const CURRENT_USER = gql`
       _id
       email
       name
-      stocks {
+      watchList {
         _id
-        ticker
       }
     }
   }
@@ -20,6 +19,27 @@ export const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `;
+
+// Work-in-progress
+// export const CURRENT_USER_WITH_WATCHLIST = gql`
+//   query CurrentUserWithWatchList {
+//     me {
+//       name
+//       watchList {
+//        _id
+//        stock {
+          //   ticker
+          // }
+//       }
+//     },
+//     company {
+//       name
+//       currentPrice (this will come from server cache)
+//       volume (from server cache)
+//       dayRange (from server cache)
+//     }
+//   }
+// `;
 
 export const WATCH_LIST_ITEMS = gql`
   query WatchListItems {

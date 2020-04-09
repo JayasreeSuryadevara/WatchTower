@@ -17,7 +17,6 @@ export const WATCHLIST_DATA = gql`
       _id
       ticker
     }
-    addDate
     addPrice
     noOfShares
   }
