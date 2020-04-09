@@ -54,3 +54,12 @@ export const UPDATE_WATCH_LIST_ITEM = gql`
   }
   ${WATCHLIST_DATA}
 `;
+
+// export const ADD_COMPANY = gql`
+//   mutation AddCompany($ticker: String!, $name: String!, $desc: String!, $dividend: Int, $yield: Int, $industry: String, $sector: String) {
+//     addCompany(ticker: $ticker, name: $name, desc: $desc, dividend: $dividend, yield: $yield, industry: $industry, sector: $sector}) {
+//       ...CompanyData
+//     }
+//   }
+// `;
+
