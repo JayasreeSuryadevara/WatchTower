@@ -1,9 +1,10 @@
 import React from "react";
 import '../../styles/news/newsDetailsItem.css';
+import '../../styles/technology/technologyNews.css';
 
 const TechNewsDetailsItem = (props) => (
   <>
-    <div className="main-page">
+    <div className="tech-main-page">
       <div className="main-container">
         <div className="img-container">
           <div className="img-url-container">

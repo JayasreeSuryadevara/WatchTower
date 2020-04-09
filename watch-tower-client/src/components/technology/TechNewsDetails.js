@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { currentNews } from '../util/CurrentNews';
 import { technologyNews } from '../util/CurrentNews';
 import TechNewsDetailsItem from './TechNewsDetailsItem';
+import { Link } from 'react-router-dom';
 import '../../styles/news/newsDetails.css';
 
 export default () => {
@@ -28,7 +29,10 @@ export default () => {
 
   return (
     <div>
-      <div className="">Technology News</div>
+      <div className="tech-news-page-title">Technology News</div>
+      <div className="tech-news-page-home">
+        <Link to="/" className="tech-news-page-home-link">Home ></Link> Technology
+      </div>
       <ul>
         {items}
       </ul>
