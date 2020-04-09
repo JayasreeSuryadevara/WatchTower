@@ -47,6 +47,7 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, loggedInUser) {
 WatchListItemSchema.methods.removeWatchListItem = function (loggedInUser) {
   const watchListItem = this;
   return (async () => {
+    console.log("loggedInUser", loggedInUser)
     if (loggedInUser && loggedInUser.watchList.includes(this._id)) {
       loggedInUser.watchList.remove(this._id);
       await loggedInUser.save();
