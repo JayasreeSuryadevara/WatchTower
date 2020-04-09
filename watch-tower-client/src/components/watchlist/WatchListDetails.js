@@ -2,6 +2,10 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { CURRENT_USER } from '../../graphql/queries';
 import WatchListItem from './WatchListItem';
+<<<<<<< HEAD
+import AddToWatchListBtn from './AddToWatchListBtn';
+=======
+>>>>>>> 914f413840f163009c44f788e0bac1069bf3cfbd
 
 const WatchListDetails = () => {
   const { data, loading, error } = useQuery(
@@ -20,6 +24,9 @@ const WatchListDetails = () => {
     <section className="watch-list-left">
       <div className="add-to-watch-list">
         <h1>Add to watchlist</h1>
+<<<<<<< HEAD
+        <AddToWatchListBtn/>
+=======
         <form className="add-to-watch-list-add-button">
           <input
             value=""
@@ -28,6 +35,7 @@ const WatchListDetails = () => {
           />
           <i className="fas fa-search"></i>
         </form>
+>>>>>>> 914f413840f163009c44f788e0bac1069bf3cfbd
       </div>
       <div className="watch-list-items">
 
