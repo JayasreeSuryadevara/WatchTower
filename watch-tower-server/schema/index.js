@@ -5,7 +5,6 @@ const Stock = mongoose.model("Stock");
 const WatchListItem = mongoose.model("WatchListItem");
 const Company = mongoose.model("Company");
 const HistoricalData = mongoose.model("HistoricalData");
-const updateHistData = require('./updateHistData');
 
 const typeDefs = `
     type User {
@@ -64,8 +63,7 @@ const typeDefs = `
         addStock(ticker: String!): StockDataResponse
         addCompany(ticker: String!, name: String!, desc: String, dividend: Float, yield: Float, industry: String, sector: String): CompanyResponse
         addHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
-        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String): HistoricalDataResponse
-        fetchAndUpdateHistData(): updateResponse
+        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
     }
     type UserCredentials {
         _id: ID!
@@ -166,7 +164,6 @@ const resolvers = {
         },
         addStock: async(_, { ticker }) => {
            const stock =  Stock.addStock(ticker);
-           const result = updateHistData(stock);
            if (result.success){
                return {
                    success: true,
@@ -205,8 +202,9 @@ const resolvers = {
                 stockId: stockId
             });
         },
-        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent }) {
-            return HistoricalData.updateHistoricalData({
+        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent, stockId }) {
+            const historicalData = HistoricalData.find({ stockId: stockId });
+            return historicalData.updateHistoricalData({
                 open: open,
                 dayHigh: dayHigh,
                 dayLow: dayLow,
@@ -214,10 +212,6 @@ const resolvers = {
                 volume: volume,
                 changePercent: changePercent
             });
-        },
-        fetchAndUpdateHistData: async (_,__) => {
-            const stocks = await Stock.find({})
-            return updateHistData(stocks);
         }
     },
     User: {

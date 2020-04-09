@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const fetchStockData = require('../schema/fetch-stock-resolver');
 
 const HistoricalDataSchema = new Schema({
   open: {
@@ -59,15 +58,14 @@ HistoricalDataSchema.statics.addHistoricalData = async function (open, dayHigh, 
   }
 }
 
-HistoricalDataSchema.statics.updateHistoricalData = async function (open, dayHigh, dayLow, currentPrice, volume, changePercent) {
-  const historicalData = await HistoricalData.update({
-    open: open,
-    dayHigh: dayHigh,
-    dayLow: dayLow,
-    currentPrice: currentPrice,
-    volume: volume,
-    changePercent: changePercent 
-  });
+HistoricalDataSchema.methods.updateHistoricalData = async function (open, dayHigh, dayLow, currentPrice, volume, changePercent) {
+  const historicalData = this;
+  historicalData.open = open;
+  historicalData.dayHigh = dayHigh;
+  historicalData.dayLow = dayLow;
+  historicalData.currentPrice = currentPrice;
+  historicalData.volume = volume;
+  historicalData.changePercent = changePercent;
   if (historicalData.save()) {
     return {
       success: true,
@@ -77,7 +75,7 @@ HistoricalDataSchema.statics.updateHistoricalData = async function (open, dayHig
   } else {
     return {
       success: false,
-      message: "Could not update the data",
+      message: "Could not update historical data",
       historicalData
     }
   }

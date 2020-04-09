@@ -14,7 +14,7 @@ module.exports = async function (stocks) {
       console.log("hist data ", data);
       const historicalData = HistoricalData.findOne({ stockId: stock._id })
       if (historicalData){
-        HistoricalData.updateHistoricalData({
+        historicalData.updateHistoricalData({
           open: data.open,
           dayHigh: data.dayHigh,
           dayLow: data.dayLow,
