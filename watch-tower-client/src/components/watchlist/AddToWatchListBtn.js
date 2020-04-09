@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { ADD_WATCH_LIST_ITEM } from '../../graphql/mutations';
 import { useMutation } from '@apollo/react-hooks';
@@ -33,14 +32,4 @@ export default () => {
       <i className="fas fa-search"></i>
     </form>
   )
-=======
-import React from 'react';
-import { ADD_WATCH_LIST_ITEM } from '../../graphql/mutations';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { CURRENT_USER } from '../../graphql/queries';
-
-export default ( { stock }) => {
-
-  return null;
->>>>>>> 914f413840f163009c44f788e0bac1069bf3cfbd
 }
