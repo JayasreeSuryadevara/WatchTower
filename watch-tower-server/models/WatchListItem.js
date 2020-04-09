@@ -20,14 +20,15 @@ const WatchListItemSchema = new Schema({
 
 WatchListItemSchema.statics.addWatchListItem = function (ticker, loggedInUser) {
   const WatchListItem = this;
-  const tickerUpCase = ticker.toUpperCase();
   return (async () => {
-    const stock = await Stock.find({ticker: tickerUpcase});
+    // const stock = await Stock.findOne({ ticker: ticker});
+    const stock = await Stock.findOne({ ticker: ticker.toUpperCase()});
+    const currentPrice = data.currentPrice;
+    // console.log(stock);
     if (stock) {
       const stockId = stock._id;
       const noOfShares = 1;
-      //need work over here to get addPrice
-      //.......or we don't worry about the addPrice....
+      const addPrice = currentPrice;
       const watchListItem = new WatchListItem({stockId, addPrice, noOfShares});
       await watchListItem.save();
       loggedInUser.watchList.addToSet(watchListItem._id)
@@ -44,8 +45,10 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, loggedInUser) {
 WatchListItemSchema.methods.removeWatchListItem = function (loggedInUser) {
   const watchListItem = this;
   return (async () => {
+    console.log("loggedInUser", loggedInUser)
     if (loggedInUser && loggedInUser.watchList.includes(this._id)) {
       loggedInUser.watchList.remove(this._id);
+      watchListItem.remove();
       await loggedInUser.save();
       return {
         success: true,

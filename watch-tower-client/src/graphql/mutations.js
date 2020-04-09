@@ -29,8 +29,8 @@ export const CHANGE_PASSWORD = gql`
 `;
 
 export const ADD_WATCH_LIST_ITEM = gql`
-  mutation AddWatchListItem($stockId: ID!, $addPrice: Int, $noOfShares: Int) {
-    addWatchListItem(stockId: $stockId, addPrice: $addPrice, noOfShares: $noOfShares) {
+  mutation AddWatchListItem($ticker: String!) {
+    addWatchListItem(ticker: $ticker) {
       ...WatchListData
     }
   }
@@ -38,8 +38,8 @@ export const ADD_WATCH_LIST_ITEM = gql`
 `;
 
 export const REMOVE_WATCH_LIST_ITEM = gql`
-  mutation RemoveWatchListItem($stockId: ID!) {
-    removeWatchListItem(stockId: $stockId) {
+  mutation RemoveWatchListItem($watchListItemId: ID!) {
+    removeWatchListItem(watchListItemId: $watchListItemId) {
       ...WatchListData
     }
   }

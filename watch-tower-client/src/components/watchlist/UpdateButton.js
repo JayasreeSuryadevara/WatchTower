@@ -6,15 +6,15 @@ import { CURRENT_USER } from '../../graphql/queries';
 export default ({ watchListItem }) => {
   const [noOfShares, setNoOfShares] = useState(1)
 
-  // const { data, loading, error } = useQuery(CURRENT_USER);
-  const [updateWatchListItem, { loading: mutationloading, error: mutationerror }] = useMutation (
+  const [updateWatchListItem, { loading, error }] = useMutation (
     UPDATE_WATCH_LIST_ITEM,
     {
-      variables: {newNoOfShares: noOfShares, watchListItemId: watchListItem._id},
+      variables: {newNoOfShares: parseInt(noOfShares), watchListItemId: watchListItem._id},
       onError() {},
-      refetchQueries: [ {query: CURRENT_USER}]
+      refetchQueries: [{ query: CURRENT_USER }]
     }
   )
+
   return (
     <form 
       onSubmit={(e) => {
@@ -25,7 +25,7 @@ export default ({ watchListItem }) => {
       >
       <input
         type="number"
-        placeholder="+ ADD HOLDINGS"
+        placeholder="+ CHANGE HOLDINGS"
         onChange={e => setNoOfShares(e.currentTarget.value)}
       />
     </form>

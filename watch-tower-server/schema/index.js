@@ -47,10 +47,13 @@ const typeDefs = `
         me: User
         watchListItem(_id: ID!): WatchListItem
         watchList: [WatchListItem]
+        watchListItemStock(stockId: ID!): Stock
         stock(ticker: String!): Stock
         stocks: [Stock]
         company(name: String!): Company
         companies: [Company]
+        companyByTicker(ticker: String!): Company
+        companyByStockId(stockId: ID!): Company
         historicalData(ticker: String!): HistoricalData
     }
     type Mutation {
@@ -63,6 +66,8 @@ const typeDefs = `
         addStock(ticker: String!): StockDataResponse
         addCompany(ticker: String!, name: String!, desc: String, dividend: Float, yield: Float, industry: String, sector: String): CompanyResponse
         addHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
+        updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String): HistoricalDataResponse
+        fetchAndUpdateHistData(): updateResponse
         updateHistoricalData(open: Float, dayHigh: Float, dayLow: Float, currentPrice: Float, volume: Float, changePercent: String, stockId: ID): HistoricalDataResponse
     }
     type UserCredentials {
@@ -75,7 +80,7 @@ const typeDefs = `
     type WatchListUpdateResponse {
         success: Boolean!
         message: String
-        watchListItem: ID
+        watchListItem: WatchListItem
     }
     type CompanyResponse {
         success: Boolean!
@@ -109,6 +114,9 @@ const resolvers = {
         watchList(_, __) {
             return WatchListItem.find({});
         },
+        watchListItemStock(_, { stockId }) {
+            return Stock.findById({ stockId });
+        },
         stock(_, { ticker }) {
             return Stock.findOne({ ticker: ticker });
         },
@@ -120,6 +128,14 @@ const resolvers = {
         },
         companies(_, __) {
             return Company.find({});
+        },
+        companyByTicker: async(_, { ticker }) => {
+            console.log("ticker", ticker)
+            const stock = await Stock.findOne({ ticker: ticker });
+            return Company.findOne({ stock: stock._id });
+        },
+        companyByStockId(_, { stockId }) {
+            return Company.findOne({ stock: stockId });
         },
         historicalData: async (_, { ticker }) => {
             const stock = await Stock.findOne({ ticker: ticker });
@@ -164,6 +180,7 @@ const resolvers = {
         },
         addStock: async(_, { ticker }) => {
            const stock =  Stock.addStock(ticker);
+           const result = updateHistData(stock);
            if (result.success){
                return {
                    success: true,
@@ -202,9 +219,8 @@ const resolvers = {
                 stockId: stockId
             });
         },
-        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent, stockId }) {
-            const historicalData = HistoricalData.find({ stockId: stockId });
-            return historicalData.updateHistoricalData({
+        updateHistoricalData(_, { open, dayHigh, dayLow, currentPrice, volume, changePercent }) {
+            return HistoricalData.updateHistoricalData({
                 open: open,
                 dayHigh: dayHigh,
                 dayLow: dayLow,
@@ -230,6 +246,13 @@ const resolvers = {
             const company = parentValue;
             await company.populate('stock').execPopulate();
             return company.stock;
+        }
+    },
+    WatchListItem: {
+        stock: async (parentValue, _) => {
+            const watchListItem = parentValue;
+            await watchListItem.populate('stock').execPopulate();
+            return watchListItem.stock;
         }
     }
 }
