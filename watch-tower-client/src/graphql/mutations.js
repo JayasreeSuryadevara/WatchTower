@@ -63,3 +63,18 @@ export const UPDATE_WATCH_LIST_ITEM = gql`
 //   }
 // `;
 
+export const UPDATE_HISTORICAL_DATA = gql`
+  mutation updateHistoricalData($open: Float, $dayHigh: Float, $dayLow: Float, $currentPrice: Float, $volume: Float, $changePercent: String, $stockId: ID) {
+    updateHistoricalData(open: $open, dayHigh: $dayHigh, dayLow: $dayLow, currentPrice: $currentPrice, volume: $volume, changePercent: $changePercent, stockId: $stockId) {
+      ...HistoricalData
+    }
+  }
+`;
+
+export const ADD_HISTORICAL_DATA = gql`
+  mutation addHistoricalData($open: Float, $dayHigh: Float, $dayLow: Float, $currentPrice: Float, $volume: Float, $changePercent: String, $stockId: ID) {
+    addHistoricalData(open: $open, dayHigh: $dayHigh, dayLow: $dayLow, currentPrice: $currentPrice, volume: $volume, changePercent: $changePercent, stockId: $stockId) {
+      ...HistoricalData
+    }
+  }
+`;

@@ -74,9 +74,28 @@ export const GET_COMPANY = gql`
 //     }
 //   }
 // `;
-
-// export const HistoricalData = gql`
-//   query historicalData($stockId: ID!) {
-
-//   }
-// `;
+export const ALL_STOCKS = gql`
+  query stocks() {
+    stocks {
+      _id
+      ticker
+    }
+  }
+`;
+export const GET_HISTORICAL_DATA = gql`
+  query historicalData($stockId: ID!) {
+    historicalDataByStockId(stockId: $stockId) {
+      _id
+      open
+      dayHigh
+      dayLow
+      currentPrice
+      volume
+      changePercent
+      stock {
+        _id
+        ticker
+      }
+    }
+  }
+`;
