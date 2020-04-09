@@ -59,7 +59,7 @@ HistoricalDataSchema.statics.addHistoricalData = async function (open, dayHigh, 
   }
 }
 
-HistoricalDataSchema.statics.updateHistoricalData = async function (open, dayHigh, dayLow, currentPrice, volume, changePercent) {
+HistoricalDataSchema.methods.updateHistoricalData = async function (open, dayHigh, dayLow, currentPrice, volume, changePercent) {
   const historicalData = this;
   historicalData.open = open;
   historicalData.dayHigh = dayHigh;
