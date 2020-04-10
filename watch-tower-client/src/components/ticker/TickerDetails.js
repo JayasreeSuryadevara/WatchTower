@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/react-hooks"
 import { companyNews } from '../util/CurrentNews';
 import '../../styles/ticker/TickerDetails.css';
 import NewsDetailsItem from '../../components/news/NewsDetailsItem';
+import KeyDataItem from '../ticker/KeyDataItem';
 
 export default () => {
   const [allCompanyNews, setCompanyNews] = useState([]);
@@ -48,7 +49,7 @@ export default () => {
         <div className="kd-item-container">
           <div className="key-data-item">
             <div className="ticker-key-data">
-              <span>Key Data</span>
+              <KeyDataItem/>
             </div>
             <div className="ticker-performance">
               <span>Performance</span>
