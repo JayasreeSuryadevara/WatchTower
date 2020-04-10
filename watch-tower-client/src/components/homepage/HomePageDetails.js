@@ -5,6 +5,7 @@ import NewsDetailsItem from '../news/NewsDetailsItem';
 import FirstNewsItem from '../news/FirstNewsItem';
 import BulletListItem from '../news/BulletListItem';
 import ClipNewsItem from '../news/ClipNewsItem';
+import MarketIndexPanel from '../homepage/MarketIndexPanel';
 import '../../styles/homePage/HomePageDetails.css';
 import { Link } from 'react-router-dom';
 
@@ -60,14 +61,12 @@ export default () => {
             <div className="graph-header-item">Crypto</div>
           </div>
           <div className="movers-latest-items">
-            <p className="movers-latest-item">S&P 500 Movers</p>
+            <p className="movers-latest-item">S&amp;P 500 Movers</p>
             <p className="movers-latest-item">Latest News</p>
           </div>
         </div>
         <div className="graph-container">
-          <div className="graph">
-            <p>graph</p>
-          </div>
+            <MarketIndexPanel />
         </div>
         <div className="latest-news-container">
           <div className="latest-news-items">
@@ -75,7 +74,7 @@ export default () => {
             <p>Coronavirus</p>
             <p>New York</p>
             <p>Gold</p>
-            <p>S&P 500 Futures</p>
+            <p>S&amp;P 500 Futures</p>
             <p>AAPL</p>
             <p>BA</p>
             <p>CCL</p>
