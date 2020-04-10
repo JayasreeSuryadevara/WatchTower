@@ -1,0 +1,118 @@
+.main-ticker-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ticker-graph-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 60px;
+  
+}
+
+.ticker-price-item {
+  display: flex;
+  justify-content: center;
+  border-top: solid black;
+  border-bottom: solid black;
+  width: 450px;
+  height: 350px;
+  margin-right: 10px;
+}
+
+.ticker-graph-item {
+  display: flex;
+  justify-content: center;
+  border-top: solid black;
+  border-bottom: solid black;
+  width: 550px;
+  height: 350px;
+  margin-left: 10px;
+}
+
+.th-item-container {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(238, 238, 238);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 1020px;
+  border-bottom: solid black;
+}
+
+.ticker-header-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.th-item {
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+.key-data-container {
+  display: flex;
+  justify-content: center;
+}
+
+.kd-item-container {
+  display: flex;
+  justify-content: center;
+  border-left: 1px solid rgb(202, 202, 202);
+  border-right: 1px solid rgb(202, 202, 202);
+  border-bottom: 1px solid rgb(202, 202, 202);
+  width: 1020px;
+  height: 700px;
+}
+
+.key-data-item {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-around;
+  width: 100%;
+
+}
+
+.ticker-key-data {
+  display: flex;
+  justify-content: center;
+  border: solid black;
+  width: 300px;
+  height: 650px;
+}
+
+.ticker-performance {
+  display: flex;
+  justify-content: center;
+  border: solid black;
+  width: 300px;
+  height: 650px;
+}
+
+.ticker-watchlist {
+  display: flex;
+  justify-content: center;
+  border: solid black;
+  width: 300px;
+  height: 650px;
+}
+
+.recent-news-container {
+  display: flex;
+  justify-content: start;
+  margin-left: 120px;
+  margin-top: 20px;
+}
+
+.rn-tag {
+  color:rgb(54, 119, 168);
+  font-family:Muli, sans-serif;
+  font-size:24.0001px;
+  font-weight:800;
+  height:33px;
+  width:144.156px;
+}

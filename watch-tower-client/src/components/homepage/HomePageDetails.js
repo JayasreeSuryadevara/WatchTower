@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import '../../styles/homePage/HomePage.css';
 import { headlineNews } from '../util/CurrentNews';
 import NewsDetailsItem from '../news/NewsDetailsItem';
+import FirstNewsItem from '../news/FirstNewsItem';
+import BulletListItem from '../news/BulletListItem';
+import ClipNewsItem from '../news/ClipNewsItem';
 import '../../styles/homePage/HomePageDetails.css';
+import { Link } from 'react-router-dom';
 
 export default () => {
   const [headlines, setHeadlineNews] = useState([]);
@@ -16,13 +20,29 @@ export default () => {
     fetchHeadlineNews()
   }, [])
 
-  const items = headlines.map(article => {
+  const items = headlines.slice(0, 7).map((article, idx) => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
+
+    if (idx === 0) {
+      return (
+        <FirstNewsItem title={article.title} description={article.description}
+          author={article.author} url={article.url} urlToImage={article.urlToImage}
+          publishedAt={date} time={time} key={idx} />
+      )
+    } else if (idx > 0 && idx < 7) {
+      return (
+        <BulletListItem title={article.title} description={article.description}
+          author={article.author} url={article.url} urlToImage={article.urlToImage}
+          publishedAt={date} time={time} key={headlines.indexOf(article)} />
+      )
+    }
+  })
+
+  const newsClips = headlines.slice(7, -1).map((article, idx) => {
     return (
-      <NewsDetailsItem title={article.title} description={article.description}
-        author={article.author} url={article.url} urlToImage={article.urlToImage}
-        publishedAt={date} time={time} key={headlines.indexOf(article)} />
+      <ClipNewsItem title={article.title} author={article.author} url={article.url}
+        urlToImage={article.urlToImage} key={idx} />
     )
   })
 
@@ -49,6 +69,29 @@ export default () => {
             <p>graph</p>
           </div>
         </div>
+        <div className="latest-news-container">
+          <div className="latest-news-items">
+            <Link to={`/news`}><p className="latest-item">Latest News</p></Link>
+            <p>Coronavirus</p>
+            <p>New York</p>
+            <p>Gold</p>
+            <p>S&P 500 Futures</p>
+            <p>AAPL</p>
+            <p>BA</p>
+            <p>CCL</p>
+            <p>DIS</p>
+            <p>TSLA</p>
+            <p>ZM</p>
+          </div>
+        </div>
+        <div>
+          <ul>
+            {items}
+          </ul>
+        </div>
+        <ul className="clip-list-container">
+          {newsClips}
+        </ul>
       </div>
     </div>
   )

@@ -1,0 +1,36 @@
+.clip-main-page {
+display: flex;
+flex-direction: row;
+}
+
+.clip-main-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 120px;
+  padding: 10px;
+}
+
+.clip-img-container {
+  display: flex;
+  padding: 10px;
+  justify-content: start;
+}
+
+.clip-img-url {
+  display: flex;
+  width: 130px;
+  height: 80px;
+  border: 1px solid lightgray;
+}
+
+.clip-title-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 9px;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  width: 120px;
+  padding-left: 10px;
+}
