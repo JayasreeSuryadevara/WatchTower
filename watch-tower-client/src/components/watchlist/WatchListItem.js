@@ -62,9 +62,12 @@ const WatchListItem = ({ watchListItem }) => {
     let chgP;
       const currentPrice = priceData.currentPrice * listItem.noOfShares;
       chg = currentPrice - listItem.addPrice;
+      const formattedChg = formatter.format(chg);
       chgP = (chg / listItem.addPrice).toFixed(2);
-      console.log("currentPrice", currentPrice)
-      console.log("chg", chg)
+      const formattedChgP = chgP.toLocaleString();
+      const formattedVolume = (priceData.volume).toLocaleString();
+      const formattedLow = (priceData.dayLow).toLocaleString();
+      const formattedHigh = (priceData.dayHigh).toLocaleString();
 
 
 
@@ -105,20 +108,20 @@ const WatchListItem = ({ watchListItem }) => {
             </div>
             <div>
               <p className="result-headers">CHG</p>
-              <p id="change">{chg}</p>
+              <p id="change">{formattedChg}</p>
             </div>
             <div>
               <p className="result-headers">%CHG</p>
-              <p>{chgP} %</p>
+              <p>{formattedChgP} %</p>
             </div>
           </div>
           <div className="watch-list-item-vol">
             <p className="result-headers">VOLUME</p>
-            <p className="results">{priceData.volume}</p>
+            <p className="results">{formattedVolume}</p>
           </div>
           <div className="watch-list-item-range">
             <p className="result-headers">DAY RANGE</p>
-            <p className="results">{priceData.dayHigh} -- {priceData.dayLow}</p>
+            <p className="results">{formattedHigh} -- {formattedLow}</p>
           </div>
         </div>
       </section>
