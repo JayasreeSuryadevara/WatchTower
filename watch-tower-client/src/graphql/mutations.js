@@ -29,8 +29,8 @@ export const CHANGE_PASSWORD = gql`
 `;
 
 export const ADD_WATCH_LIST_ITEM = gql`
-  mutation AddWatchListItem($ticker: String!) {
-    addWatchListItem(ticker: $ticker) {
+  mutation AddWatchListItem($ticker: String!, $currentPrice: Float) {
+    addWatchListItem(ticker: $ticker, currentPrice: $currentPrice) {
       ...WatchListData
     }
   }

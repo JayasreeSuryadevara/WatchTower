@@ -41,7 +41,7 @@ export const WATCH_LIST_ITEM = gql`
   query WatchListItem {
     watchListItem {
       _id
-      stock
+      stock 
       addPrice
       noOfShares
     }

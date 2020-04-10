@@ -7,25 +7,30 @@ import fetchStockData from '../util/fetch-stock-resolver';
 export default () => {
 
   const [ticker, setTicker] = useState("");
+  const [currentPrice, setCurrentPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [stockData, setStockData] = useState({});
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     setIsLoading(true)
-  //     const response = await fetchStockData(stock)
-  //     console.log("response", response)
-  //     setStockData(response)
-  //     setIsLoading(false)
-  //   }
-  //   fetchData()
-  // }, []);
+  useEffect(() => {
+
+    return () => {
+      document.title = `You finished clicking ${count} times`;
+    };
+  }, [count]);
+
+  async function handleAdd(){
+    console.log("ticker", ticker);
+    const stockData = await fetchStockData(ticker);
+    console.log("stockData", stockData);
+    setCurrentPrice(parseInt(stockData.currentPrice));
+    addWatchListItem();
+  }
 
   const [addWatchListItem, { loading, error }] = useMutation(
     ADD_WATCH_LIST_ITEM,
     {
-      variables: { ticker },
-      onError() {},
+      variables: { ticker, currentPrice },
+      onError() { },
       refetchQueries: [{ query: CURRENT_USER }]
     },
   )
@@ -34,7 +39,7 @@ export default () => {
     <form 
       onSubmit={(e) => {
         e.preventDefault();
-        addWatchListItem();
+        handleAdd();
       }}
       className="add-to-watch-list-add-button"
     >

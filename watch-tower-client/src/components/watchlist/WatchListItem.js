@@ -12,15 +12,16 @@ const WatchListItem = ({ watchListItem }) => {
   // const [ change, setChange ] = useState(0);
   // const [ changePercent, setChangePercent ] = useState(0);
 
+  console.log(watchListItem);
 
   const stockId = watchListItem.stock._id;
   const stock = watchListItem.stock;
+  const ticker = stock.ticker;
 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
-      const response = await fetchStockData(stock)
-      console.log("response", response)
+      const response = await fetchStockData(ticker)
       setPriceData(response)
       setIsLoading(false)
     }
@@ -74,26 +75,6 @@ const WatchListItem = ({ watchListItem }) => {
   const formattedLow = nf.format(dayLow);
   const formattedHigh = nf.format(dayHigh);
 
-
-
-
-  // function calcChangePercent() {
-  //   if (!priceData.currentPrice) {
-  //     return 0;
-  //   } else {
-  //     var currentPrice = priceData.currentPrice
-  //     var addPrice = listItem.addPrice
-  //     var chg = currentPrice - addPrice;
-  //     var chgP = ((chg / listItem.addPrice)*100).toFixed(2);
-  //     if (chgP < 0) {
-  //       chgP.style.color = "red";
-  //     } else {
-  //       chgP.style.color = "green";
-  //     }
-
-  //     return chgP;
-  //   }
-  // }
 
   return isLoading ? <div>Loading</div> : (
     <div className="watch-list-item-indiv">

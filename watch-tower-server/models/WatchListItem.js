@@ -18,17 +18,23 @@ const WatchListItemSchema = new Schema({
   }
 });
 
-WatchListItemSchema.statics.addWatchListItem = function (ticker, loggedInUser) {
+WatchListItemSchema.statics.addWatchListItem = function (ticker, currentPrice, loggedInUser) {
   const WatchListItem = this;
   return (async () => {
-    const stock = await Stock.findOne({ ticker: ticker});
-    // const stock = await Stock.findOne({ ticker: ticker.toUpperCase() });
-    const historicalData = await historicalData.findOne( { stockId: stock._id })
-    if (stock) {
-      const stockId = stock._id;
+    const foundStock = await Stock.findOne({ ticker: ticker});
+    if (foundStock) {
+      const stock = foundStock._id;
       const noOfShares = 1;
-      const addPrice = historicalData.currentPrice;
-      const watchListItem = new WatchListItem({stockId, addPrice, noOfShares});
+      const addPrice = currentPrice;
+      const watchListItem = new WatchListItem({stock, addPrice, noOfShares});
+      await watchListItem.save();
+      loggedInUser.watchList.addToSet(watchListItem._id)
+    } else {
+      const newStock = Stock.addStock(ticker)
+      const stock = newStock._id;
+      const noOfShares = 1;
+      const addPrice = currentPrice;
+      const watchListItem = new WatchListItem({ stock, addPrice, noOfShares });
       await watchListItem.save();
       loggedInUser.watchList.addToSet(watchListItem._id)
     }

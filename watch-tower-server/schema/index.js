@@ -58,7 +58,7 @@ const typeDefs = `
         login(email: String!, password: String!): UserCredentials
         signup(email: String!, name: String!, password: String!): UserCredentials
         changePassword(oldPassword: String!, newPassword: String!): UserCredentials
-        addWatchListItem(ticker: String!): WatchListUpdateResponse
+        addWatchListItem(ticker: String!, currentPrice: Float): WatchListUpdateResponse
         removeWatchListItem(watchListItemId: ID!): WatchListUpdateResponse
         updateWatchListItem(newNoOfShares: Int, watchListItemId: ID!): WatchListUpdateResponse
         addStock(ticker: String!): StockDataResponse
@@ -76,7 +76,7 @@ const typeDefs = `
     type WatchListUpdateResponse {
         success: Boolean!
         message: String
-        watchListItem: ID
+        watchListItem: WatchListItem
     }
     type CompanyResponse {
         success: Boolean!
@@ -143,10 +143,10 @@ const resolvers = {
                 return loggedInUser.changePassword(oldPassword, newPassword);
             }
         },
-        addWatchListItem: async (_, { ticker }, context) => {
+        addWatchListItem: async (_, { ticker, currentPrice }, context) => {
             const loggedInUser = context.user;
             if (loggedInUser) {
-                return WatchListItem.addWatchListItem(ticker, loggedInUser);
+                return WatchListItem.addWatchListItem(ticker, currentPrice, loggedInUser);
             }
         },
         removeWatchListItem: async (_, { watchListItemId }, context) => {
@@ -154,8 +154,7 @@ const resolvers = {
             const watchListItem = await WatchListItem.findById(watchListItemId);
             return watchListItem.removeWatchListItem(loggedInUser);
         },
-        updateWatchListItem: async (_, { newNoOfShares, watchListItemId }, context) => {
-            const loggedInUser = context.user;
+        updateWatchListItem: async (_, { newNoOfShares, watchListItemId }) => {
             const watchListItem = await WatchListItem.findById(watchListItemId);
             watchListItem.noOfShares = newNoOfShares;
             await watchListItem.save();
