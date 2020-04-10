@@ -23,6 +23,7 @@
   width: 100px;
   height: 30px;
   font-weight: 600;
+  align-items: flex-end;
 }
 
 .fa-sort-up {
