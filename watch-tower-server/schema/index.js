@@ -164,7 +164,6 @@ const resolvers = {
                 message: "Number of shares changed.",
                 watchListItem: watchListItem._id
             }
-            //////////
         },
         addStock: async (_, { ticker }) => {
             const stock = Stock.addStock(ticker);

@@ -9,8 +9,8 @@ const WatchListItem = ({ watchListItem }) => {
 
   const [ isLoading, setIsLoading ] = useState(false);
   const [ priceData, setPriceData] = useState({});
-  const [ change, setChange ] = useState(0);
-  const [ changePercent, setChangePercent ] = useState(0);
+  // const [ change, setChange ] = useState(0);
+  // const [ changePercent, setChangePercent ] = useState(0);
 
 
   const stockId = watchListItem.stock._id;
