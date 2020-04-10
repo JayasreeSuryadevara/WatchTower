@@ -20,11 +20,11 @@ const WatchListItem = ({ watchListItem }) => {
     async function fetchData() {
       setIsLoading(true)
       const response = await fetchStockData(stock)
-      console.log(response)
+      console.log("response", response)
       setPriceData(response)
       setIsLoading(false)
     }
-    return fetchData()
+    fetchData()
   }, []);
 
   const { data, loading, error } = useQuery(
@@ -37,6 +37,18 @@ const WatchListItem = ({ watchListItem }) => {
   if (error) return <h1> Error </h1>
   if (!data) return <h1> Not found </h1>
 
+  // useEffect(() => {
+  //   let value = document.getElementById("change").innerHTML
+  //   value = parseInt(value);
+  //   if (value < 0) {
+  //     // chg.style.color = "red";
+  //     value.style.color = "red"
+  //   } else {
+  //     value.style.color = "green"
+  //     // chg.style.color = "green";
+  //   }
+  // }, [])
+
   const company = data.companyByStockId;
   const listItem = watchListItem;
 
@@ -46,18 +58,16 @@ const WatchListItem = ({ watchListItem }) => {
   });
   const addPrice = formatter.format(listItem.addPrice * listItem.noOfShares)
 
-
-  function calcChange() {
+    let chg;
+    let chgP;
       const currentPrice = priceData.currentPrice * listItem.noOfShares;
+      chg = currentPrice - listItem.addPrice;
+      chgP = (chg / listItem.addPrice).toFixed(2);
       console.log("currentPrice", currentPrice)
-      let chg = currentPrice - addPrice;
-      // if (chg < 0) {
-      //   chg.style.color = "red";
-      // } else {
-      //   chg.style.color = "green";
-      // }
-      return chg;
-  }
+      console.log("chg", chg)
+
+
+
 
   // function calcChangePercent() {
   //   if (!priceData.currentPrice) {
@@ -95,20 +105,20 @@ const WatchListItem = ({ watchListItem }) => {
             </div>
             <div>
               <p className="result-headers">CHG</p>
-              <p>{() => setChange(calcChange())}</p>
+              <p id="change">{chg}</p>
             </div>
             <div>
               <p className="result-headers">%CHG</p>
-              {/* <p>{() => setChangePercent(calcChangePercent())} %</p> */}
+              <p>{chgP} %</p>
             </div>
           </div>
           <div className="watch-list-item-vol">
             <p className="result-headers">VOLUME</p>
-            {/* <p className="results">{priceData.volume}</p> */}
+            <p className="results">{priceData.volume}</p>
           </div>
           <div className="watch-list-item-range">
             <p className="result-headers">DAY RANGE</p>
-            {/* <p className="results">{priceData.dayHigh} -- {priceData.dayLow}</p> */}
+            <p className="results">{priceData.dayHigh} -- {priceData.dayLow}</p>
           </div>
         </div>
       </section>

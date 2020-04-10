@@ -235,6 +235,13 @@ const resolvers = {
             await company.populate('stock').execPopulate();
             return company.stock;
         }
+    },
+    WatchListItem: {
+        stock: async (parentValue, _) => {
+            const company = parentValue;
+            await company.populate('stock').execPopulate();
+            return company.stock;
+        }
     }
 }
 
