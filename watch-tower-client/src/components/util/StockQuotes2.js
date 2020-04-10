@@ -1,5 +1,14 @@
-module.exports = function (_, args) {
-  const API_CALL = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + args.ticker + "&apikey=" + process.env.REACT_APP_AV_API_KEY;
+module.exports = function (stocks) {
+  const quotes = stocks.map(stock => {
+    const data = fetchData(stock);
+    return data
+  })
+  console.log("array of quotes", quotes);
+  return quotes;
+}
+
+const fetchData = (ticker) => {
+  const API_CALL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + ticker + "&apikey=" + process.env.REACT_APP_AV_API_KEY;
   return fetch(API_CALL)
     .then(
       (res) => { return res.json(); },
@@ -7,6 +16,7 @@ module.exports = function (_, args) {
     )
     .then(
       (data) => {
+        
         data.open = data["Global Quote"]["02. open"];
         data.dayHigh = data["Global Quote"]["03. high"];
         data.dayLow = data["Global Quote"]["04. low"];

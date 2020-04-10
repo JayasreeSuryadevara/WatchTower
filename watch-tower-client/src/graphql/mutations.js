@@ -29,8 +29,8 @@ export const CHANGE_PASSWORD = gql`
 `;
 
 export const ADD_WATCH_LIST_ITEM = gql`
-  mutation AddWatchListItem($stockId: ID!, $addPrice: Int, $noOfShares: Int) {
-    addWatchListItem(stockId: $stockId, addPrice: $addPrice, noOfShares: $noOfShares) {
+  mutation AddWatchListItem($ticker: String!) {
+    addWatchListItem(ticker: $ticker) {
       ...WatchListData
     }
   }
@@ -38,8 +38,8 @@ export const ADD_WATCH_LIST_ITEM = gql`
 `;
 
 export const REMOVE_WATCH_LIST_ITEM = gql`
-  mutation RemoveWatchListItem($stockId: ID!) {
-    removeWatchListItem(stockId: $stockId) {
+  mutation RemoveWatchListItem($watchListItemId: ID!) {
+    removeWatchListItem(watchListItemId: $watchListItemId) {
       ...WatchListData
     }
   }
@@ -53,4 +53,28 @@ export const UPDATE_WATCH_LIST_ITEM = gql`
     }
   }
   ${WATCHLIST_DATA}
+`;
+
+// export const ADD_COMPANY = gql`
+//   mutation AddCompany($ticker: String!, $name: String!, $desc: String!, $dividend: Int, $yield: Int, $industry: String, $sector: String) {
+//     addCompany(ticker: $ticker, name: $name, desc: $desc, dividend: $dividend, yield: $yield, industry: $industry, sector: $sector}) {
+//       ...CompanyData
+//     }
+//   }
+// `;
+
+export const UPDATE_HISTORICAL_DATA = gql`
+  mutation updateHistoricalData($open: Float, $dayHigh: Float, $dayLow: Float, $currentPrice: Float, $volume: Float, $changePercent: String, $stockId: ID) {
+    updateHistoricalData(open: $open, dayHigh: $dayHigh, dayLow: $dayLow, currentPrice: $currentPrice, volume: $volume, changePercent: $changePercent, stockId: $stockId) {
+      ...HistoricalData
+    }
+  }
+`;
+
+export const ADD_HISTORICAL_DATA = gql`
+  mutation addHistoricalData($open: Float, $dayHigh: Float, $dayLow: Float, $currentPrice: Float, $volume: Float, $changePercent: String, $stockId: ID) {
+    addHistoricalData(open: $open, dayHigh: $dayHigh, dayLow: $dayLow, currentPrice: $currentPrice, volume: $volume, changePercent: $changePercent, stockId: $stockId) {
+      ...HistoricalData
+    }
+  }
 `;

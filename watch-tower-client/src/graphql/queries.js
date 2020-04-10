@@ -9,6 +9,11 @@ export const CURRENT_USER = gql`
       name
       watchList {
         _id
+        stock {
+          _id
+        }
+        addPrice
+        noOfShares
       }
     }
   }
@@ -19,43 +24,58 @@ export const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `;
-
-// Work-in-progress
-// export const CURRENT_USER_WITH_WATCHLIST = gql`
-//   query CurrentUserWithWatchList {
-//     me {
-//       name
-//       watchList {
-//        _id
-//        stock {
-          //   ticker
-          // }
-//       }
-//     },
-//     company {
-//       name
-//       currentPrice (this will come from server cache)
-//       volume (from server cache)
-//       dayRange (from server cache)
+// not sure if we'll need this one:
+// export const WATCH_LIST_ITEM_STOCK_INFO = gql`
+//   query WatchListItemStockInfo {
+//     watchListItemStock {
+//       dayHigh
+//       dayLow
+//       currentPrice
+//       volume
 //     }
 //   }
 // `;
 
-export const WATCH_LIST_ITEMS = gql`
-  query WatchListItems {
-    watchListItems {
+export const WATCH_LIST_ITEM = gql`
+  query WatchListItem {
+    watchListItem {
       _id
       stock
-      addDate
       addPrice
       noOfShares
     }
   }
 `;
 export const GET_COMPANY = gql`
-  query GetCompany($companyId: ID!) {
-    company(_id: $companyId) {
+  query GetCompany($name: String!) {
+    company(name: $name) {
       ...CompanyData
+    }
+  }
+  ${COMPANY_DATA}
+`;
+
+export const COMPANY_BY_TICKER = gql`
+  query CompanyByTicker($ticker: String!) {
+    companyByTicker(ticker: $ticker) {
+      ...CompanyData
+      stock {
+        _id
+        ticker
+      }
+    }
+  }
+  ${COMPANY_DATA}
+`;
+
+export const COMPANY_BY_STOCK_ID = gql`
+  query CompanyByStockId($stockId: ID!) {
+    companyByStockId(stockId: $stockId) {
+      ...CompanyData
+      stock {
+        _id
+        ticker
+      }
     }
   }
   ${COMPANY_DATA}
@@ -69,9 +89,33 @@ export const GET_COMPANY = gql`
 //       }
 //     }) {
 //       stocks {
-//         name
 //         ticker
 //       }
 //     }
 //   }
 // `;
+export const ALL_STOCKS = gql`
+  query stocks {
+    stocks {
+      _id
+      ticker
+    }
+  }
+`;
+export const GET_HISTORICAL_DATA = gql`
+  query historicalData($stockId: ID!) {
+    historicalDataByStockId(stockId: $stockId) {
+      _id
+      open
+      dayHigh
+      dayLow
+      currentPrice
+      volume
+      changePercent
+      stock {
+        _id
+        ticker
+      }
+    }
+  }
+`;

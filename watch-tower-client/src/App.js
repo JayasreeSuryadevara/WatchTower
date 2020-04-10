@@ -12,7 +12,11 @@ import ErrorPage from './pages/error/ErrorPage';
 import WatchList from './pages/watchlist/WatchList';
 import PasswordChg from './pages/users/PasswordChg';
 import NewsPage from './pages/news/NewsPage';
+
 import TickerPage from './pages/ticker/TickerPage';
+
+import InvestPage from './pages/investing/InvestPage';
+
 
 import SearchForm from './pages/search/SearchForm';
 
@@ -29,8 +33,12 @@ export default () => {
         <ProtectedRoute exact path="/password" component={PasswordChg} />
         <Route exact path="/" component={HomePage} />
         <Route exact path="/search" component={SearchForm} />
+
         <Route exact path="/ticker/" component={TickerPage} /> 
         {/* add companyName and tickerId to path once queries are working */}
+
+        <Route exact path="/investing" component={InvestPage} />
+
         <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>

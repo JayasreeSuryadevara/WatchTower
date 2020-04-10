@@ -11,7 +11,7 @@ export default () => {
                     <Link to='/'> Home </Link>
                 </li>
                 <li className="link-item">
-                    <Link to='/' > Latest News</Link>
+                    <Link to='/news' > Latest News</Link>
                 </li>
                 <li className="link-item">
                     <Link to='/watchlist' >Watchlist</Link>
@@ -23,7 +23,7 @@ export default () => {
                     <Link to='/' > Markets</Link>
                 </li>
                 <li className="link-item">
-                    <Link to='/' > Investing</Link>
+                    <Link to='/investing' > Investing</Link>
                 </li>
             </ul>
         </main>
