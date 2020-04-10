@@ -1,0 +1,12 @@
+.ti-price-container {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 6.5rem;
+  font-weight: 700;
+  font-family: Lato,monospace;
+  line-height: 1;
+  color: #202020;
+  letter-spacing: -.025em
+}

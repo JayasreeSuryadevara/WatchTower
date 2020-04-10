@@ -1,0 +1,30 @@
+.kd-title-container {
+  display: block;
+  margin-bottom: 4px;
+  color: #6a6a6a;
+  font-size: .64286rem;
+  font-weight: 400;
+  letter-spacing: .025em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.kd-value-container {
+  font: 800 1.14286rem Lato,monospace;
+  display: inline-block;
+  margin-bottom: 4px;
+  color: #202020;
+  font-family: Lato,monospace;
+  font-size: 1.14286rem;
+  font-weight: 800;
+}
+
+.data-container {
+  padding: 10px 0 4px;
+  border-bottom: 1px solid #e1e1e1;
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+  line-height: 1;
+}
