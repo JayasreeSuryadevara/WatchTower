@@ -174,20 +174,21 @@
 }
 .watch-list-item-vol {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-right: solid 1px #e1e1e1;
   justify-content: space-around;
   width: 28%;
 }
 .watch-list-item-range {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 27%;
   justify-content: center;
 }
 
 .result-headers {
   color: grey;
+  text-align: center;
 }
 
 .results {
@@ -195,7 +196,16 @@
   color: black;
   font-size: 12px;
   font-weight: 900;
+  text-align: center;
 }
+
+/* .change {
+  color: green;
+}
+
+.change:negative {
+  color: red;
+} */
 
 .watch-list-remove {
   display: block;
