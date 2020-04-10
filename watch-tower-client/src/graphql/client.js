@@ -23,7 +23,7 @@ const createClient = async () => {
   });
 
   const httpLink = new HttpLink({
-    uri: 'http://localhost:5000/graphql',
+    uri: 'https://watch-tower-1.herokuapp.com/',
     headers: {
       authorization: localStorage.getItem('token')
     }
