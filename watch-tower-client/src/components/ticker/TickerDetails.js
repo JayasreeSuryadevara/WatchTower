@@ -5,6 +5,7 @@ import '../../styles/ticker/TickerDetails.css';
 import NewsDetailsItem from '../../components/news/NewsDetailsItem';
 import KeyDataItem from '../ticker/KeyDataItem';
 import PerformanceDataItem from '../ticker/PerformanceDataItem';
+import TickerInfoItem from '../ticker/TickerInfoItem';
 
 export default () => {
   const [allCompanyNews, setCompanyNews] = useState([]);
@@ -29,7 +30,7 @@ export default () => {
     <div className="main-ticker-page">
       <div className="ticker-graph-container">
         <div className="ticker-price-item">
-          <span>Ticker Price Info</span>
+          <TickerInfoItem/>
         </div>
         <div className="ticker-graph-item">
           <span>Graph info</span>
