@@ -21,14 +21,13 @@ const WatchListItemSchema = new Schema({
 WatchListItemSchema.statics.addWatchListItem = function (ticker, loggedInUser) {
   const WatchListItem = this;
   return (async () => {
-    // const stock = await Stock.findOne({ ticker: ticker});
-    const stock = await Stock.findOne({ ticker: ticker.toUpperCase()});
-    const currentPrice = data.currentPrice;
-    // console.log(stock);
+    const stock = await Stock.findOne({ ticker: ticker});
+    // const stock = await Stock.findOne({ ticker: ticker.toUpperCase() });
+    const historicalData = await historicalData.findOne( { stockId: stock._id })
     if (stock) {
       const stockId = stock._id;
       const noOfShares = 1;
-      const addPrice = currentPrice;
+      const addPrice = historicalData.currentPrice;
       const watchListItem = new WatchListItem({stockId, addPrice, noOfShares});
       await watchListItem.save();
       loggedInUser.watchList.addToSet(watchListItem._id)

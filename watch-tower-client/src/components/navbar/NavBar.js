@@ -21,14 +21,13 @@ export default () => {
                         <DropDownMenu />
                     </div>
                     <Link to={`/`}>
-                        {/* HomePage */}
                         <img src={NavBarLogo} alt="navlogo"/>
                     </Link>
                 </div>
                 <div className="nav-bar-news-links">
                     <Link to="/news"><p>Latest</p></Link>
                     <Link to="/watchlist"><p>Watchlist</p></Link>
-                    <p>Techology</p>
+                    <Link to="/technology"><p>Techology</p></Link>
                     <p>Markets</p>
                     <Link to="/investing"><p>Investing</p></Link>
                 </div>
@@ -37,9 +36,6 @@ export default () => {
                         <ProtectedComp component={LogOutButton} />
                         <AuthComp component={LogInButton} />
                     </div>
-                    {/* <Link to="/me">
-                        <i className="far fa-user-circle"></i>
-                    </Link> */}
                     <AccDropDown/>
                 </div>
                 <div>

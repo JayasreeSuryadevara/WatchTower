@@ -11,6 +11,7 @@ export const CURRENT_USER = gql`
         _id
         stock {
           _id
+          ticker
         }
         addPrice
         noOfShares
