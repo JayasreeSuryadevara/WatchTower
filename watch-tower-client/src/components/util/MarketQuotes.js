@@ -9,10 +9,10 @@ module.exports = async function () {
   //   "indexName": "Nasdaq"
   //   "ticker": ".INX",
   //   "indexName": "S&P 500"
-  //   "ticker": "%5EFCHI",
-  //   "indexName": "CAC 40"
-  //   "ticker": "%5ERUI",
-  //   "indexName": "Russell 1000 Index"
+  //   "ticker": "%5EPSE",
+  //   "indexName": "NYSE Arca Technology 100 Index"
+  //   "ticker": "%5EXAU",
+  //   "indexName": "PHLX Gold/Silver Index"
 
   // data format for each index comes back in an array
   // "majorIndexesList": [
@@ -34,18 +34,6 @@ module.exports = async function () {
       (data) => {
         if (data) {
           console.log("data", data)
-          // Read into the data using array format
-            // console.log("index", data[i]["symbol"])
-          //   if (data[i]["symbol"] === ticker) {
-          //   console.log("open", data[i]["open"])
-          //   console.log("dayHigh", data[i]["dayHigh"])
-          //   console.log("dayLow", data[i]["dayLow"])
-          //   console.log("price", data[i]["price"])
-          //   console.log("volume", data[i]["volume"])
-          //   console.log("changesPercentage", data[i]["changesPercentage"])
-          //     return ticker;
-          //   }
-          // })
           return data;
         } else {
           return null
