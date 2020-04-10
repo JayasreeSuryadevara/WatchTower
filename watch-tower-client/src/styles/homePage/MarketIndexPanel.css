@@ -1,0 +1,49 @@
+.market-index-container {
+  position: absolute;
+  width: 300px;
+  font-size: 12px;
+}
+
+.market-index-list {
+  width: 300px;
+}
+
+.index-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 300px;
+  border-bottom: solid 1px #eee;
+}
+
+.index-list-item:hover{
+  background-color: #eee;
+}
+.index-name {
+  width: 100px;
+  height: 30px;
+  font-weight: 600;
+}
+
+.fa-sort-up {
+  width: 30px;
+  height: 30px;
+  padding-top: 5px;
+  color: rgb(174, 238, 79);
+}
+
+.fa-sort-down {
+  width: 30px;
+  height: 30px;
+  padding-top: 5px;
+  color: red;
+}
+.index-changes {
+  width: 40px;
+  height: 30px;
+}
+
+.index-price {
+  width: 40px;
+  height: 30px;
+}
