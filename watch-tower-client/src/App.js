@@ -13,6 +13,7 @@ import WatchList from './pages/watchlist/WatchList';
 import PasswordChg from './pages/users/PasswordChg';
 import NewsPage from './pages/news/NewsPage';
 import InvestPage from './pages/investing/InvestPage';
+import TechNewsPage from './pages/technology/TechNewsPage';
 
 import SearchForm from './pages/search/SearchForm';
 
@@ -30,6 +31,7 @@ export default () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/search" component={SearchForm} />
         <Route exact path="/investing" component={InvestPage} />
+        <Route exact path="/technology" component={TechNewsPage} />
         <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>
