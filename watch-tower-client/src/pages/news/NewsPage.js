@@ -1,6 +1,6 @@
 import React from "react";
 import NewsDetails from "../../components/news/NewsDetails";
-import '../../styles/news/newsPage.css'
+import '../../styles/news/NewsPage.css'
 
 export default () => {
   return (

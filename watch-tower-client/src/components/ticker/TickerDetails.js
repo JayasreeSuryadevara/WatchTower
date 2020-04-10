@@ -6,17 +6,34 @@ import NewsDetailsItem from '../../components/news/NewsDetailsItem';
 import KeyDataItem from '../ticker/KeyDataItem';
 import PerformanceDataItem from '../ticker/PerformanceDataItem';
 import TickerInfoItem from '../ticker/TickerInfoItem';
+import stockQuote from '../util/StockQuotes';
 
 export default () => {
   const [allCompanyNews, setCompanyNews] = useState([]);
+  const [stockInfo, setStockInfo] = useState({});
 
   async function fetchCompanyNews() {
     const news = await companyNews("tesla") 
     setCompanyNews(news)
   }
 
+  async function fetchStockInfo() {
+    const info = await stockQuote("TSLA") 
+    const x = info[0];
+    if (x) {
+      return (
+        console.log(info[0]["name"])
+      )
+    } 
+    setStockInfo(info)
+  }
+
   useEffect(() => {
     fetchCompanyNews()
+  }, [])
+
+  useEffect(() => {
+    fetchStockInfo()
   }, [])
 
   const recentNews = allCompanyNews.map((article, idx) => {
