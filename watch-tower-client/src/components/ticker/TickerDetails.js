@@ -4,6 +4,7 @@ import { companyNews } from '../util/CurrentNews';
 import '../../styles/ticker/TickerDetails.css';
 import NewsDetailsItem from '../../components/news/NewsDetailsItem';
 import KeyDataItem from '../ticker/KeyDataItem';
+import PerformanceDataItem from '../ticker/PerformanceDataItem';
 
 export default () => {
   const [allCompanyNews, setCompanyNews] = useState([]);
@@ -52,7 +53,7 @@ export default () => {
               <KeyDataItem/>
             </div>
             <div className="ticker-performance">
-              <span>Performance</span>
+              <PerformanceDataItem/>
             </div>
             <div className="ticker-watchlist">
               <span>Watchlist</span>

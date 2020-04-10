@@ -1,0 +1,12 @@
+.p-container {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.p-time-container {
+  font-size: .85714rem;
+  font-weight: 700;
+}
+
+.p-time-value {
+  color: #202020;
+}
