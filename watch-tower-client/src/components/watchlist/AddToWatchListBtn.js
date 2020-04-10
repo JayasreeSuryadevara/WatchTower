@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ADD_WATCH_LIST_ITEM } from '../../graphql/mutations';
 import { useMutation } from '@apollo/react-hooks';
 import { CURRENT_USER } from '../../graphql/queries';
@@ -11,12 +11,12 @@ export default () => {
   const [isLoading, setIsLoading] = useState(false);
   const [stockData, setStockData] = useState({});
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    return () => {
-      document.title = `You finished clicking ${count} times`;
-    };
-  }, [count]);
+  //   return () => {
+  //     document.title = `You finished clicking ${count} times`;
+  //   };
+  // }, [count]);
 
   async function handleAdd(){
     console.log("ticker", ticker);
