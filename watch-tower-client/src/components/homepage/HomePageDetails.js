@@ -6,7 +6,7 @@ import FirstNewsItem from '../news/FirstNewsItem';
 import BulletListItem from '../news/BulletListItem';
 import ClipNewsItem from '../news/ClipNewsItem';
 import MarketIndexPanel from '../homepage/MarketIndexPanel';
-import SnP500Chart from './SnP500Chart';
+// import SnP500Chart from './SnP500Chart';
 import '../../styles/homePage/HomePageDetails.css';
 import { Link } from 'react-router-dom';
 
@@ -68,7 +68,7 @@ export default () => {
         </div>
         <div className="graph-container">
             <MarketIndexPanel />
-            <SnP500Chart />
+            {/* <SnP500Chart /> */}
         </div>
         <div className="latest-news-container">
           <div className="latest-news-items">

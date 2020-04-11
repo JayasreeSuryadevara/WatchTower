@@ -13,16 +13,16 @@ export default () => {
     const snpData = await marketHistorical();
 
     console.log("snpData", snpData);
-    const newXValues= await snpData.map((record,i) => { 
-      return record[i]["date"]   
-    });
-    const newYValues = await snpData.map((record, i) => {
-      return record[i]["open"]
-    });
-    console.log("x", newXValues);
-    console.log("y", newYValues);
-    setXValues(newXValues);
-    setYValues(newYValues);
+    // const newXValues= await snpData.slice(0,20).map((record,i) => { 
+    //   return record[i]["date"]   
+    // });
+    // const newYValues = await snpData.slice(0, 20).map((record, i) => {
+    //   return record[i]["open"]
+    // });
+    // console.log("x", newXValues);
+    // console.log("y", newYValues);
+    // setXValues(newXValues);
+    // setYValues(newYValues);
   }
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default () => {
   return (
     <div className="market-chart">
       <p className="market-chart-title">S&amp;P 500 Market</p>
-      <Plot
+      {/* <Plot
         data={[
           {
             x: xValues,
@@ -43,7 +43,7 @@ export default () => {
           }
         ]}
         layout={{ width: 460, height: 200, title: 'S&P 500 Market' }}
-      />
+      /> */}
     </div>
   );
 
