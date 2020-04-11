@@ -65,7 +65,7 @@ const WatchListItem = ({ watchListItem }) => {
   let chgP;
   const addPrice = formatter.format(listItem.addPrice * listItem.noOfShares)
   const currentPrice = priceData.price * listItem.noOfShares;
-  chg = listItem.addPrice - currentPrice;
+  chg = currentPrice - listItem.addPrice;
   const formattedChg = formatter.format(chg);
   chgP = (chg / listItem.addPrice).toFixed(2);
   const formattedChgP = chgP.toLocaleString();
@@ -97,11 +97,15 @@ const WatchListItem = ({ watchListItem }) => {
             </div>
             <div>
               <p className="result-headers">CHG</p>
-              <p className="results change">{formattedChg}</p>
+              <p className={`${(chg > 0) ? "change-green" : "change-red"}`}>
+                {formattedChg}
+              </p>
             </div>
             <div>
               <p className="result-headers">%CHG</p>
-              <p className="results change">{formattedChgP} %</p>
+              <p className={`${(chg > 0) ? "change-green" : "change-red"}`}>
+                {formattedChgP}
+              </p>
             </div>
           </div>
           <div className="watch-list-item-vol">

@@ -8,23 +8,10 @@ export default () => {
 
   const [ticker, setTicker] = useState("");
   const [currentPrice, setCurrentPrice] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [stockData, setStockData] = useState({});
 
   // useEffect(() => {
-
-  //   return () => {
-  //     document.title = `You finished clicking ${count} times`;
-  //   };
-  // }, [count]);
-
-  async function handleAdd(){
-    console.log("ticker", ticker);
-    const stockData = await fetchStockData(ticker);
-    console.log("stockData", stockData);
-    setCurrentPrice(parseInt(stockData[0].price));
-    addWatchListItem();
-  }
+  //    return {}
+  // }, []);
 
   const [addWatchListItem, { loading, error }] = useMutation(
     ADD_WATCH_LIST_ITEM,
@@ -34,6 +21,14 @@ export default () => {
       refetchQueries: [{ query: CURRENT_USER }]
     },
   )
+
+  async function handleAdd() {
+    const stockData = await fetchStockData(ticker);
+    setCurrentPrice(parseInt(stockData[0].price));
+    addWatchListItem();
+    window.location.reload();
+  }
+
 
   return (
     <form 
