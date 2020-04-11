@@ -9,7 +9,7 @@ export default () => {
   const [indexes, setIndexes] = useState([]);
 
   async function fetchMarketQuotes() {
-    const market = await marketQuotes()
+    const market = await marketQuotes();
 
     const filteredIndexes = await market["majorIndexesList"].filter(item => indexSymbols.includes(item["ticker"]))
 
