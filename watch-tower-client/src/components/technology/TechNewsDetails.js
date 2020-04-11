@@ -41,6 +41,8 @@ export default () => {
     currency: 'USD'
   });
 
+  console.log(techStockData)
+
   return (
     <div>
       <div className="tech-news-page-title">Technology News</div>
@@ -53,8 +55,10 @@ export default () => {
             const ticker = stock.symbol;
             const price = stock.price;
             return <div key={i} className="tech-news-stock">
-              <p className="tech-news-stock-ticker">{ticker}</p>
-              <p>{formatter.format(price)}</p>
+              {/* <Link to={`/ticker/${stock.symbol}`}> */}
+                <p className="tech-news-stock-ticker">{ticker}</p>
+                <p>{formatter.format(price)}</p>
+              {/* </Link> */}
             </div>
           })}
         </ul>
