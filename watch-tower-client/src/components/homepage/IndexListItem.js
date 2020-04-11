@@ -7,7 +7,6 @@ const IndexListItem = (props) => {
   return (
     <div className="index-list-item">
       <p className="index-name">{index["indexName"]}</p>
-      {/* <p className="index-ticker">{index["ticker"]}</p> */}
       <p className="index-price">{index["price"]}</p>
       {index["changes"] > 0
         ? <p className="positive-changes">{parseFloat(index["changes"]).toFixed(2)}</p>
