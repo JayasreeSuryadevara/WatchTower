@@ -1,4 +1,4 @@
-module.exports = async function (stocks) {
+export default async function (stocks) {
   // The stocks should come in as a string of tickers seperated by a comma
   // ex: "AAPL,FB,MSFT,MMM,C";
   const API_CALL = "https://financialmodelingprep.com/api/v3/quote/" + stocks;

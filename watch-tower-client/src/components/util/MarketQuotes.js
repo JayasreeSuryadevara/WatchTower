@@ -1,4 +1,4 @@
-module.exports = async function () {
+export default async function () {
   // Returns all market indexes
   const API_CALL = "https://financialmodelingprep.com/api/v3/majors-indexes"
 

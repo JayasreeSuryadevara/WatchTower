@@ -1,49 +1,69 @@
 .market-index-container {
   position: absolute;
-  width: 300px;
+  width: 360px;
   font-size: 12px;
+  border-right: solid 1px #eee;
 }
 
 .market-index-list {
-  width: 300px;
+  width: 360px;
 }
 
 .index-list-item {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 300px;
+  width: 360px;
+  vertical-align: bottom;
   border-bottom: solid 1px #eee;
 }
 
 .index-list-item:hover{
   background-color: #eee;
 }
+
 .index-name {
-  width: 100px;
+  width: 160px;
   height: 30px;
+  line-height: 30px;
   font-weight: 600;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.index-price {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: bottom;
+}
+
+.positive-changes {
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+  color:  rgb(174, 238, 79);
+  vertical-align: bottom;
+}
+
+.negetive-changes {
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+  color: rgb(211, 17, 17);
+  vertical-align: bottom;
 }
 
 .fa-sort-up {
   width: 30px;
   height: 30px;
-  padding-top: 5px;
   color: rgb(174, 238, 79);
+  padding-top: 3px;
 }
 
 .fa-sort-down {
   width: 30px;
   height: 30px;
-  padding-top: 5px;
-  color: red;
-}
-.index-changes {
-  width: 40px;
-  height: 30px;
-}
-
-.index-price {
-  width: 40px;
-  height: 30px;
+  color: rgb(211, 17, 17);
+  vertical-align: top;
 }

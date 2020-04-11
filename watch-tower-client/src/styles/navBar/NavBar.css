@@ -67,7 +67,8 @@
   width: 240px;
   background-color: #3677a8;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
+  z-index: 1;
 }
 
 .drop-down-links {

@@ -15,6 +15,8 @@
     Apollo Client
     MongoDB
     Node JS
+    Docker
+    Heroku Container
     Express
     yahoo-finance API
     news API
