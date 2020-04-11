@@ -15,11 +15,16 @@ export default ({ watchListItem }) => {
     }
   )
 
+  function handleUpdate() {
+    updateWatchListItem();
+    window.location.reload();
+  }
+
   return (
     <form 
       onSubmit={(e) => {
         e.preventDefault();
-        updateWatchListItem();
+        handleUpdate();
       }}
       className="watch-list-add-shares"
       >
