@@ -5,7 +5,7 @@ import IndexListItem from './IndexListItem';
 
 export default () => {
   // Select top five indexes to display
-  const indexSymbols = [".DJI", ".IXIC", ".INX", "%5EPSE", "%5EXAU"];
+  const indexSymbols = [".DJI", ".IXIC", ".INX", "%5ERUI", "%5EIXCO", "%5EXAU"];
   const [indexes, setIndexes] = useState([]);
 
   async function fetchMarketQuotes() {
