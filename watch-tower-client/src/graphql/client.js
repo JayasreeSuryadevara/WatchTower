@@ -21,9 +21,12 @@ const createClient = async () => {
     }
     if (networkError) console.log("\x1b[31m%s\x1b[0m", "[Network error]:", networkError);
   });
-
+ let uri = "/graphql"
+ if (process.env.NODE_ENV !== "production"){
+   uri = "http://localhost:5000/graphql"
+ }
   const httpLink = new HttpLink({
-    uri: 'https://watch-tower-1.herokuapp.com/',
+    uri: uri,
     headers: {
       authorization: localStorage.getItem('token')
     }
