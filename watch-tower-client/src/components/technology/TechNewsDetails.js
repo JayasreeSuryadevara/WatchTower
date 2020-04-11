@@ -3,7 +3,7 @@ import { currentNews } from '../util/CurrentNews';
 import { technologyNews } from '../util/CurrentNews';
 import TechNewsDetailsItem from './TechNewsDetailsItem';
 import { Link } from 'react-router-dom';
-import '../../styles/news/NewsDetails.css';
+import '../../styles/news/newsDetails.css';
 
 export default () => {
   const [allTechnologyNews, setTechnologyNews] = useState([]);

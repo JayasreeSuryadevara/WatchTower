@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import RemoveFromListBtn from './RemoveFromListBtn';
 import UpdateButton from './UpdateButton';
 import { COMPANY_BY_STOCK_ID } from '../../graphql/queries';
-import fetchStockData from '../util/fetch-stock-resolver';
+import fetchStockData from '../util/StockQuotes';
 
 const WatchListItem = ({ watchListItem }) => {
 
@@ -22,12 +22,13 @@ const WatchListItem = ({ watchListItem }) => {
     async function fetchData() {
       setIsLoading(true)
       const response = await fetchStockData(ticker)
-      setPriceData(response)
+      setPriceData(response[0])
       setIsLoading(false)
     }
     fetchData()
   }, []);
 
+  console.log("PriceData", priceData)
   const { data, loading, error } = useQuery(
     COMPANY_BY_STOCK_ID,
     {
@@ -63,15 +64,17 @@ const WatchListItem = ({ watchListItem }) => {
   let chg;
   let chgP;
   const addPrice = formatter.format(listItem.addPrice * listItem.noOfShares)
-  const currentPrice = priceData.currentPrice * listItem.noOfShares;
+  const currentPrice = priceData.price * listItem.noOfShares;
   chg = listItem.addPrice - currentPrice;
   const formattedChg = formatter.format(chg);
   chgP = (chg / listItem.addPrice).toFixed(2);
   const formattedChgP = chgP.toLocaleString();
   const volume = priceData.volume;
+  const avgVolume = priceData.avgVolume;
   const dayHigh = priceData.dayHigh;
   const dayLow = priceData.dayLow;
   const formattedVolume = nf.format(volume);
+  const formattedAvgVolume = nf.format(avgVolume);
   const formattedLow = nf.format(dayLow);
   const formattedHigh = nf.format(dayHigh);
 
@@ -102,8 +105,14 @@ const WatchListItem = ({ watchListItem }) => {
             </div>
           </div>
           <div className="watch-list-item-vol">
+            <div>
             <p className="result-headers">VOLUME</p>
             <p className="results">{formattedVolume}</p>
+            </div>
+            <div>
+            <p className="result-headers">AVG VOLUME</p>
+            <p className="results">{formattedAvgVolume}</p>
+            </div>
           </div>
           <div className="watch-list-item-range">
             <p className="result-headers">DAY RANGE</p>

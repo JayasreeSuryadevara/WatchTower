@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ADD_WATCH_LIST_ITEM } from '../../graphql/mutations';
 import { useMutation } from '@apollo/react-hooks';
 import { CURRENT_USER } from '../../graphql/queries';
-import fetchStockData from '../util/fetch-stock-resolver';
+import fetchStockData from '../util/StockQuotes';
 
 export default () => {
 
@@ -22,7 +22,7 @@ export default () => {
     console.log("ticker", ticker);
     const stockData = await fetchStockData(ticker);
     console.log("stockData", stockData);
-    setCurrentPrice(parseInt(stockData.currentPrice));
+    setCurrentPrice(parseInt(stockData[0].price));
     addWatchListItem();
   }
 

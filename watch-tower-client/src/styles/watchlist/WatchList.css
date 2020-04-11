@@ -174,7 +174,7 @@
 }
 .watch-list-item-vol {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border-right: solid 1px #e1e1e1;
   justify-content: space-around;
   width: 28%;
