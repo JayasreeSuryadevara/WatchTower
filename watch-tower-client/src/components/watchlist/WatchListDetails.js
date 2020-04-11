@@ -27,7 +27,7 @@ const WatchListDetails = () => {
       <div>
         <ul className="watch-list-items">
           {user.watchList && user.watchList.map(watchListItem => (
-            // <Link to={`/ticker/${watchListItem.stock._id}`}>
+            // <Link to={`/ticker/${watchListItem.stock.ticker}`}>
               <WatchListItem watchListItem={watchListItem} key={watchListItem._id}/>
             // </Link>
           ))}

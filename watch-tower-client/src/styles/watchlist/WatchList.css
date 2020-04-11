@@ -199,13 +199,21 @@
   text-align: center;
 }
 
-/* .change {
-  color: green;
+.change-red {
+  padding-top: 7px;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  color: red;
 }
 
-.change:negative {
-  color: red;
-} */
+.change-green {
+  padding-top: 7px;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  color: green;
+}
 
 .watch-list-remove {
   display: block;
