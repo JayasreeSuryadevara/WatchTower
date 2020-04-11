@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { CURRENT_USER } from '../../graphql/queries';
 import WatchListItem from './WatchListItem';
 import AddToWatchListBtn from './AddToWatchListBtn';
+// import { Link } from 'react-router-dom';
 
 const WatchListDetails = () => {
   const { data, loading, error } = useQuery(
@@ -26,7 +27,9 @@ const WatchListDetails = () => {
       <div>
         <ul className="watch-list-items">
           {user.watchList && user.watchList.map(watchListItem => (
+            // <Link to={`/ticker/${watchListItem.stock._id}`}>
               <WatchListItem watchListItem={watchListItem} key={watchListItem._id}/>
+            // </Link>
           ))}
         </ul>
       </div>
