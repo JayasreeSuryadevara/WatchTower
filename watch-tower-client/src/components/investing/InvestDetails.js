@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from '@apollo/react-hooks';
 import { ALL_STOCKS } from '../../graphql/queries';
-import stockQuotes from '../util/StockQuotes';
-import marketQuotes from '../util/MarketQuotes';
+// import stockQuotes from '../util/StockQuotes';
+// import marketQuotes from '../util/MarketQuotes';
 
 
 export default () => {
