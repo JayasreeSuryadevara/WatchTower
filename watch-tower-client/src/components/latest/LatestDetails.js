@@ -26,7 +26,8 @@ export default () => {
     fetchData()
   }, []);
 
-  const items = allHeadlineNews.map(article => {
+
+  const items = allHeadlineNews.slice(0, 14).map(article => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
     return (
@@ -54,7 +55,7 @@ export default () => {
             const ticker = stock.ticker;
             const price = stock.price;
             return <div key={i}>
-              <Link to={`/ticker/${stock.companyName}`} className="tech-news-stock">
+              <Link to={`/ticker/${stock.companyName}`} className="tech-news-stock" name={stock.companyName} ticker={ticker}>
                 <p className="tech-news-stock-ticker">{ticker}</p>
                 <p>{formatter.format(price)}</p>
                 {stock.changes > 0

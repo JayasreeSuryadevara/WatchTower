@@ -53,7 +53,7 @@ const WatchListItem = ({ watchListItem }) => {
 
 
   return isLoading ? <div>Loading</div> : (
-    <Link to={`/ticker/${priceData.name}`}>
+    <Link to={`/ticker/${priceData.name}`} name={priceData.name} ticker={ticker}>
       <div className="watch-list-item-indiv">
         <section className="indiv-main">
           <div className="indiv-main-top">

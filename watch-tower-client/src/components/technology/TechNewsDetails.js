@@ -47,7 +47,7 @@ export default () => {
     <div>
       <div className="tech-news-page-title">Technology News</div>
       <div className="tech-news-page-home">
-        <Link to="/" className="tech-news-page-home-link">Home ></Link> Technology
+        <Link to="/" className="tech-news-page-home-link" name={techStockData.name} ticker={techStockData.symbol}>Home ></Link> Technology
       </div>
       <div className="tech-news-stock-info-panel">
         <ul className="tech-news-stock-list">
