@@ -20,7 +20,7 @@ export default () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetchStockData("CSCO, NFLX, ZM, AMZN, HPE, GOOGL")
+      const response = await fetchStockData("CSCO, NFLX, ZM, AMZN, GOOGL")
       setTechStockData(response)
     }
     fetchData()
@@ -58,6 +58,10 @@ export default () => {
               {/* <Link to={`/ticker/${stock.symbol}`}> */}
                 <p className="tech-news-stock-ticker">{ticker}</p>
                 <p>{formatter.format(price)}</p>
+                {stock.change > 0
+                ? <p><i className="fas fa-caret-up fa-2x"></i></p>
+                : <p><i className="fas fa-caret-down fa-2x"></i></p>
+                }
               {/* </Link> */}
             </div>
           })}

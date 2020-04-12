@@ -59,8 +59,8 @@ const WatchListItem = ({ watchListItem }) => {
   const dayLow = priceData.dayLow;
   const formattedVolume = nf.format(volume);
   const formattedAvgVolume = nf.format(avgVolume);
-  const formattedLow = nf.format(dayLow);
-  const formattedHigh = nf.format(dayHigh);
+  const formattedLow = formatter.format(dayLow);
+  const formattedHigh = formatter.format(dayHigh);
 
 
   return isLoading ? <div>Loading</div> : (

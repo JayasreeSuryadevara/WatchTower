@@ -30,7 +30,7 @@ export default ({ watchListItem }) => {
       >
       <input
         type="number"
-        placeholder="+ CHANGE HOLDINGS"
+        placeholder="+/- CHANGE HOLDINGS"
         onChange={e => setNoOfShares(e.currentTarget.value)}
       />
     </form>

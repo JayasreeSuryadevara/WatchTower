@@ -88,7 +88,7 @@
   flex-direction: row;
   box-sizing: border-box;
   border: solid 1px #e1e1e1;
-  width: 620px;
+  width: 640px;
   height: 98px;
   margin-left: 0px;
   margin-top: 15px;
@@ -134,16 +134,18 @@
 }
 
 .watch-list-add-shares {
-  margin-right: 10px;
+  margin-right: 50px;
+  padding-right: 20px;
 }
 
 .watch-list-add-shares input {
   display: flex;
   box-sizing: border-box;
   border: solid 1px #e1e1e1;
-  width: 120px;
+  width: 130px;
   font-size: 12px;
   text-align: center;
+  padding-left: 10px;
 }
 .watch-list-add-shares ::placeholder {
   font-size: 9px;
@@ -233,7 +235,7 @@
   font-size: 10px;
   transform: rotate(-90deg);
   top: 38px;
-  right: -25px;
+  right: -43px;
 }
 /* ---------------NEWS----------------- */
 .watch-list-news {
