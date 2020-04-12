@@ -9,6 +9,10 @@ export default () => {
   const [ticker, setTicker] = useState("");
   const [currentPrice, setCurrentPrice] = useState(0);
 
+  const toInputUppercase = e => {
+    e.target.value = ("" + e.target.value).toUpperCase();
+  }
+
   // useEffect(() => {
   //    return {}
   // }, []);
@@ -24,7 +28,7 @@ export default () => {
 
   async function handleAdd() {
     const stockData = await fetchStockData(ticker);
-    setCurrentPrice(parseInt(stockData[0].price));
+    setCurrentPrice(stockData[0].price);
     addWatchListItem();
     window.location.reload();
   }
@@ -42,6 +46,7 @@ export default () => {
         type="text"
         placeholder="+ ADD SYMBOL"
         onChange={e => setTicker(e.currentTarget.value)}
+        onInput={toInputUppercase}
       />
       <i className="fas fa-search"></i>
     </form>
