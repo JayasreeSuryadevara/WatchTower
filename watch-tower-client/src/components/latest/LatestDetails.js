@@ -1,38 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { principlesInvestingNews } from '../util/CurrentNews';
-import InvestDetailsItem from './InvestDetailsItem';
+import { headlineNews } from '../util/CurrentNews';
+import LatestDetailsItem from './LatestDetailsItem';
 import { Link } from 'react-router-dom';
 import '../../styles/news/NewsDetails.css';
-import {dayActives} from '../util/MoversQuotes';
+import { dayGainers } from '../util/MoversQuotes';
 
 export default () => {
-  const [allPrinciplesNews, setPrinciplesNews] = useState([]);
+  const [allHeadlineNews, setHeadlineNews] = useState([]);
   const [stockData, setStockData] = useState([]);
 
-  async function fetchPrinciplesNews() {
-    const news = await principlesInvestingNews()
-    setPrinciplesNews(news)
+  async function fetchHeadlineNews() {
+    const news = await headlineNews()
+    setHeadlineNews(news)
   }
 
   useEffect(() => {
-    fetchPrinciplesNews()
+    fetchHeadlineNews()
   }, [])
 
   useEffect(() => {
     async function fetchData() {
-      const response = await dayActives()
-      setStockData(response.mostActiveStock.slice(0, 5))
+      const response = await dayGainers()
+      setStockData(response.mostGainerStock.slice(0, 5))
     }
     fetchData()
   }, []);
 
-  const items = allPrinciplesNews.slice(0, 14).map(article => {
+  const items = allHeadlineNews.slice(0, 14).map(article => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
     return (
-      <InvestDetailsItem title={article.title} description={article.description}
+      <LatestDetailsItem title={article.title} description={article.description}
         author={article.author} url={article.url} urlToImage={article.urlToImage}
-        publishedAt={date} time={time} key={allPrinciplesNews.indexOf(article)} />
+        publishedAt={date} time={time} key={allHeadlineNews.indexOf(article)} />
     )
   })
 
@@ -43,12 +43,12 @@ export default () => {
 
   return (
     <div>
-      <div className="tech-news-page-title">Investing</div>
+      <div className="tech-news-page-title">Latest Headlines</div>
       <div className="tech-news-page-home">
-        <Link to="/" className="tech-news-page-home-link">Home ></Link> Investing
+        <Link to="/" className="tech-news-page-home-link">Home ></Link> Latest
       </div>
       <div className="tech-news-stock-info-panel">
-        <h2 className="most-active-today-title">Today's most active stocks</h2>
+        <h2 className="most-active-today-title">Today's top gainers</h2>
         <ul className="tech-news-stock-list">
           {stockData.map((stock, i) => {
             const ticker = stock.ticker;
@@ -68,7 +68,7 @@ export default () => {
       </div>
       <div className="tech-news-newsviewer">
         <div className="newsviewer-header">
-          <h2>PRINCIPLES OF INVESTING</h2>
+          <h2>LATEST HEADLINES</h2>
           <div className="principles-bar">  </div>
         </div>
         <div>
