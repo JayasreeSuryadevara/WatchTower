@@ -75,7 +75,7 @@
   display: block;
 }
 
-li {
+.link-item {
   height: 30px;
   width: 200px;
   padding: 20px;
