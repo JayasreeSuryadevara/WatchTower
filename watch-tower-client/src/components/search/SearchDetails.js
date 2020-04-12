@@ -2,40 +2,85 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/search/SearchBar.css';
 
-const SearchDetails = (props) => {
+const SearchDetails = () => {
 
+    const tickers = [
+        "AMZN",
+        "EBAY",
+        "AAPL",
+        "GOOGL",
+        "MSFT",
+        "AMD",
+        "FB",
+        "PYPL",
+        "CSCO",
+        "INTC",
+        "DAL",
+        "HPE",
+        "KLAC",
+        "NVDA",
+        "NFLX",
+        "ORCL",
+        "QCLM",
+        "TXN",
+        "IBM",
+        "ROKU",
+        "MMM",
+        "GE",
+        "XRX",
+        "BAC",
+        "AXP",
+        "CAT",
+        "PG",
+        "KO",
+        "JNJ",
+        "C",
+        "ABT",
+        "T",
+        "VZ",
+        "CLX",
+        "PFE",
+        "JPM",
+        "WFC",
+        "HRL",
+        "GM",
+        "SBUX",
+        "KMTUY"
+    ]
     let [searchList, setSearchList] = useState([]);
 
     const handleInputChange = (e) => {
         let currentList = [];
 
+        console.log("test")
         // If search bar is not empty return all items from 
         // the current list which include search string
         if (e.target.value !== "") {
-            currentList = props.list;
+            currentList = tickers;
 
             searchList = currentList.filter(item => {
                 const lc = item.toLowerCase();
                 const filter = e.target.value.toLowerCase();
                 return lc.includes(filter);
             });
+            console.log("searchList", searchList)
         } else {
-            // If the search bar is empty, set newList to original task list
-            setSearchList(props.list);
+            // If the search bar is empty, set newList to original tickers list
+            setSearchList(tickers);
         }
         // Set the filtered state based on what our rules added to newList
         setSearchList(searchList)
 
     }
 
-    const getLink = (listItem) => {
-        const searchStrWords = listItem.split(" ");
-        let route = ""
-        route = searchStrWords.map(word => {
-            return route += "/" + word.toLowerCase();
-        })
-        return <Link to={route[1]} >{listItem.toString()}</Link>;
-    }
+    // const getLink = (listItem) => {
+    //     const searchStrWords = listItem.split(" ");
+    //     let route = ""
+    //     route = searchStrWords.map(word => {
+    //         return route += "/" + word.toLowerCase();
+    //     })
+    //     return <Link to={route[1]} >{listItem.toString()}</Link>;
+    // }
 
     return (
         <div className="search-bar-main">
@@ -61,9 +106,10 @@ const SearchDetails = (props) => {
                 <>
                     <p className="search-listings">Listings</p>
                     <ul className="search-link-list">
-                        {searchList.map(item => (
-                            <li key={item._id}>
-                                {getLink(item)}
+                        {searchList.map((item,i) => (
+                            <li key={i}>
+                                {item.toString()}
+                                {/* {getLink(item)} */}
                             </li>
                         ))}
                     </ul>
