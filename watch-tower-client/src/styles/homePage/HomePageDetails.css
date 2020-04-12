@@ -45,8 +45,6 @@
 }
 
 .graph-container {
-  display: flex;
-  justify-content: flex-start;
   width: 800;
   height: 200px;
   border: 1px solid rgba(199, 199, 199, 0.918);

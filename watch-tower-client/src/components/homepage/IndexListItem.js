@@ -3,7 +3,6 @@ import '../../styles/homePage/MarketIndexPanel.css';
 
 const IndexListItem = (props) => {
   const index = props.index;
-  console.log("props",props);
   return (
     <div className="index-list-item">
       <p className="index-name">{index["indexName"]}</p>

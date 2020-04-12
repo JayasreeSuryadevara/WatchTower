@@ -1,0 +1,6 @@
+.main-panel {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  width: 800px;
+}

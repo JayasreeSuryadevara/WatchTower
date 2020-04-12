@@ -1,32 +1,29 @@
-// import React, { useEffect, useState } from "react";
-// import moversQuotes from '../util/MoversQuotes';
-// import MoversListItem from './MoversListItem';
-// import '../../styles/homePage/MarketMoversPanel.css';
+import React, { useEffect, useState } from "react";
+import { dayActives } from '../util/MoversQuotes';
+import MoversListItem from './MoversListItem';
+import '../../styles/homePage/MarketMoversPanel.css';
 
-// export default () => {
-//   // Select top five indexes to display
-//   const indexSymbols = [".DJI", ".IXIC", ".INX", "%5ERUI", "%5EIXCO", "%5EXAU"];
-//   const [indexes, setIndexes] = useState([]);
+export default () => {
+  // Select top five indexes to display
+   const [actives, setActives] = useState([]);
 
-//   async function fetchMarketQuotes() {
-//     const market = await marketQuotes()
+  async function fetchActivesQuotes() {
+    const market = await dayActives()
 
-//     const filteredIndexes = await market["majorIndexesList"].filter(item => indexSymbols.includes(item["ticker"]))
+    setActives(market["mostActiveStock"].slice(0,6));
+  }
 
-//     setIndexes(filteredIndexes);
-//   }
+  useEffect(() => {
+    fetchActivesQuotes()
+  }, [])
 
-//   useEffect(() => {
-//     fetchMarketQuotes()
-//   }, [])
-
-//   return (
-//     <div className="market-index-container">
-//       <ul className="market-index-list">
-//         {indexes && indexes.map((index, i) => (
-//           <IndexListItem index={index} key={i} />
-//         ))}
-//       </ul>
-//     </div>
-//   )
-// }
+  return (
+    <div className="active-index-container">
+      <ul className="active-index-list">
+        {actives && actives.map((active, i) => (
+          <MoversListItem active={active} key={i*3} />
+        ))}
+      </ul>
+    </div>
+  )
+}
