@@ -14,7 +14,6 @@ export default async function (stocks) {
     .then(
       (data) => {
         if (data) {
-          console.log("data", data)
           // Read into the data to get all the fields you need using the index
           // const quotes = stockArr.map((ticker,i) => {
           //   console.log("symbol", data[i]["symbol"])

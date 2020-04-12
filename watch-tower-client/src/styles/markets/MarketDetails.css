@@ -8,5 +8,18 @@
   padding: 10px;
   background-color: #eee;
   font-size: 20px;
-  color: 
+}
+
+.gainers-title {
+  height: 40px;
+  padding: 10px;
+  background-color: #eee;
+  font-size: 20px;
+}
+
+.losers-title {
+  height: 40px;
+  padding: 10px;
+  background-color: #eee;
+  font-size: 20px;
 }

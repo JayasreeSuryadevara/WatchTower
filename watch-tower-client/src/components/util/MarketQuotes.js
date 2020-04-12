@@ -33,7 +33,6 @@ export default async function () {
     .then(
       (data) => {
         if (data) {
-          console.log("data", data)
           return data;
         } else {
           return null
