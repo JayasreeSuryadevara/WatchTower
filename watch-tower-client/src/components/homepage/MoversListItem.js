@@ -3,7 +3,6 @@ import '../../styles/homePage/MarketMoversPanel.css';
 
 const MoversListItem = (props) => {
   const active = props.active;
-  console.log("props", props);
   let changePercent = active["changesPercentage"];
   changePercent = changePercent.slice(1,changePercent.length-1);
   return (

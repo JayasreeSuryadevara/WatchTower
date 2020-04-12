@@ -28,7 +28,7 @@ export default () => {
                     <Link to="/news"><p>Latest</p></Link>
                     <Link to="/watchlist"><p>Watchlist</p></Link>
                     <Link to="/technology"><p>Techology</p></Link>
-                    <p>Markets</p>
+                    <Link to="/markets"><p>Markets</p></Link>
                     <Link to="/investing"><p>Investing</p></Link>
                 </div>
                 <div className="nav-bar-session-links">

@@ -16,6 +16,7 @@ import NewsPage from './pages/news/NewsPage';
 import TickerPage from './pages/ticker/TickerPage';
 
 import InvestPage from './pages/investing/InvestPage';
+import MarketsPage from './pages/markets/MarketsPage';
 import TechNewsPage from './pages/technology/TechNewsPage';
 
 
@@ -39,7 +40,7 @@ export default () => {
         {/* add companyName and tickerId to path once queries are working */}
 
         <Route exact path="/investing" component={InvestPage} />
-
+        <Route exact path="/markets" component={MarketsPage} />
         <Route exact path="/technology" component={TechNewsPage} />
         <Route path="/" component={ErrorPage} />
       </Switch>
