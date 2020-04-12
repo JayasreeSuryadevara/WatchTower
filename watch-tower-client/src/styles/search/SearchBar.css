@@ -32,8 +32,9 @@
 }
 .search-link-list li {
     background-color: black;
-    height: 60px;
-    font-size: 24px;
+    color: white;
+    height: 20px;
+    font-size: 14px;
     width: 100%;
 }
 
