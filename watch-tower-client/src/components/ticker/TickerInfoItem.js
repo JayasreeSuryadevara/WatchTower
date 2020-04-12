@@ -2,23 +2,22 @@ import React from 'react';
 import '../../styles/ticker/TickerInfoItem.css';
 
 const TickerInfoItem = (props) => {
+  const formatter = new Intl.NumberFormat('en-Us')
+
   return (
     <div className="ti-main-page">
       <div className="ti-data-container">
         <div className="ti-price-container">
-          <span>$123.45</span>
+          <p>{props.open}</p>
         </div>
         <div className="ti-volume-container">
-          <span>1.1M</span>
+          <p className="vol-title">After Hours Volume:</p>
+          {props.volume ? 
+            <p className="vol-val">{formatter.format(props.volume)}</p> : null}
         </div>
-        <div className="ti-sector-container">
-          <span>Close</span>
-          <span>Technology</span>
-        </div>
-        <div className="close-data-container">
-          <span>$267.99</span>
-          <span>1.92</span>
-          <span>0.72</span>
+        <div className="ti-close-container">
+          <span className="vol-title">Close Price</span>
+          <p className="vol-val">{props.close}</p>
         </div>
       </div>
     </div>
