@@ -26,7 +26,7 @@ export default () => {
     fetchData()
   }, []);
 
-  const items = allHeadlineNews.slice(0, 14).map(article => {
+  const items = allHeadlineNews.map(article => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
     return (
