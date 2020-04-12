@@ -54,15 +54,15 @@ export default () => {
           {techStockData.map((stock, i) => {
             const ticker = stock.symbol;
             const price = stock.price;
-            return <div key={i} className="tech-news-stock">
-              {/* <Link to={`/ticker/${stock.symbol}`}> */}
+            return <div key={i}>
+              <Link to={`/ticker/${stock.name}/${stock.symbol}`} className="tech-news-stock">
                 <p className="tech-news-stock-ticker">{ticker}</p>
                 <p>{formatter.format(price)}</p>
                 {stock.change > 0
                 ? <p><i className="fas fa-caret-up fa-2x"></i></p>
                 : <p><i className="fas fa-caret-down fa-2x"></i></p>
                 }
-              {/* </Link> */}
+              </Link>
             </div>
           })}
         </ul>

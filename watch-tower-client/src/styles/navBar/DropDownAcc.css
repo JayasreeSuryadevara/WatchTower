@@ -14,14 +14,15 @@
   display: none;
   position: absolute;
   height: fit-content;
-  width: 161px;
-  min-width: 161px;
+  width: 100px;
+  min-width: 100px;
   background-color: #fff;
   color: #202020;
   padding: 10px;
   border: 1px solid #e1e1e1;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  right: -50px;
 }
 
 .acc-drop-down-main:hover .acc-drop-down {
