@@ -27,10 +27,14 @@ export default () => {
   )
 
   async function handleAdd() {
+    try {
     const stockData = await fetchStockData(ticker);
     setCurrentPrice(stockData[0].price);
     addWatchListItem();
     window.location.reload();
+    } catch(err) {
+      alert("That stock doesn't seem to be trading.  Try another symbol!");
+    }
   }
 
 
