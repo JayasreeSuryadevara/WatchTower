@@ -10,3 +10,23 @@
   color: #202020;
   letter-spacing: -.025em
 }
+
+.ti-volume-container {
+  display: flex;
+}
+
+.ti-close-container {
+  display: flex;
+}
+
+.vol-title {
+  font: 700 .92857rem;
+  font-family: sans-serif;
+  padding-bottom: 5px;
+}
+
+.vol-val {
+  color: #3677a8;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}

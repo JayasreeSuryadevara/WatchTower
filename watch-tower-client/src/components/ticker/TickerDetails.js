@@ -18,14 +18,8 @@ export default () => {
   }
 
   async function fetchStockInfo() {
-    const info = await stockQuote("TSLA") 
-    const x = info[0];
-    if (x) {
-      return (
-        console.log(info[0]["name"])
-      )
-    } 
-    setStockInfo(info)
+    const data = await stockQuote("TSLA") 
+    setStockInfo(data[0])
   }
 
   useEffect(() => {
@@ -47,7 +41,8 @@ export default () => {
     <div className="main-ticker-page">
       <div className="ticker-graph-container">
         <div className="ticker-price-item">
-          <TickerInfoItem/>
+          <TickerInfoItem open={stockInfo.open} volume={stockInfo.volume}
+            close={stockInfo.previousClose}/>
         </div>
         <div className="ticker-graph-item">
           <span>Graph info</span>
@@ -68,7 +63,12 @@ export default () => {
         <div className="kd-item-container">
           <div className="key-data-item">
             <div className="ticker-key-data">
-              <KeyDataItem/>
+              <KeyDataItem open={stockInfo.open} dayHigh={stockInfo.dayHigh} 
+              dayLow={stockInfo.dayLow} yearHigh={stockInfo.yearHigh} 
+              yearLow={stockInfo.yearLow} marketCap={stockInfo.marketCap} 
+              eps={stockInfo.eps} avgVolume={stockInfo.volume} 
+              sharesOutstanding={stockInfo.sharesOutstanding}pe={stockInfo.pe} 
+              avgVolume={stockInfo.avgVolume}/> 
             </div>
             <div className="ticker-performance">
               <PerformanceDataItem/>
