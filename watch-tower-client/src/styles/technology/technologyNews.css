@@ -34,6 +34,11 @@
   padding: 10px;
 }
 
+.most-active-today-title {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
 .tech-news-stock {
   display: flex;
   flex-direction: row;
@@ -74,7 +79,13 @@
   display: flex;
   width: 75%;
   height: 21px;
-  /* background-image: linear-gradient(to right, #f8f8f8 , white); */
+  background-color: #f8f8f8;
+}
+
+.principles-bar {
+  display: flex;
+  width: 50%;
+  height: 21px;
   background-color: #f8f8f8;
 }
 

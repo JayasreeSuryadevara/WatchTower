@@ -1,48 +1,85 @@
-import React from "react";
-import { useQuery } from '@apollo/react-hooks';
-import { ALL_STOCKS } from '../../graphql/queries';
-// import stockQuotes from '../util/StockQuotes';
-// import marketQuotes from '../util/MarketQuotes';
-
+import React, { useEffect, useState } from "react";
+import { principlesInvestingNews } from '../util/CurrentNews';
+import InvestDetailsItem from './InvestDetailsItem';
+import { Link } from 'react-router-dom';
+import '../../styles/news/NewsDetails.css';
+import {dayActives} from '../util/MoversQuotes';
 
 export default () => {
-  const {data,loading, error} = useQuery(ALL_STOCKS);
-  
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-  if(!data) return <p> Not Found </p>;
-  // let tickerStr = data.map(stock => {
-  //   tickerStr += stock.ticker;
-  //   return tickerStr;
-  // })
-  const tickerStr= "AAPL,MSFT,C,MMM";
-  function handleQuote() {
-    // const stocks = stockQuotes(tickerStr).then((response) => console.log(response));
-    const indexSymbols = [".DJI", ".IXIC", ".INX", "%5EPSE", "%5EXAU"];
-    // const indexes = marketQuotes()
-    //   .then((res) => {
-    //     const newindexes = res["majorIndexesList"].filter((item, i) => 
-    //       indexSymbols.includes(item["ticker"])
-    //     )
-    //     return newindexes;
-    //   })
+  const [allPrinciplesNews, setPrinciplesNews] = useState([]);
+  const [stockData, setStockData] = useState([]);
+
+  async function fetchPrinciplesNews() {
+    const news = await principlesInvestingNews()
+    setPrinciplesNews(news)
   }
-  // const displayList = indexes.map(index => {
-  //   return <li key={index["ticker"]}>
-  //     <p>Ticker: {index["ticker"]}</p>
-  //     <p>Changes: {index["changes"]}</p>
-  //     <p>Price: {index["price"]}</p>
-  //     <p>Name: {index["indexName"]}</p>
-  //   </li>
-  // })
+
+  useEffect(() => {
+    fetchPrinciplesNews()
+  }, [])
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await dayActives()
+      console.log("response", response.mostActiveStock)
+      setStockData(response.mostActiveStock.slice(0, 5))
+      console.log("stockData",stockData)
+    }
+    fetchData()
+  }, []);
+
+  const items = allPrinciplesNews.slice(0, 14).map(article => {
+    const date = article.publishedAt.slice(0, 10);
+    const time = article.publishedAt.slice(11, 16);
+    return (
+      <InvestDetailsItem title={article.title} description={article.description}
+        author={article.author} url={article.url} urlToImage={article.urlToImage}
+        publishedAt={date} time={time} key={allPrinciplesNews.indexOf(article)} />
+    )
+  })
+
+  const formatter = new Intl.NumberFormat('en-Us', {
+    style: 'currency',
+    currency: 'USD'
+  });
 
   return (
-    <>
-      <h2> Some Quote</h2>
-      <button onClick={handleQuote}>Quote</button>
-      {/* <Panel /> */}
-    </>
+    <div>
+      <div className="tech-news-page-title">Investing</div>
+      <div className="tech-news-page-home">
+        <Link to="/" className="tech-news-page-home-link">Home ></Link> Investing
+      </div>
+      <div className="tech-news-stock-info-panel">
+        <h2 className="most-active-today-title">Today's most active stocks</h2>
+        <ul className="tech-news-stock-list">
+          {stockData.map((stock, i) => {
+            const ticker = stock.ticker;
+            const price = stock.price;
+            return <div key={i}>
+              <Link to={`/ticker/${stock.companyName}/${stock.ticker}`} className="tech-news-stock">
+                <p className="tech-news-stock-ticker">{ticker}</p>
+                <p>{formatter.format(price)}</p>
+                {stock.changes > 0
+                  ? <p><i className="fas fa-caret-up fa-2x"></i></p>
+                  : <p><i className="fas fa-caret-down fa-2x"></i></p>
+                }
+              </Link>
+            </div>
+          })}
+        </ul>
+      </div>
+      <div className="tech-news-newsviewer">
+        <div className="newsviewer-header">
+          <h2>PRINCIPLES OF INVESTING</h2>
+          <div className="principles-bar">  </div>
+        </div>
+        <div>
+          <p className="newsviewer-real-time">Real-time updates from WatchTower</p>
+        </div>
+      </div>
+      <ul>
+        {items}
+      </ul>
+    </div>
   )
-
-  
 }

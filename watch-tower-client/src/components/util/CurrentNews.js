@@ -28,3 +28,10 @@ export function technologyNews() {
     axios.get(url).then(res => res.data.articles)
   )
 }
+
+export function principlesInvestingNews() {
+  const url = `https://newsapi.org/v2/everything?q="investing principles"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey=${newsKey}`
+  return (
+    axios.get(url).then(res => res.data.articles)
+  )
+}
