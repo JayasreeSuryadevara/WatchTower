@@ -9,19 +9,22 @@ import TickerInfoItem from '../ticker/TickerInfoItem';
 import stockQuote from '../util/StockQuotes';
 import MoversDetails from '../homepage/MarketMoversPanel';
 
-export default () => {
+export default (props) => {
+  const name = props.name
+  const ticker = props.ticker
   const [allCompanyNews, setCompanyNews] = useState([]);
   const [stockInfo, setStockInfo] = useState({});
 
   async function fetchCompanyNews() {
-    const news = await companyNews("tesla") 
+    const news = await companyNews(name) 
     setCompanyNews(news)
   }
 
   async function fetchStockInfo() {
-    const data = await stockQuote("TSLA") 
+    const data = await stockQuote(ticker) 
     setStockInfo(data[0])
   }
+
 
   useEffect(() => {
     fetchCompanyNews()
@@ -30,6 +33,7 @@ export default () => {
   useEffect(() => {
     fetchStockInfo()
   }, [])
+
 
   const recentNews = allCompanyNews.map((article, idx) => {
     return (
@@ -63,20 +67,12 @@ export default () => {
       <div className="key-data-container">
         <div className="kd-item-container">
           <div className="key-data-item">
-            <div className="ticker-key-data">
               <KeyDataItem open={stockInfo.open} dayHigh={stockInfo.dayHigh} 
               dayLow={stockInfo.dayLow} yearHigh={stockInfo.yearHigh} 
               yearLow={stockInfo.yearLow} marketCap={stockInfo.marketCap} 
               eps={stockInfo.eps} avgVolume={stockInfo.volume} 
               sharesOutstanding={stockInfo.sharesOutstanding}pe={stockInfo.pe} 
               avgVolume={stockInfo.avgVolume}/> 
-            </div>
-            <div className="ticker-performance">
-              <PerformanceDataItem/>
-            </div>
-            <div className="ticker-watchlist">
-              <span>Watchlist</span>
-            </div>
           </div>
         </div>
       </div>

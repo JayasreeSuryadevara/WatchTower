@@ -6,10 +6,26 @@ const PerformanceDataItem = (props) => {
     <div className="p-main-page">
       <div className="p-container">
         <div className="p-time-container">
-          <span>5 Days</span>
+          <span>15 Minute</span>
         </div>
         <div className="p-time-value">
-          <span>100.1%</span>
+          <p>{props.quartHour}</p>
+        </div>
+      </div>
+      <div className="p-container">
+        <div className="p-time-container">
+          <span>30 Minute</span>
+        </div>
+        <div className="p-time-value">
+          <p>{props.halfHour}</p>
+        </div>
+      </div>
+      <div className="p-container">
+        <div className="p-time-container">
+          <span>1 Hour</span>
+        </div>
+        <div className="p-time-value">
+          <p>{props.hour}</p>
         </div>
       </div>
     </div>

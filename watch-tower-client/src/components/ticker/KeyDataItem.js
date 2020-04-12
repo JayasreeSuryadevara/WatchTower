@@ -5,7 +5,7 @@ const KeyDataItem = (props) => {
   const formatter = new Intl.NumberFormat('en-Us')
 
   return (
-    <div className="kd-main-contianer">
+    <div className="kd-main-container">
       <div className="data-container">
         <div className="kd-title-container">
           <span>Open</span>
