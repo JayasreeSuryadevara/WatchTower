@@ -30,11 +30,12 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, currentPrice, l
       await watchListItem.save();
       loggedInUser.watchList.addToSet(watchListItem._id)
     } else {
-      const newStock = Stock.addStock(ticker)
+      const newStock = await Stock.addStock(ticker)
+      console.log(newStock)
       const stock = newStock._id;
       const noOfShares = 1;
       const addPrice = currentPrice;
-      const watchListItem = new WatchListItem({ stock, addPrice, noOfShares });
+      const watchListItem = new WatchListItem({stock, addPrice, noOfShares});
       await watchListItem.save();
       loggedInUser.watchList.addToSet(watchListItem._id)
     }

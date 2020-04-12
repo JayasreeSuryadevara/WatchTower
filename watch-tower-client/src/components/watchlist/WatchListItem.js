@@ -9,10 +9,6 @@ const WatchListItem = ({ watchListItem }) => {
 
   const [ isLoading, setIsLoading ] = useState(false);
   const [ priceData, setPriceData] = useState({});
-  // const [ change, setChange ] = useState(0);
-  // const [ changePercent, setChangePercent ] = useState(0);
-
-  console.log(watchListItem);
 
   const stockId = watchListItem.stock._id;
   const stock = watchListItem.stock;
@@ -28,30 +24,18 @@ const WatchListItem = ({ watchListItem }) => {
     fetchData()
   }, []);
 
-  console.log("PriceData", priceData)
-  const { data, loading, error } = useQuery(
-    COMPANY_BY_STOCK_ID,
-    {
-      variables: { stockId: stockId }
-    }
-  );
-  if (loading) return <h1> Loading...</h1>
-  if (error) return <h1> Error </h1>
-  if (!data) return <h1> Not found </h1>
-
-  // useEffect(() => {
-  //   let value = document.getElementById("change").innerHTML
-  //   value = parseInt(value);
-  //   if (value < 0) {
-  //     // chg.style.color = "red";
-  //     value.style.color = "red"
-  //   } else {
-  //     value.style.color = "green"
-  //     // chg.style.color = "green";
+  // console.log("PriceData", priceData)
+  // const { data, loading, error } = useQuery(
+  //   COMPANY_BY_STOCK_ID,
+  //   {
+  //     variables: { stockId: stockId }
   //   }
-  // }, [])
+  // );
+  // if (loading) return <h1> Loading...</h1>
+  // if (error) return <h1> Error </h1>
+  // if (!data) return <h1> Not found </h1>
 
-  const company = data.companyByStockId;
+  // const company = data.companyByStockId;
   const listItem = watchListItem;
 
   const formatter = new Intl.NumberFormat('en-Us', {
@@ -85,7 +69,7 @@ const WatchListItem = ({ watchListItem }) => {
         <div className="indiv-main-top">
           <div className="watch-list-item-co-info">
             <p className="watch-list-ticker">{stock.ticker}</p>
-            <p className="watch-list-co-name">{company.name} (No. of shares: {watchListItem.noOfShares})</p>
+            <p className="watch-list-co-name">{priceData.name} (No. of shares: {watchListItem.noOfShares})</p>
           </div>
           <UpdateButton watchListItem={watchListItem}/>
         </div>
