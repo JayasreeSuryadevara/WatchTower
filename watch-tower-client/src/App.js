@@ -37,7 +37,7 @@ export default () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/search" component={SearchForm} />
 
-        <Route exact path="/ticker/" component={TickerPage} /> 
+        <Route exact path="/ticker" component={TickerPage} /> 
         {/* add companyName and tickerId to path once queries are working */}
 
         <Route exact path="/investing" component={InvestPage} />

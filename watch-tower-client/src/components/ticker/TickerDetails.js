@@ -7,26 +7,24 @@ import KeyDataItem from '../ticker/KeyDataItem';
 import PerformanceDataItem from '../ticker/PerformanceDataItem';
 import TickerInfoItem from '../ticker/TickerInfoItem';
 import stockQuote from '../util/StockQuotes';
+import MoversDetails from '../homepage/MarketMoversPanel';
 
-export default () => {
+export default (props) => {
+  const name = props.name
+  const ticker = props.ticker
   const [allCompanyNews, setCompanyNews] = useState([]);
   const [stockInfo, setStockInfo] = useState({});
 
   async function fetchCompanyNews() {
-    const news = await companyNews("tesla") 
+    const news = await companyNews(name) 
     setCompanyNews(news)
   }
 
   async function fetchStockInfo() {
-    const info = await stockQuote("TSLA") 
-    const x = info[0];
-    if (x) {
-      return (
-        console.log(info[0]["name"])
-      )
-    } 
-    setStockInfo(info)
+    const data = await stockQuote(ticker) 
+    setStockInfo(data[0])
   }
+
 
   useEffect(() => {
     fetchCompanyNews()
@@ -35,6 +33,7 @@ export default () => {
   useEffect(() => {
     fetchStockInfo()
   }, [])
+
 
   const recentNews = allCompanyNews.map((article, idx) => {
     return (
@@ -47,10 +46,11 @@ export default () => {
     <div className="main-ticker-page">
       <div className="ticker-graph-container">
         <div className="ticker-price-item">
-          <TickerInfoItem/>
+          <TickerInfoItem open={stockInfo.open} volume={stockInfo.volume}
+            close={stockInfo.previousClose}/>
         </div>
         <div className="ticker-graph-item">
-          <span>Graph info</span>
+          <MoversDetails />
         </div>
       </div>
       <div className="ticker-header-container">
@@ -67,15 +67,12 @@ export default () => {
       <div className="key-data-container">
         <div className="kd-item-container">
           <div className="key-data-item">
-            <div className="ticker-key-data">
-              <KeyDataItem/>
-            </div>
-            <div className="ticker-performance">
-              <PerformanceDataItem/>
-            </div>
-            <div className="ticker-watchlist">
-              <span>Watchlist</span>
-            </div>
+              <KeyDataItem open={stockInfo.open} dayHigh={stockInfo.dayHigh} 
+              dayLow={stockInfo.dayLow} yearHigh={stockInfo.yearHigh} 
+              yearLow={stockInfo.yearLow} marketCap={stockInfo.marketCap} 
+              eps={stockInfo.eps} avgVolume={stockInfo.volume} 
+              sharesOutstanding={stockInfo.sharesOutstanding}pe={stockInfo.pe} 
+              avgVolume={stockInfo.avgVolume}/> 
           </div>
         </div>
       </div>

@@ -14,12 +14,11 @@
 
 .ticker-price-item {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   border-top: solid black;
   border-bottom: solid black;
   width: 450px;
-  height: 350px;
-  margin-right: 10px;
+  height: 210px;
 }
 
 .ticker-graph-item {
@@ -28,7 +27,7 @@
   border-top: solid black;
   border-bottom: solid black;
   width: 550px;
-  height: 350px;
+  height: 210px;
   margin-left: 10px;
 }
 
@@ -62,35 +61,28 @@
 .kd-item-container {
   display: flex;
   justify-content: center;
-  border-left: 1px solid rgb(202, 202, 202);
+  /* border-left: 1px solid rgb(202, 202, 202);
   border-right: 1px solid rgb(202, 202, 202);
-  border-bottom: 1px solid rgb(202, 202, 202);
+  border-bottom: 1px solid rgb(202, 202, 202); */
   width: 1020px;
-  height: 700px;
+  height: 460px;
 }
 
 .key-data-item {
   display: flex;
   margin-top: 20px;
-  justify-content: space-around;
+  padding-left: 40px;
+  flex-wrap: wrap;
   width: 100%;
 
 }
 
-.ticker-key-data {
-  display: flex;
-  justify-content: center;
-  border: solid black;
-  width: 300px;
-  height: 650px;
-}
-
 .ticker-performance {
   display: flex;
-  justify-content: center;
-  border: solid black;
+  justify-content: start;
   width: 300px;
-  height: 650px;
+  height: 500px;
+  padding-left: 10px;
 }
 
 .ticker-watchlist {
@@ -98,7 +90,7 @@
   justify-content: center;
   border: solid black;
   width: 300px;
-  height: 650px;
+  height: 500px;
 }
 
 .recent-news-container {
