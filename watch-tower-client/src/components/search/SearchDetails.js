@@ -77,7 +77,7 @@ const SearchDetails = () => {
     //     const searchStrWords = listItem.split(" ");
     //     let route = ""
     //     route = searchStrWords.map(word => {
-    //         return route += "/" + word.toLowerCase();
+    //         return route += "/ticker/" + word.toLowerCase();
     //     })
     //     return <Link to={route[1]} >{listItem.toString()}</Link>;
     // }
