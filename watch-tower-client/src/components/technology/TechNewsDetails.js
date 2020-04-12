@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { technologyNews } from '../util/CurrentNews';
 import TechNewsDetailsItem from './TechNewsDetailsItem';
 import { Link } from 'react-router-dom';
-import '../../styles/news/newsDetails.css';
+import '../../styles/news/NewsDetails.css';
 import fetchStockData from '../util/StockQuotes';
 
 export default () => {

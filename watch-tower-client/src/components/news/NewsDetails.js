@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {currentNews} from '../util/CurrentNews';
 import {technologyNews} from '../util/CurrentNews';
 import NewsDetailsItem from './NewsDetailsItem';
-import '../../styles/news/newsDetails.css';
+import '../../styles/news/NewsDetails.css';
 
 export default () => { 
   const [latestNews, setLatestNews] = useState([]);

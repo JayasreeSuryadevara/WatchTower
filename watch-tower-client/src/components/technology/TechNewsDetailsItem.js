@@ -1,6 +1,6 @@
 import React from "react";
-import '../../styles/news/newsDetailsItem.css';
-import '../../styles/technology/technologyNews.css';
+import '../../styles/news/NewsDetailsItem.css';
+import '../../styles/technology/TechnologyNews.css';
 
 const TechNewsDetailsItem = (props) => (
   <>
