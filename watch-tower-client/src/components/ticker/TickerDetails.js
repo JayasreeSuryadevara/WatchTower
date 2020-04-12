@@ -7,6 +7,7 @@ import KeyDataItem from '../ticker/KeyDataItem';
 import PerformanceDataItem from '../ticker/PerformanceDataItem';
 import TickerInfoItem from '../ticker/TickerInfoItem';
 import stockQuote from '../util/StockQuotes';
+import MoversDetails from '../homepage/MarketMoversPanel';
 
 export default () => {
   const [allCompanyNews, setCompanyNews] = useState([]);
@@ -45,7 +46,7 @@ export default () => {
             close={stockInfo.previousClose}/>
         </div>
         <div className="ticker-graph-item">
-          <span>Graph info</span>
+          <MoversDetails />
         </div>
       </div>
       <div className="ticker-header-container">
