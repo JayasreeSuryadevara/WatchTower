@@ -22,7 +22,7 @@ const SearchListItem = ({ticker}) => {
   // console.log(route);
   return (
     <div className="search-list-item">
-      <Link to={route} > { ticker } </Link>
+      <Link to={route} name={companyName} ticker={ticker} > { ticker } </Link>
      </div>
   )
 }
