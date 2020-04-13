@@ -21,6 +21,8 @@ import TechNewsPage from './pages/technology/TechNewsPage';
 
 
 import SearchForm from './pages/search/SearchForm';
+import LatestNewsPage from './pages/latest/LatestNewsPage';
+import CreatedByPage from './pages/createdby/CreatedByPage';
 
 export default () => {
   return (
@@ -42,6 +44,11 @@ export default () => {
         <Route exact path="/investing" component={InvestPage} />
         <Route exact path="/markets" component={MarketsPage} />
         <Route exact path="/technology" component={TechNewsPage} />
+<<<<<<< HEAD
+=======
+        <Route exact path="/latest" component={LatestNewsPage} />
+        <Route exact path="/creators" component={CreatedByPage} />
+>>>>>>> 60760040c807a57b039e0a0cebce7a501408740b
         <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>

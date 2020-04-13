@@ -25,6 +25,9 @@ export default () => {
                 <li className="link-item">
                     <Link to='/investing' > Investing</Link>
                 </li>
+                <li className="link-item">
+                    <Link to='/creators'>Created By</Link>
+                </li>
             </ul>
         </main>
     );
