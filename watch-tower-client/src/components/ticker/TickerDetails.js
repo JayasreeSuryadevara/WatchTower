@@ -12,6 +12,10 @@ import MoversDetails from '../homepage/MarketMoversPanel';
 export default (props) => {
   const name = props.name
   const ticker = props.ticker
+
+  console.log(props)
+  console.log("name",name)
+  console.log("ticker",ticker)
   const [allCompanyNews, setCompanyNews] = useState([]);
   const [stockInfo, setStockInfo] = useState({});
 
