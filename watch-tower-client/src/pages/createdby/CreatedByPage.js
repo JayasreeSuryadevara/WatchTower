@@ -20,11 +20,11 @@ export default () => {
         <br />
         <p> Jennie Richardson </p>
         <div>
-          <a href=""
+          <a href="https://www.linkedin.com/in/jennie-richardson-1531881a5/"
             target="_blank" rel="noopener noreferrer">
             <i className="fab fa-linkedin fa-4x"></i>
           </a>
-          <a href=""
+          <a href="https://github.com/jbiakcin"
             target="_blank" rel="noopener noreferrer">
             <i className="fab fa-github fa-4x"></i>
           </a>
