@@ -8,14 +8,17 @@ const SearchListItem = ({ticker}) => {
 
   async function fetchCompanyProfile() {
     const data = await searchStock(ticker)
-    console.log(data["profile"]["companyName"])
-    setCompanyName(data["profile"]["companyName"]);
+    if(data.symbol){
+      const name = await data["profile"]["companyName"];
+      setCompanyName(name.toString());
+    }
   }
 
   useEffect(() => {
     fetchCompanyProfile()
   }, [])
 
+  // /ticker/AAPL
   // const route = "/"
   // const company = data.company;
   const route = "/ticker/" + companyName;
