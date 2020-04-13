@@ -1,5 +1,5 @@
 const axios = require("axios"); 
-const newsKey = require('../../config/keys_dev').NewsApiKey;
+const newsKey = require('../../config/keys').NewsApiKey;
 
 export function currentNews() {
   const url = `https://newsapi.org/v2/everything?q="stock market"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,seekingalpha.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${newsKey}`

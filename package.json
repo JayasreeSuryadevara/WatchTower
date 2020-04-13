@@ -1,0 +1,21 @@
+{
+  "name": "WatchTower",
+  "version": "1.0.0",
+  "description": "A website to monitor Finance Markets focusing on Technology sector",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start --prefix watch-tower-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayasreeSuryadevara/WatchTower.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JayasreeSuryadevara/WatchTower/issues"
+  },
+  "homepage": "https://github.com/JayasreeSuryadevara/WatchTower#readme"
+}

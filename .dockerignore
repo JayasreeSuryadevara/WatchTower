@@ -1,0 +1,6 @@
+watch-tower-client/node_modules
+watch-tower-client/npm-debug.log
+watch-tower-client/src/config/keys_dev.js
+watch-tower-server/node_modules
+watch-tower-server/npm-debug.log
+watch-tower-server/config/keys_dev.js
