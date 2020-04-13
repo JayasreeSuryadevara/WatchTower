@@ -47,22 +47,22 @@ export default () => {
     <div>
       <div className="tech-news-page-title">Technology News</div>
       <div className="tech-news-page-home">
-        <Link to="/" className="tech-news-page-home-link">Home ></Link> Technology
+        <Link to="/" className="tech-news-page-home-link" name={techStockData.name} ticker={techStockData.symbol}>Home ></Link> Technology
       </div>
       <div className="tech-news-stock-info-panel">
         <ul className="tech-news-stock-list">
           {techStockData.map((stock, i) => {
             const ticker = stock.symbol;
             const price = stock.price;
-            return <div key={i} className="tech-news-stock">
-              {/* <Link to={`/ticker/${stock.symbol}`}> */}
+            return <div key={i}>
+              <Link to={`/ticker/${stock.name}`} className="tech-news-stock">
                 <p className="tech-news-stock-ticker">{ticker}</p>
                 <p>{formatter.format(price)}</p>
                 {stock.change > 0
                 ? <p><i className="fas fa-caret-up fa-2x"></i></p>
                 : <p><i className="fas fa-caret-down fa-2x"></i></p>
                 }
-              {/* </Link> */}
+              </Link>
             </div>
           })}
         </ul>

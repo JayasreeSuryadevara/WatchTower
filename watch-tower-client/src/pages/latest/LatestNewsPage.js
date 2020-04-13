@@ -1,10 +1,10 @@
 import React from "react";
-import InvestDetails from "../../components/investing/InvestDetails";
+import LatestDetails from "../../components/latest/LatestDetails";
 
 export default () => {
   return (
     <div className="news-page-main">
-      <InvestDetails />
+      <LatestDetails />
     </div>
   )
 }

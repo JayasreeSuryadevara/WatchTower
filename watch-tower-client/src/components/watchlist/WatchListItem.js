@@ -4,6 +4,7 @@ import RemoveFromListBtn from './RemoveFromListBtn';
 import UpdateButton from './UpdateButton';
 import { COMPANY_BY_STOCK_ID } from '../../graphql/queries';
 import fetchStockData from '../util/StockQuotes';
+import { Link } from 'react-router-dom';
 
 const WatchListItem = ({ watchListItem }) => {
 
@@ -24,18 +25,6 @@ const WatchListItem = ({ watchListItem }) => {
     fetchData()
   }, []);
 
-  // console.log("PriceData", priceData)
-  // const { data, loading, error } = useQuery(
-  //   COMPANY_BY_STOCK_ID,
-  //   {
-  //     variables: { stockId: stockId }
-  //   }
-  // );
-  // if (loading) return <h1> Loading...</h1>
-  // if (error) return <h1> Error </h1>
-  // if (!data) return <h1> Not found </h1>
-
-  // const company = data.companyByStockId;
   const listItem = watchListItem;
 
   const formatter = new Intl.NumberFormat('en-Us', {
@@ -64,54 +53,56 @@ const WatchListItem = ({ watchListItem }) => {
 
 
   return isLoading ? <div>Loading</div> : (
-    <div className="watch-list-item-indiv">
-      <section className="indiv-main">
-        <div className="indiv-main-top">
-          <div className="watch-list-item-co-info">
-            <p className="watch-list-ticker">{stock.ticker}</p>
-            <p className="watch-list-co-name">{priceData.name} (No. of shares: {watchListItem.noOfShares})</p>
+    <Link to={`/ticker/${priceData.name}`} name={priceData.name} ticker={ticker}>
+      <div className="watch-list-item-indiv">
+        <section className="indiv-main">
+          <div className="indiv-main-top">
+            <div className="watch-list-item-co-info">
+              <p className="watch-list-ticker">{ticker}</p>
+              <p className="watch-list-co-name">{priceData.name} (No. of shares: {watchListItem.noOfShares})</p>
+            </div>
+            <UpdateButton watchListItem={watchListItem}/>
           </div>
-          <UpdateButton watchListItem={watchListItem}/>
-        </div>
-        <div className="watch-list-item-data">
-          <div className="watch-list-item-chg">
-            <div>
-              <p className="result-headers">LAST</p>
-              <p className="results">{addPrice}</p>
+          <div className="watch-list-item-data">
+            <div className="watch-list-item-chg">
+              <div>
+                <p className="result-headers">LAST</p>
+                <p className="results">{addPrice}</p>
+              </div>
+              <div>
+                <p className="result-headers">CHG</p>
+                <p className={`${(chg >= 0) ? "change-green" : "change-red"}`}>
+                  {formattedChg}
+                </p>
+              </div>
+              <div>
+                <p className="result-headers">%CHG</p>
+                <p className={`${(chg >= 0) ? "change-green" : "change-red"}`}>
+                  {formattedChgP}
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="result-headers">CHG</p>
-              <p className={`${(chg >= 0) ? "change-green" : "change-red"}`}>
-                {formattedChg}
-              </p>
+            <div className="watch-list-item-vol">
+              <div>
+              <p className="result-headers">VOLUME</p>
+              <p className="results">{formattedVolume}</p>
+              </div>
+              <div>
+              <p className="result-headers">AVG VOLUME</p>
+              <p className="results">{formattedAvgVolume}</p>
+              </div>
             </div>
-            <div>
-              <p className="result-headers">%CHG</p>
-              <p className={`${(chg >= 0) ? "change-green" : "change-red"}`}>
-                {formattedChgP}
-              </p>
+            <div className="watch-list-item-range">
+              <p className="result-headers">DAY RANGE</p>
+              <p className="results">{formattedHigh} -- {formattedLow}</p>
             </div>
           </div>
-          <div className="watch-list-item-vol">
-            <div>
-            <p className="result-headers">VOLUME</p>
-            <p className="results">{formattedVolume}</p>
-            </div>
-            <div>
-            <p className="result-headers">AVG VOLUME</p>
-            <p className="results">{formattedAvgVolume}</p>
-            </div>
-          </div>
-          <div className="watch-list-item-range">
-            <p className="result-headers">DAY RANGE</p>
-            <p className="results">{formattedHigh} -- {formattedLow}</p>
-          </div>
-        </div>
-      </section>
-      <section className="watch-list-remove">
-        <RemoveFromListBtn watchListItem={watchListItem}/>
-      </section>
-    </div>
+        </section>
+        <section className="watch-list-remove">
+          <RemoveFromListBtn watchListItem={watchListItem}/>
+        </section>
+      </div>
+    </Link>
   )
 }
 
