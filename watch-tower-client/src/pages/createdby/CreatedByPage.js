@@ -32,11 +32,11 @@ export default () => {
         <br />
         <p> Philippe Fonzin </p>
         <div>
-          <a href=""
+          <a href="https://www.linkedin.com/in/philippe-benoit-fonzin-805701b7/"
             target="_blank" rel="noopener noreferrer">
             <i className="fab fa-linkedin fa-3x"></i>
           </a>
-          <a href="" target="_blank"
+          <a href="https://github.com/Philippe-F" target="_blank"
             rel="noopener noreferrer">
             <i className="fab fa-github fa-3x"></i>
           </a>
