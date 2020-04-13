@@ -1,7 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import searchStock from '../util/SearchStock';
-import TickerPAge from ''
 
 const SearchListItem = ({ticker}) => {
 
