@@ -22,6 +22,7 @@ import TechNewsPage from './pages/technology/TechNewsPage';
 
 import SearchForm from './pages/search/SearchForm';
 import LatestNewsPage from './pages/latest/LatestNewsPage';
+import CreatedByPage from './pages/createdby/CreatedByPage';
 
 export default () => {
   return (
