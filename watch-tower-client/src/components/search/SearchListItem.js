@@ -19,17 +19,18 @@ const SearchListItem = ({ticker}) => {
     fetchCompanyProfile()
   }, [])
 
+  const route = "/ticker/" + companyName + "/" + ticker;
   return (
     <div className="search-list-item">
       {/* <Link to={{
         pathname: "/ticker",
-        state: {
+        props: {
           name: companyName,
           ticker: ticker
         }
       }}>{ ticker }</Link> */}
-      {/* <Link to={'"/ticker/" + ${companyName} + "/" + ${ticker}'}>{ticker}</Link> */}
-      <Link to="/ticker" name={companyName} ticker={ticker}>{ticker}</Link>
+      <Link to={route}>{ticker}</Link>
+      {/* <Link to="/ticker" name={companyName} ticker={ticker} hello="hello">{ticker}</Link> */}
       {/* <TickerDetails name={companyName} ticker={ticker} >{ticker}</TickerDetails> */}
     </div>
   )

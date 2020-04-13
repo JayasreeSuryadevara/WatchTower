@@ -11,7 +11,7 @@ const KeyDataItem = (props) => {
           <span>Open</span>
         </div>
         <div className="kd-value-container">
-          <p>{props.open}</p>
+          <p>${props.open}</p>
         </div>
       </div>
       <div className="data-container">
@@ -19,7 +19,7 @@ const KeyDataItem = (props) => {
           <span>Day Range</span>
         </div>
         <div className="kd-value-container">
-          <p>{props.dayHigh} - {props.dayLow}</p>
+          <p>${props.dayHigh} - ${props.dayLow}</p>
         </div>
       </div>
       <div className="data-container">
@@ -27,7 +27,7 @@ const KeyDataItem = (props) => {
           <span>52 Week Range</span>
         </div>
         <div className="kd-value-container">
-          <p>{props.yearHigh} - {props.yearLow}</p>
+          <p>${props.yearHigh} - ${props.yearLow}</p>
         </div>
       </div>
       <div className="data-container">
@@ -51,7 +51,7 @@ const KeyDataItem = (props) => {
           <span>P/E Ratio</span>
         </div>
         <div className="kd-value-container">
-          {props.pe === null ? <p>0</p> : <p>{props.pe}</p>}
+          {props.pe === null ? <p>0</p> : <p>{formatter.format(props.pe)}</p>}
         </div>
       </div>
       <div className="data-container">
@@ -59,7 +59,7 @@ const KeyDataItem = (props) => {
           <span>EPS</span>
         </div>
         <div className="kd-value-container">
-          <p>{props.eps}</p>
+          <p>${props.eps}</p>
         </div>
       </div>
       <div className="data-container">

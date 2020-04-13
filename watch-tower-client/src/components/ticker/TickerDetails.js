@@ -8,14 +8,15 @@ import PerformanceDataItem from '../ticker/PerformanceDataItem';
 import TickerInfoItem from '../ticker/TickerInfoItem';
 import stockQuote from '../util/StockQuotes';
 import MoversDetails from '../homepage/MarketMoversPanel';
+import { useParams } from 'react-router-dom';
 
 export default (props) => {
-  const name = props.name
-  const ticker = props.ticker
+  const params = useParams();
 
-  console.log(props)
-  console.log("name",name)
-  console.log("ticker",ticker)
+  const name = params.companyName;
+  const ticker = params.ticker;
+
+  console.log(name, ticker)
   const [allCompanyNews, setCompanyNews] = useState([]);
   const [stockInfo, setStockInfo] = useState({});
 

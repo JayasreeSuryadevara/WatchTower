@@ -55,7 +55,7 @@ export default () => {
             const ticker = stock.symbol;
             const price = stock.price;
             return <div key={i}>
-              <Link to={`/ticker/${stock.name}`} className="tech-news-stock">
+              <Link to={`/ticker/${stock.name}/${ticker}`} className="tech-news-stock">
                 <p className="tech-news-stock-ticker">{ticker}</p>
                 <p>{formatter.format(price)}</p>
                 {stock.change > 0
