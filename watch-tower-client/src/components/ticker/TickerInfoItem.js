@@ -8,7 +8,7 @@ const TickerInfoItem = (props) => {
     <div className="ti-main-page">
       <div className="ti-data-container">
         <div className="ti-price-container">
-          <p>{props.open}</p>
+          <p>${props.open}</p>
         </div>
         <div className="ti-volume-container">
           <p className="vol-title">After Hours Volume:</p>
@@ -17,7 +17,7 @@ const TickerInfoItem = (props) => {
         </div>
         <div className="ti-close-container">
           <span className="vol-title">Close Price</span>
-          <p className="vol-val">{props.close}</p>
+          <p className="vol-val">${props.close}</p>
         </div>
       </div>
     </div>

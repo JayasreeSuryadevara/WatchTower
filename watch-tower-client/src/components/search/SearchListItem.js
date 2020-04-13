@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import searchStock from '../util/SearchStock';
+// import TickerDetails from "../ticker/TickerDetails";
 
 const SearchListItem = ({ticker}) => {
 
@@ -18,15 +19,20 @@ const SearchListItem = ({ticker}) => {
     fetchCompanyProfile()
   }, [])
 
-  // /ticker/AAPL
-  // const route = "/"
-  // const company = data.company;
-  const route = "/ticker/" + companyName;
-  // console.log(route);
+  const route = "/ticker/" + companyName + "/" + ticker;
   return (
     <div className="search-list-item">
-      <Link to={route} name={companyName} ticker={ticker} > { ticker } </Link>
-     </div>
+      {/* <Link to={{
+        pathname: "/ticker",
+        props: {
+          name: companyName,
+          ticker: ticker
+        }
+      }}>{ ticker }</Link> */}
+      <Link to={route}>{ticker}</Link>
+      {/* <Link to="/ticker" name={companyName} ticker={ticker} hello="hello">{ticker}</Link> */}
+      {/* <TickerDetails name={companyName} ticker={ticker} >{ticker}</TickerDetails> */}
+    </div>
   )
 }
 
