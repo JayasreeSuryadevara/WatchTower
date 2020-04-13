@@ -1,58 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks';
+import { ALL_STOCKS } from '../../graphql/queries';
+import SearchListItem from './SearchListItem';
 import '../../styles/search/SearchBar.css';
 
 const SearchDetails = () => {
-
-    const tickers = [
-        "AMZN",
-        "EBAY",
-        "AAPL",
-        "GOOGL",
-        "MSFT",
-        "AMD",
-        "FB",
-        "PYPL",
-        "CSCO",
-        "INTC",
-        "DAL",
-        "HPE",
-        "KLAC",
-        "NVDA",
-        "NFLX",
-        "ORCL",
-        "QCLM",
-        "TXN",
-        "IBM",
-        "ROKU",
-        "MMM",
-        "GE",
-        "XRX",
-        "BAC",
-        "AXP",
-        "CAT",
-        "PG",
-        "KO",
-        "JNJ",
-        "C",
-        "ABT",
-        "T",
-        "VZ",
-        "CLX",
-        "PFE",
-        "JPM",
-        "WFC",
-        "HRL",
-        "GM",
-        "SBUX",
-        "KMTUY"
-    ]
+    
     let [searchList, setSearchList] = useState([]);
+    let tickers = [];
+    const { data, loading, error } = useQuery(ALL_STOCKS);
+    if (loading || error) return <p> Finding what you want!! </p>
+    if (data.stocks) {
+        tickers = data.stocks.map(stock => {
+            return stock.ticker
+        })
+    }
+
 
     const handleInputChange = (e) => {
         let currentList = [];
 
-        console.log("test")
         // If search bar is not empty return all items from 
         // the current list which include search string
         if (e.target.value !== "") {
@@ -63,7 +31,6 @@ const SearchDetails = () => {
                 const filter = e.target.value.toLowerCase();
                 return lc.includes(filter);
             });
-            console.log("searchList", searchList)
         } else {
             // If the search bar is empty, set newList to original tickers list
             setSearchList(tickers);
@@ -73,14 +40,6 @@ const SearchDetails = () => {
 
     }
 
-    // const getLink = (listItem) => {
-    //     const searchStrWords = listItem.split(" ");
-    //     let route = ""
-    //     route = searchStrWords.map(word => {
-    //         return route += "/ticker/" + word.toLowerCase();
-    //     })
-    //     return <Link to={route[1]} >{listItem.toString()}</Link>;
-    // }
 
     return (
         <div className="search-bar-main">
@@ -108,8 +67,7 @@ const SearchDetails = () => {
                     <ul className="search-link-list">
                         {searchList.map((item,i) => (
                             <li key={i}>
-                                {item.toString()}
-                                {/* {getLink(item)} */}
+                                <SearchListItem ticker={item}/>
                             </li>
                         ))}
                     </ul>

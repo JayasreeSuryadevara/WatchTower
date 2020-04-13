@@ -3,23 +3,49 @@
   justify-content: center;
 }
 
+.home-header {
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px gray;
+}
+
+.home-link {
+  color: rgb(189, 184, 184);
+  font-size: 10px;
+}
+
+.markets-header {
+  height: 40px;
+  padding-left: 30px;
+  padding-top: 40px;
+  color: #3677A8;
+  font-size: 24px;
+  font-weight: 700;
+}
+
 .movers-title {
   height: 40px;
-  padding: 10px;
-  background-color: #eee;
+  padding-left: 30px;
+  padding-top: 10px;
+  color: #3677A8;
   font-size: 20px;
 }
 
 .gainers-title {
   height: 40px;
-  padding: 10px;
-  background-color: #eee;
+  padding-left: 30px;
+  padding-top: 10px;
+  color: #3677A8;
   font-size: 20px;
 }
 
 .losers-title {
   height: 40px;
-  padding: 10px;
-  background-color: #eee;
+  padding-left: 30px;
+  padding-top: 10px;
+  color: #3677A8;
   font-size: 20px;
 }
