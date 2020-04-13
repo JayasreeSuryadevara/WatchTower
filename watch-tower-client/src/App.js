@@ -44,6 +44,7 @@ export default () => {
         <Route exact path="/markets" component={MarketsPage} />
         <Route exact path="/technology" component={TechNewsPage} />
         <Route exact path="/latest" component={LatestNewsPage} />
+        <Route exact path="/creators" component={CreatedByPage} />
         <Route path="/" component={ErrorPage} />
       </Switch>
     </BrowserRouter>

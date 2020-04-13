@@ -1,0 +1,25 @@
+.social-page-items {
+    background-color: #eee;
+    padding-left: 200px;
+    padding-bottom: 60px;
+    padding-top: 40px;
+    max-width: 860px;
+    font-family: Neue-Helvetica, Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+}
+.social-page-items h1 {
+    padding-left: 40px;
+    font-size: 40px;
+    font-weight: 700;
+}
+.social-page-items p {
+    padding: 40px;
+    font-size: 40px;
+}
+
+.social-page-items a {
+    padding: 10px;
+    padding-left: 100px;
+    cursor: pointer;
+    color: rgb(35, 35, 109);
+}
