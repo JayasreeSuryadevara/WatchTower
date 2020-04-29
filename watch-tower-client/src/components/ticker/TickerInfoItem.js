@@ -7,7 +7,7 @@ const TickerInfoItem = (props) => {
     <div className="ti-main-page">
       <div className="ti-data-container">
         <div>
-          <h1 className="ticker-name">{props.name}</h1>
+          <h1 className="ticker-name">{props.name ? props.name : "Company Name not accessible"}</h1>
         </div>
         <div className="ti-price-container">
           <p>${props.open}</p>
