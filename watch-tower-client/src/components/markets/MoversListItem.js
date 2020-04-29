@@ -6,6 +6,7 @@ const MoversListItem = (props) => {
   const mover = props.mover;
   let changePercent = mover["changesPercentage"];
   changePercent = changePercent.slice(1, changePercent.length - 1);
+  if (!mover["companyName"] || mover["companyName"].length > 100) return null;
   return (
     <Link to={`/ticker/${mover["companyName"]}/${mover["ticker"]}`} >
       <div className="movers-list-item">

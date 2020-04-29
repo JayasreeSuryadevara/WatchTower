@@ -6,6 +6,7 @@ const GainersListItem = (props) => {
   const gainer = props.gainer;
   let changePercent = gainer["changesPercentage"];
   changePercent = changePercent.slice(1, changePercent.length - 1);
+  if (!gainer["companyName"] || gainer["companyName"].length > 100) return null;
   return (
     <Link to={`/ticker/${gainer["companyName"]}/${gainer["ticker"]}`} >
       <div className="gainers-list-item">
