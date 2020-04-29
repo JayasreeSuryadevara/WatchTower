@@ -3,10 +3,12 @@ import '../../styles/ticker/TickerInfoItem.css';
 
 const TickerInfoItem = (props) => {
   const formatter = new Intl.NumberFormat('en-Us')
-
   return (
     <div className="ti-main-page">
       <div className="ti-data-container">
+        <div>
+          <h1 className="ticker-name">{props.name}</h1>
+        </div>
         <div className="ti-price-container">
           <p>${props.open}</p>
         </div>

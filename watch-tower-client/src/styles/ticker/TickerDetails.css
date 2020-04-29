@@ -96,8 +96,9 @@
 .recent-news-container {
   display: flex;
   justify-content: start;
-  margin-left: 120px;
-  margin-top: 20px;
+  margin-top: 50px;
+  align-self: center;
+  width: 1020px;
 }
 
 .rn-tag {
