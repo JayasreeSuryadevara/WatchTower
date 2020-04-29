@@ -6,6 +6,7 @@ const LosersListItem = (props) => {
   const loser = props.loser;
   let changePercent = loser["changesPercentage"];
   changePercent = changePercent.slice(1, changePercent.length - 1);
+  if (!loser["companyName"] || loser["companyName"].length > 100) return null;
   return (
     <Link to={`/ticker/${loser["companyName"]}/${loser["ticker"]}`} >
       <div className="losers-list-item">

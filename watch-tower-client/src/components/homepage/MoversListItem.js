@@ -6,6 +6,7 @@ const MoversListItem = (props) => {
   const active = props.active;
   let changePercent = active["changesPercentage"];
   changePercent = changePercent.slice(1,changePercent.length-1);
+  if (!active["companyName"] || active["companyName"].length > 100) return null;
   return (
     <Link to={`/ticker/${active["companyName"]}/${active["ticker"]}`} >
       <div className="active-list-item">
