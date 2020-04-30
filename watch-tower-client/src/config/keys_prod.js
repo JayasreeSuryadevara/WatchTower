@@ -1,3 +1,3 @@
 module.exports = {
-  NewsApiKey: process.env.NewsApiKey
+  NewsApiKey: process.env.REACT_APP_NEWSAPIKEY
 }
