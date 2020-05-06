@@ -16,7 +16,6 @@ export default (props) => {
   const name = params.companyName;
   const ticker = params.ticker;
 
-  console.log(name, ticker)
   const [allCompanyNews, setCompanyNews] = useState([]);
   const [stockInfo, setStockInfo] = useState({});
 
@@ -52,7 +51,7 @@ export default (props) => {
       <div className="ticker-graph-container">
         <div className="ticker-price-item">
           <TickerInfoItem open={stockInfo.open} volume={stockInfo.volume}
-            close={stockInfo.previousClose}/>
+            close={stockInfo.previousClose} name={name}/>
         </div>
         <div className="ticker-graph-item">
           <MoversDetails />

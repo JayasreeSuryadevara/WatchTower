@@ -7,7 +7,6 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - mongoURI=mongodb+srv://admin:hXk2se1M1TlLyEfQ@cluster0-9l8kx.mongodb.net/test?retryWrites=true&w=majority
-      - secretOrKey=secret SHHHHHHHHHHHHHHHHHHHHHHHHHHH
-      - NewsApiKey=43c73ae0a1ac456ab319b7a974297975 
-      - REACT_APP_AV_API_KEY=4TC2D11DD9C6MYST
+      - mongoURI=mongodb+srv://admin2:Nco3GL2vs7GP6FgK@cluster0-9l8kx.mongodb.net/test?retryWrites=true&w=majority
+      - secretOrKey=secretSHHHHHHHHHHHHHHHHHHHHHHHHHHH
+      - REACT_APP_NewsApiKey="43c73ae0a1ac456ab319b7a974297975"
