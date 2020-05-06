@@ -41,8 +41,6 @@ export default () => {
     currency: 'USD'
   });
 
-  console.log(techStockData)
-
   return (
     <div>
       <div className="tech-news-page-title">Technology News</div>
