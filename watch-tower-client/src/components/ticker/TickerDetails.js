@@ -16,7 +16,6 @@ export default (props) => {
   const name = params.companyName;
   const ticker = params.ticker;
 
-  console.log(name, ticker)
   const [allCompanyNews, setCompanyNews] = useState([]);
   const [stockInfo, setStockInfo] = useState({});
 

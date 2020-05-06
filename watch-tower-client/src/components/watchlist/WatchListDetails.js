@@ -18,7 +18,6 @@ const WatchListDetails = () => {
     if (!data) return <h1> No user found </h1>
     const user = data.me
 
-    console.log("user", user)
     
   return (
     <section className="watch-list-left">
