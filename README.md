@@ -2,8 +2,8 @@
     A website to monitor Finance Markets focusing on Technology sector
 
 # Live Site
-    ![WatchList](watch-tower-client/public/Screen Shot 2020-05-07 at 2.39.18 PM.png)
-    ![Technology News](watch-tower-client/public/Screen Shot 2020-05-07 at 2.39.42 PM.png)
+    ![WatchList](https://github.com/JayasreeSuryadevara/WatchTower/blob/master/watch-tower-client/public/WatchList.png)
+    ![Technology News](https://github.com/JayasreeSuryadevara/WatchTower/blob/master/watch-tower-client/public/TechNews.png)
 
 # Team Members
     Jayasree Suryadevara
