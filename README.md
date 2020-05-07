@@ -1,8 +1,9 @@
 # WatchTower
     A website to monitor Finance Markets focusing on Technology sector
 
-# Inspired by 
-    https://www.marketwatch.com
+# Live Site
+    ![WatchList](watch-tower-client/public/Screen Shot 2020-05-07 at 2.39.18 PM.png)
+    ![Technology News](watch-tower-client/public/Screen Shot 2020-05-07 at 2.39.42 PM.png)
 
 # Team Members
     Jayasree Suryadevara
@@ -18,7 +19,7 @@
     Docker
     Heroku Container
     Express
-    yahoo-finance API
+    financialmodelingprep API
     news API
   
 # Features
@@ -27,7 +28,6 @@
     Homepage 
     Market Data Panel
       Market Index
-      Graph to Show Market movement
       Latest Movers
     Current News feed
     Tech Stocks
@@ -38,11 +38,10 @@
       Technology Stocks - Volatile Tech Stocks and news on them 
       Investing - Principles of investing and suggestions
     Dropdown Menu Bar
-      Same as Navigation Bar but will have sub menus for
-      - Technology
-      - Investing
+      Same as Navigation Bar 
     Search Bar - Search using Tickers or company names
     Show Page to see details of one Stock based on the Ticker
+    Click on any stock data item on any page to reach Stock Show Page
   
   
   
