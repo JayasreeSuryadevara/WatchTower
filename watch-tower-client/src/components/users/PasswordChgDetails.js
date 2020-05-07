@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { CHANGE_PASSWORD } from '../../graphql/mutations';
 import { CURRENT_USER, IS_LOGGED_IN } from '../../graphql/queries';
-import WTLogo from '../../wt-logo.png';
+import WTLogo from './wt-logo.png';
 import { Link, useHistory } from 'react-router-dom';
 
 export default () => {
