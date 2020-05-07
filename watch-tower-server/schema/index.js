@@ -135,6 +135,7 @@ const resolvers = {
             return User.login(email, password);
         },
         signup(_, { email, name, password }) {
+            if(password.length < 8 || password.length > 32) throw new Error("Password must be mininum 8 characters.");
             return User.signup(email, name, password);
         },
         changePassword(_, { oldPassword, newPassword }, context) {

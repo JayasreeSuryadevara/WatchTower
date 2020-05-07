@@ -21,7 +21,7 @@ export default () => {
         }
       },
       onError() {
-        setErrorMessage('Something went wrong');
+        setErrorMessage("Password must be more than 8 characters.");
       },
       refetchQueries: [{ query: IS_LOGGED_IN }, { query: CURRENT_USER }]
     }
@@ -49,7 +49,7 @@ export default () => {
             </section>
             <section>
               <input
-                type="text"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.currentTarget.value)}
                 placeholder="Email (required)"
