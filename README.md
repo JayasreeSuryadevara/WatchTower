@@ -2,8 +2,7 @@
     A website to monitor Finance Markets focusing on Technology sector
 
 # Live Site
-    ![WatchList](https://github.com/JayasreeSuryadevara/WatchTower/blob/master/watch-tower-client/public/WatchList.png)
-    ![Technology News](https://github.com/JayasreeSuryadevara/WatchTower/blob/master/watch-tower-client/public/TechNews.png)
+[WatchList](https://github.com/JayasreeSuryadevara/WatchTower/blob/master/watch-tower-client/public/WatchList.png)    ![Technology News](https://github.com/JayasreeSuryadevara/WatchTower/blob/master/watch-tower-client/public/TechNews.png)
 
 # Team Members
     Jayasree Suryadevara
