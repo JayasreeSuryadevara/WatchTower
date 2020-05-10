@@ -68,7 +68,7 @@ export default () => {
         <div className="graph-container" media="screen and (max-width: 600px)">
             <MainPanel />
         </div>
-        <div className="latest-news-container">
+        <div className="latest-news-container" media="screen and (max-width: 600px)">
           <div className="latest-news-items">
             <Link to={`/news`}><p className="latest-item">Latest News</p></Link>
             <p>Coronavirus</p>
