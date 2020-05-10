@@ -50,7 +50,7 @@ export default () => {
   return(
     <div className="main-page-container">
       <div className="main-page">
-        <div className="graph-header-container">
+        <div className="graph-header-container" media="screen and (max-width: 600px)">
           <div className="graph-header-items">
             <div className="graph-header-item">US</div>
             <div className="graph-header-item">Euro</div>
@@ -65,7 +65,7 @@ export default () => {
             <p className="movers-latest-item">Latest News</p>
           </div>
         </div>
-        <div className="graph-container">
+        <div className="graph-container" media="screen and (max-width: 600px)">
             <MainPanel />
         </div>
         <div className="latest-news-container">

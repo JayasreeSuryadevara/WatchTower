@@ -13,6 +13,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 600px;
+}
+
+@media screen and (max-width: 830px) {
+  div.graph-header-container, div.graph-container{
+    display: none;
+  }
 }
 
 .graph-header-container {
