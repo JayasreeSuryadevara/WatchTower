@@ -6,7 +6,7 @@ import '../../styles/news/NewsDetails.css';
 
 export default () => { 
   const [latestNews, setLatestNews] = useState([]);
-  const [allCompanyNews, setCompanyNews] = useState([]);
+  // const [allCompanyNews, setCompanyNews] = useState([]);
   const [allTechnologyNews, setTechnologyNews] = useState([]);
 
   async function fetchCurrentNews() {
