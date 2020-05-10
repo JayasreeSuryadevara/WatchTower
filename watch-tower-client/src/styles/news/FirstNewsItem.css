@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .first-main-page {
   display: flex;
   flex-direction: column;

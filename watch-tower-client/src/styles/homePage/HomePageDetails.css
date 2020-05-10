@@ -5,15 +5,14 @@
 .main-page-container {
   display: flex;
   justify-content: center;
-  margin: 0px;
-  min-width: 600px;
 }
 
 .main-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 600px;
+  position: relative;
+  /* max-width: 600px; */
 }
 
 @media screen and (max-width: 830px) {

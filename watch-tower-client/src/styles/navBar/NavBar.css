@@ -24,6 +24,12 @@
   width: 20%;
 }
 
+@media screen and (max-width: 830px) {
+  div.nav-bar-news-links{
+    display: none;
+  }
+}
+
 .nav-bar-news-links {
   display: flex;
   width: 50%;
