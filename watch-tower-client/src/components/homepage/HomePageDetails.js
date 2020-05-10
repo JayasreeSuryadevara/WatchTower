@@ -83,14 +83,14 @@ export default () => {
             <p>ZM</p>
           </div>
         </div>
-        <div>
+        <div className="all-news-container">
           <ul>
             {items}
           </ul>
+          <ul className="clip-list-container">
+            {newsClips}
+          </ul>
         </div>
-        <ul className="clip-list-container">
-          {newsClips}
-        </ul>
       </div>
     </div>
   )

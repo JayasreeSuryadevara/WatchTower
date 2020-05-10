@@ -1,6 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 .main-page-container {
   display: flex;
   justify-content: center;
+  margin: 0px;
+  min-width: 600px;
 }
 
 .main-page {
@@ -82,4 +88,10 @@
   display: flex;
   flex-flow: wrap;
   width: 750px;
+}
+
+.all-news-container {
+  display: flex; 
+  position: relative;
+  flex-flow: column wrap;
 }
