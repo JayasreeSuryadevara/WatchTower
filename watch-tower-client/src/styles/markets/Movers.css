@@ -1,17 +1,10 @@
 .movers-list-item {
   display: flex;
   flex-direction: row;
-  width: 800px;
-  border: solid 1px #eee;
-}
-
-.movers-list-item {
-  display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
   width: 800px;
   vertical-align: bottom;
-  border-bottom: solid 1px #eee;
+  border: solid 1px #eee;
 }
 
 .movers-list-item:hover{

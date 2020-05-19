@@ -19,11 +19,11 @@ export default () => {
 
   return (
     <div className="losers-index-container">
-      <ul className="losers-index-list">
+      <table className="losers">
         {losers && losers.map((loser, i) => (
           <LosersListItem loser={loser} key={i * 3} />
         ))}
-      </ul>
+      </table>
     </div>
   )
 }

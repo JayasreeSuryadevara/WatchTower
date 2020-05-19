@@ -18,12 +18,12 @@ export default () => {
   }, [])
 
   return (
-    <div className="gainers-index-container">
-      <ul className="gainers-index-list">
+    <div>
+      <table>
         {gainers && gainers.map((gainer, i) => (
           <GainersListItem gainer={gainer} key={i*2} />
         ))}
-      </ul>
+      </table>
     </div>
   )
 }
