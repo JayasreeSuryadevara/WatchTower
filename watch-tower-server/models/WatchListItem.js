@@ -31,7 +31,7 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, currentPrice, l
       loggedInUser.watchList.addToSet(watchListItem._id)
     } else {
       const newStock = await Stock.addStock(ticker)
-      console.log(newStock)
+      // console.log(newStock)
       const stock = newStock._id;
       // const noOfShares = 1;
       const addPrice = currentPrice;
@@ -51,7 +51,7 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, currentPrice, l
 WatchListItemSchema.methods.removeWatchListItem = function (loggedInUser) {
   const watchListItem = this;
   return (async () => {
-    console.log("loggedInUser", loggedInUser)
+    // console.log("loggedInUser", loggedInUser)
     if (loggedInUser && loggedInUser.watchList.includes(this._id)) {
       loggedInUser.watchList.remove(this._id);
       watchListItem.remove();

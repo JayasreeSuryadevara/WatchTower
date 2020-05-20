@@ -9,8 +9,8 @@ const SearchListItem = ({ticker}) => {
 
   async function fetchCompanyProfile() {
     const data = await searchStock(ticker)
-    if(data.symbol){
-      const name = await data["profile"]["companyName"];
+    if(data[0]){
+      const name = await data[0]["companyName"];
       setCompanyName(name.toString());
     }
   }
