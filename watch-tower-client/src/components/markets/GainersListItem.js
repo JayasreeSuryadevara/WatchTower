@@ -13,14 +13,14 @@ const GainersListItem = (props) => {
 
   return (
     <Link to={`/ticker/${gainer["companyName"]}/${gainer["ticker"]}`} >
-      <tr className="gainers-list-item">
-        <td className="gainers-ticker">{gainer["ticker"].trim()}</td>
-        <td className="gainers-name">{gainer["companyName"].trim()}</td>
-        <td className="gainers-price">{parseFloat(gainer["price"]).toFixed(2)}</td>
-        <td className="gainer-positive-changes">{parseFloat(gainer["changes"]).toFixed(2)}</td>
-        <td className="gainer-positive-percent">{changePercent}</td>
-        <td><i className="fas fa-sort-up fa-2x"></i></td>
-      </tr>
+      <li className="gainers-list-item">
+        <p className="gainers-ticker">{gainer["ticker"].trim()}</p>
+        <p className="gainers-name">{gainer["companyName"].trim()}</p>
+        <p className="gainers-price">{parseFloat(gainer["price"]).toFixed(2)}</p>
+        <p className="gainer-positive-changes">{parseFloat(gainer["changes"]).toFixed(2)}</p>
+        <p className="gainer-positive-percent">{changePercent}</p>
+        <p><i className="fas fa-sort-up fa-2x"></i></p>
+      </li>
     </Link>
   )
 

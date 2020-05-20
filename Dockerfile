@@ -3,6 +3,7 @@ WORKDIR '/app'
 COPY ./watch-tower-client/package*.json ./
 ENV NODE_ENV=production
 ENV REACT_APP_NEWSAPIKEY=43c73ae0a1ac456ab319b7a974297975
+ENV REACT_APP_STOCKAPIKEY=dcd87547aab6eb97c1243c9ce1e47e32
 RUN npm install 
 COPY ./watch-tower-client ./
 RUN npm run build

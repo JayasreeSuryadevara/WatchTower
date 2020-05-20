@@ -21,7 +21,7 @@ export default () => {
   useEffect(() => {
     async function fetchData() {
       const response = await dayGainers()
-      setStockData(response.mostGainerStock.slice(0, 5))
+      setStockData(response.slice(0, 5))
     }
     fetchData()
   }, []);

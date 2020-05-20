@@ -10,7 +10,7 @@ export default () => {
   async function fetchLosersQuotes() {
     const market = await dayLosers()
 
-    setLosers(market["mostLoserStock"]);
+    setLosers(market);
   }
 
   useEffect(() => {
@@ -19,11 +19,11 @@ export default () => {
 
   return (
     <div className="losers-index-container">
-      <table className="losers">
+      <ul className="losers">
         {losers && losers.map((loser, i) => (
           <LosersListItem loser={loser} key={i * 3} />
         ))}
-      </table>
+      </ul>
     </div>
   )
 }

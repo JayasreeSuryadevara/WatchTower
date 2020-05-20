@@ -10,7 +10,7 @@ export default () => {
   async function fetchMoversQuotes() {
     const market = await dayActives()
 
-    setMovers(market["mostActiveStock"]);
+    setMovers(market);
   }
 
   useEffect(() => {
