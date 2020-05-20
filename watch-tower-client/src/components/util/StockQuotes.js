@@ -1,7 +1,9 @@
+const stockApiKey = require('../../config/keys').StockApiKey;
+
 export default async function (stocks) {
   // The stocks should come in as a string of tickers seperated by a comma
   // ex: "AAPL,FB,MSFT,MMM,C";
-  const API_CALL = "https://financialmodelingprep.com/api/v3/quote/" + stocks;
+  const API_CALL = "https://financialmodelingprep.com/api/v3/quote/" + stocks + "?apikey=" + stockApiKey;
 
   // Convert the str to an array of tickers in the front end
   // const stockArr = stocks.split(",");

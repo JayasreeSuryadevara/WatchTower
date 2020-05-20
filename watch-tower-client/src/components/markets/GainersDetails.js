@@ -10,7 +10,7 @@ export default () => {
   async function fetchGainersQuotes() {
     const market = await dayGainers()
 
-    setGainers(market["mostGainerStock"]);
+    setGainers(market);
   }
 
   useEffect(() => {
@@ -19,11 +19,11 @@ export default () => {
 
   return (
     <div>
-      <table>
+      <ul>
         {gainers && gainers.map((gainer, i) => (
           <GainersListItem gainer={gainer} key={i*2} />
         ))}
-      </table>
+      </ul>
     </div>
   )
 }

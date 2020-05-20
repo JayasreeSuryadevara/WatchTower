@@ -1,6 +1,8 @@
+const stockApiKey = require('../../config/keys').StockApiKey;
+
 export default async function () {
   // Returns all market indexes
-  const API_CALL = "https://financialmodelingprep.com/api/v3/majors-indexes"
+  const API_CALL = "https://financialmodelingprep.com/api/v3/majors-indexes?apikey=" + stockApiKey;
 
   //  Top five indexs to read into
   //   "ticker": ".DJI",
