@@ -29,7 +29,7 @@
 .movers-title {
   height: 40px;
   padding-left: 30px;
-  padding-top: 10px;
+  padding-top: 15px;
   color: #3677A8;
   font-size: 20px;
 }
@@ -37,7 +37,7 @@
 .gainers-title {
   height: 40px;
   padding-left: 30px;
-  padding-top: 10px;
+  padding-top: 15px;
   color: #3677A8;
   font-size: 20px;
 }
@@ -45,7 +45,7 @@
 .losers-title {
   height: 40px;
   padding-left: 30px;
-  padding-top: 10px;
+  padding-top: 15px;
   color: #3677A8;
   font-size: 20px;
 }

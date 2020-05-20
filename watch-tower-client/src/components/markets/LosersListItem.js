@@ -9,23 +9,14 @@ const LosersListItem = (props) => {
   if (!loser["companyName"] || loser["companyName"].length > 100) return null;
   return (
     <Link to={`/ticker/${loser["companyName"]}/${loser["ticker"]}`} >
-      <div className="losers-list-item">
-        <p className="losers-list-item-ticker">{loser["ticker"]}</p>
-        <p className="losers-company-name">{loser["companyName"]}</p>
-        <p className="losers-price">{parseFloat(loser["price"]).toFixed(2)}</p>
-        {loser["changes"] > 0
-          ? <p className="loser-positive-changes">{parseFloat(loser["changes"]).toFixed(2)}</p>
-          : <p className="loser-negetive-changes">{parseFloat(loser["changes"]).toFixed(2)}</p>
-        }
-        {changePercent.includes("+")
-          ? <p className="loser-positive-percent">{changePercent}</p>
-          : <p className="loser-negetive-percent">{changePercent}</p>
-        }
-        {loser["changes"] > 0
-          ? <p><i className="fas fa-sort-up fa-2x"></i></p>
-          : <p><i className="fas fa-sort-down fa-2x"></i></p>
-        }
-      </div>
+      <tr className="losers-list-item">
+        <td className="losers-list-item-ticker">{loser["ticker"]}</td>
+        <td className="losers-company-name">{loser["companyName"]}</td>
+        <td className="losers-price">{parseFloat(loser["price"]).toFixed(2)}</td>
+        <td className="loser-negetive-changes">{parseFloat(loser["changes"]).toFixed(2)}</td>
+        <td className="loser-negetive-percent">{changePercent}</td>
+        <td><i className="fas fa-sort-down fa-2x"></i></td>
+      </tr>
     </Link>
   )
 }
