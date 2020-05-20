@@ -24,7 +24,7 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, currentPrice, l
     const foundStock = await Stock.findOne({ ticker: ticker});
     if (foundStock) {
       const stock = foundStock._id;
-      const noOfShares = 1;
+      // const noOfShares = 1;
       const addPrice = currentPrice;
       const watchListItem = new WatchListItem({stock, addPrice, noOfShares});
       await watchListItem.save();
@@ -33,7 +33,7 @@ WatchListItemSchema.statics.addWatchListItem = function (ticker, currentPrice, l
       const newStock = await Stock.addStock(ticker)
       console.log(newStock)
       const stock = newStock._id;
-      const noOfShares = 1;
+      // const noOfShares = 1;
       const addPrice = currentPrice;
       const watchListItem = new WatchListItem({stock, addPrice, noOfShares});
       await watchListItem.save();
