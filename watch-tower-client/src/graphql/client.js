@@ -13,9 +13,9 @@ const createClient = async () => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path, extensions }) => {
         console.group("\x1b[31m%s\x1b[0m", "[GraphQL error] ", "Message: ", message);
-        console.log("Location: ", locations);
-        console.log("Path: ", path);
-        console.log("Extensions: ", extensions)
+        // console.log("Location: ", locations);
+        // console.log("Path: ", path);
+        // console.log("Extensions: ", extensions)
         console.groupEnd();
       });
     }

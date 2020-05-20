@@ -9,7 +9,7 @@ export const typeDefs = gql`
 export const resolvers = {
   Query: {
     isLoggedIn: () => {
-      console.log("isLoggedIn resolver called")
+      // console.log("isLoggedIn resolver called")
       return !!localStorage.getItem("token")
     }
   }

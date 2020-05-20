@@ -31,7 +31,7 @@ const UserSchema = new Schema({
 UserSchema.statics.login = async function (email, password) {
     const User = this;
     const user = await User.findOne({ email });
-    console.log(user);
+    // console.log(user);
     if (user && (await bcrypt.compare(password, user.password))) {
         user.token = "Bearer " + jwt.sign({ _id: user._id }, secretOrKey);
         user.loggedIn = true;
