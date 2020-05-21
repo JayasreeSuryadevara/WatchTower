@@ -7,12 +7,12 @@
 }
 
 .watch-list-main header {
-  display: flex;
+  display: block;
   align-items: center;
-  width: 960px;
+  max-width: 960px;
+  width: 100%;
   height: 50px;
   border-bottom: 1px solid #e1e1e1;
-  margin: 0 10px;
   color: #3677A8;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 23px;
@@ -21,7 +21,7 @@
 .watch-list-body {
   display: flex;
   flex-direction: row;
-  width: 960px;
+  max-width: 960px;
   margin-top: 10px;
 }
 
@@ -76,20 +76,13 @@
 
 /* -----------INDIVIDUAL STOCK--------------- */
 
-/* .watch-list-items {
-  border: 1px solid green;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  height: 500px;
-} */
 
 .watch-list-item-indiv {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
   border: solid 1px #e1e1e1;
-  width: 640px;
+  width: 100%;
   height: 98px;
   margin-left: 0px;
   margin-top: 15px;
@@ -103,6 +96,7 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  width: 100%;
   padding: 7px;
 }
 
@@ -110,7 +104,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* padding-bottom: 10px; */
 }
 
 .watch-list-item-co-info {
@@ -163,8 +156,7 @@
   height: 45px;
   font-size: 9px;
   font-weight: 400;
-  /* color: grey; */
-  width: 620px;
+  width: 100%;
   padding: 5px;
 }
 .watch-list-item-chg {
@@ -277,4 +269,18 @@
   color: grey;
   font-weight: 400;
   padding-bottom: 5px;
+}
+
+/* ---------------Page Sizing----------------- */
+
+@media(max-width:75em) {
+  .watch-list-news {
+    display: none;
+  }
+}
+
+@media(max-width:75em) {
+  .watch-list-details {
+    width: 100%;
+  }
 }
