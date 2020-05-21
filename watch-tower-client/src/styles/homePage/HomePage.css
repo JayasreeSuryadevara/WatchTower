@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+
 .home-page-main {
   display: flex;
   justify-content: center;

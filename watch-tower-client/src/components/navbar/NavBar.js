@@ -24,7 +24,7 @@ export default () => {
                         <img src={NavBarLogo} alt="navlogo"/>
                     </Link>
                 </div>
-                <div className="nav-bar-news-links">
+                <div className="nav-bar-news-links" media="screen and (max-width: 600px)">
                     <Link to="/latest"><p>Latest</p></Link>
                     <Link to="/watchlist"><p>Watchlist</p></Link>
                     <Link to="/technology"><p>Techology</p></Link>

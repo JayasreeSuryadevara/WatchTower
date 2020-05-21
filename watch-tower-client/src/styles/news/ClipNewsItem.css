@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .clip-main-page {
 display: flex;
 flex-direction: row;
@@ -19,9 +23,10 @@ flex-direction: row;
 
 .clip-img-url {
   display: flex;
-  width: 130px;
-  height: 80px;
+  width: 160px;
+  height: 110px;
   border: 1px solid lightgray;
+  object-fit: cover
 }
 
 .clip-title-container {

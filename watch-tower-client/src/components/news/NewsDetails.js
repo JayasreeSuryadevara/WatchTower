@@ -6,7 +6,6 @@ import '../../styles/news/NewsDetails.css';
 
 export default () => { 
   const [latestNews, setLatestNews] = useState([]);
-  const [allCompanyNews, setCompanyNews] = useState([]);
   const [allTechnologyNews, setTechnologyNews] = useState([]);
 
   async function fetchCurrentNews() {
@@ -27,7 +26,9 @@ export default () => {
     fetchTechnologyNews()
   }, [])
 
-  const items = latestNews.map(article => {
+  const uniq = new Set(latestNews)
+
+  const items = [...uniq].map(article => {
     const date = article.publishedAt.slice(0, 10);
     const time = article.publishedAt.slice(11, 16);
 
