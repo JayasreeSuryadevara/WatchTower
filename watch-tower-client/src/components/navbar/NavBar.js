@@ -32,7 +32,7 @@ export default () => {
                     <Link to="/investing"><p>Investing</p></Link>
                 </div>
                 <div className="nav-bar-session-links">
-                    <div>
+                    <div className="button-div" media="screen and (max-width: 600px)">
                         <ProtectedComp component={LogOutButton} />
                         <AuthComp component={LogInButton} />
                     </div>

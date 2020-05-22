@@ -25,7 +25,7 @@
 }
 
 @media screen and (max-width: 830px) {
-  div.nav-bar-news-links{
+  div.nav-bar-news-links, div.button-div{
     display: none;
   }
 }
