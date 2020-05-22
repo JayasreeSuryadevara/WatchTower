@@ -21,7 +21,7 @@ export default () => {
                         <DropDownMenu />
                     </div>
                     <Link to={`/`}>
-                        <img src={NavBarLogo} alt="navlogo"/>
+                        <img src={NavBarLogo} alt="navlogo" className="logo"/>
                     </Link>
                 </div>
                 <div className="nav-bar-news-links" media="screen and (max-width: 600px)">
