@@ -22,8 +22,8 @@ export default () => {
   }, [])
 
   const items = headlines.slice(0, 7).map((article, idx) => {
-    const date = article.publishedAt.slice(0, 10);
-    const time = article.publishedAt.slice(11, 16);
+  const date = article.publishedAt.slice(0, 10);
+  const time = article.publishedAt.slice(11, 16);
 
     if (idx === 0) {
       return (
