@@ -75,12 +75,12 @@ export default () => {
             <p>New York</p>
             <p>Gold</p>
             <p>S&amp;P 500 Futures</p>
-            <p>AAPL</p>
-            <p>BA</p>
-            <p>CCL</p>
-            <p>DIS</p>
-            <p>TSLA</p>
-            <p>ZM</p>
+            <Link to={`/ticker/Apple%20Inc./AAPL`} >AAPL</Link>
+            <Link to={`/ticker/Clorox%20Company%20(The)/CLX`} >CLX</Link>
+            <Link to={`/ticker/NVIDIA%20Corporation/NVDA`} >NVDA</Link>
+            <Link to={`/ticker/Advanced%20Micro%20Devices%20Inc./AMD`} >AMD</Link>
+            <Link to={`/ticker/Tesla%20Inc./TSLA`} >TSLA</Link>
+            <Link to={`/ticker/Zoom%20Video%20Communications,%20Inc./ZM`} >ZM</Link>
           </div>
         </div>
         <div className="all-news-container">
