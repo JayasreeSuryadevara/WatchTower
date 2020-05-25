@@ -19,6 +19,7 @@
   border-bottom: solid black;
   width: 450px;
   height: 210px;
+  padding-bottom: 5px;
 }
 
 .ticker-graph-item {
@@ -29,6 +30,7 @@
   width: 550px;
   height: 210px;
   margin-left: 10px;
+  padding-bottom: 5px;
 }
 
 .th-item-container {
