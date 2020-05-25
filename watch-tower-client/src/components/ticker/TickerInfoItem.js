@@ -8,7 +8,9 @@ const TickerInfoItem = (props) => {
     <div className="ti-main-page">
       <div className="ti-data-container">
         <div>
-          <h1 className="ticker-name">{props.name ? props.name : notCompanyName }</h1>
+          <h1 className="ticker-name">{props.name && props.name.length <= 24 ? 
+            props.name : props.name && props.name.length > 24 ? props.name.slice(0, 25) + "..."
+            : notCompanyName }</h1>
         </div>
         <div className="ti-price-container">
           <p>${props.open}</p>
