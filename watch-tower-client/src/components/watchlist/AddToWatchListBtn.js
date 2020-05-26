@@ -13,10 +13,6 @@ export default () => {
     e.target.value = ("" + e.target.value).toUpperCase();
   }
 
-  // useEffect(() => {
-  //    return {}
-  // }, []);
-
   const [addWatchListItem, { loading, error }] = useMutation(
     ADD_WATCH_LIST_ITEM,
     {
@@ -29,8 +25,11 @@ export default () => {
   async function handleAdd() {
     try {
     const stockData = await fetchStockData(ticker);
+    console.log("stockData", stockData);
     setCurrentPrice(stockData[0].price);
     addWatchListItem();
+    console.log("currentPrice", currentPrice);
+    // debugger;
     window.location.reload();
     } catch(err) {
       alert("That stock doesn't seem to be trading.  Try another symbol!");
