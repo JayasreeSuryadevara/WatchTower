@@ -26,7 +26,6 @@ export default () => {
       // update(cache, { data: { changePassword }}) {
       //   if (!changePassword) setErrorMessage('Invalid Credentials')
       //   const data = cache.readQuery({ query: CURRENT_USER })
-      //   console.log(data)
       //   const me = Object.assign({}, data.me)
       //   cache.writeQuery( { query: CURRENT_USER, data: { me: me }});
       // },
