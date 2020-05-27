@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, withRouter } from 'react-router-dom';
 import '../../styles/homePage/MarketMoversPanel.css';
 
 const MoversListItem = (props) => {
@@ -7,8 +7,9 @@ const MoversListItem = (props) => {
   let changePercent = active["changesPercentage"];
   changePercent = changePercent.slice(1,changePercent.length-1);
   if (!active["companyName"] || active["companyName"].length > 100) return null;
+
   return (
-    <Link to={`/ticker/${active["companyName"]}/${active["ticker"]}`} >
+    <a href={`/ticker/${active["companyName"]}/${active["ticker"]}`} >
       <div className="active-list-item">
         <p className="active-company-name">{active["companyName"]}</p>
         <p className="active-price">{parseFloat(active["price"]).toFixed(2)}</p>
@@ -25,8 +26,8 @@ const MoversListItem = (props) => {
           : <p><i className="fas fa-sort-down fa-2x"></i></p>
         }
       </div>
-    </Link>
+    </a>
   )
 }
 
-export default MoversListItem;
+export default withRouter(MoversListItem);
