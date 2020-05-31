@@ -22,7 +22,7 @@ const NewsDetailsItem = (props) => (
             </div>
             <div className="time-container">
               <div className="time-item">
-                <span>at {props.time}</span>
+                {/* <span>at {props.time}</span> */}
               </div>
             </div>
             <div className="author-container">
