@@ -9,11 +9,11 @@ export function currentNews() {
   )
 }
 
-export function headlineNews() {
-  const url = `https://newsapi.org/v2/everything?q="headline"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${newsKey}`
-  return (
-    axios.get(proxyurl + url).then(res => res.data.articles)
-  )
+export async function headlineNews() {
+  const url = `/headlinenews`
+  const res = await fetch(url);
+  const json = await res.json();
+  console.log(json);
 }
 
 export function companyNews(company) {
