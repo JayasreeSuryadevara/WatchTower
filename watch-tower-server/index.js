@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const graphqlHTTP = require('express-graphql');
 const expressPlayground = require('graphql-playground-middleware-express').default;
+const fetch = require('node-fetch');
 
 
 require('./models');
@@ -53,7 +54,7 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 
-app.get('/headlinenews', async (req, res) => {
+app.get(`/headlinenews`, async (req, res) => {
   const url = `https://newsapi.org/v2/everything?q="headline"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=9728360b8b3b4c58a97cc5de418daf3a`
   const fetch_response = await fetch(url);
   const json = await fetch_response.json();
