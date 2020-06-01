@@ -1,6 +1,6 @@
 const axios = require("axios"); 
 const newsKey = require('../../config/keys').NewsApiKey;
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
+const proxyurl = "https://cors-anywhere.herokuapp.com:443/";
 
 export function currentNews() {
   const url = `https://newsapi.org/v2/everything?q="stock market"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${newsKey}`
