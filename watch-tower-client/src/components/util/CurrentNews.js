@@ -5,9 +5,13 @@ const port = process.env.PORT || 5000;
 let development = process.env.NODE_ENV !== 'production'
 
 export function currentNews() {
-  const url = `https://newsapi.org/v2/everything?q="stock market"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${newsKey}`
+  const url = `/currentnews`
   return (
-    axios.get(proxyurl + url).then(res => res.data.articles)
+    axios({
+      method: 'GET',
+      url: url,
+      baseURL: development ? `http://127.0.0.1:${port}` : `https://watch-tower-1.herokuapp.com/`
+    }).then(res => res.data.articles)
   )
 }
 
