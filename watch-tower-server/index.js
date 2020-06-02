@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const graphqlHTTP = require('express-graphql');
 const expressPlayground = require('graphql-playground-middleware-express').default;
 const fetch = require('node-fetch');
+const NewsKey = require("../watch-tower-client/src/config/keys").NewsApiKey;
 
 
 require('./models');
@@ -53,30 +54,29 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
-
 app.get(`/headlinenews`, async (req, res) => {
-  const url = `https://newsapi.org/v2/everything?q="headline"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=9728360b8b3b4c58a97cc5de418daf3a`
+  const url = `https://newsapi.org/v2/everything?q="headline"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${NewsKey}`
   const fetch_response = await fetch(url);
   const json = await fetch_response.json();
   res.json(json);
 })
 
 app.get(`/currentnews`, async (req, res) => {
-  const url = `https://newsapi.org/v2/everything?q="stock market"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=9728360b8b3b4c58a97cc5de418daf3a`
+  const url = `https://newsapi.org/v2/everything?q="stock market"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${NewsKey}`
   const fetch_response = await fetch(url);
   const json = await fetch_response.json();
   res.json(json);
 })
 
 app.get(`/technologynews`, async (req, res) => {
-  const url = `https://newsapi.org/v2/everything?q="technology stocks"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey=9728360b8b3b4c58a97cc5de418daf3a`
+  const url = `https://newsapi.org/v2/everything?q="technology stocks"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey=${NewsKey}`
   const fetch_response = await fetch(url);
   const json = await fetch_response.json();
   res.json(json);
 })
 
 app.get(`/technologynews`, async (req, res) => {
-  const url = `https://newsapi.org/v2/everything?q="investing principles"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey==9728360b8b3b4c58a97cc5de418daf3a`
+  const url = `https://newsapi.org/v2/everything?q="investing principles"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey=${NewsKey}`
   const fetch_response = await fetch(url);
   const json = await fetch_response.json();
   res.json(json);
@@ -84,7 +84,7 @@ app.get(`/technologynews`, async (req, res) => {
 
 app.get(`/companynews`, async (req, res) => {
   const company = req.query.q;
-  const url = `https://newsapi.org/v2/everything?q=${company}&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&qInTitle=${company}&pageSize=15&sortBy=publishedAt&apiKey=9728360b8b3b4c58a97cc5de418daf3a`
+  const url = `https://newsapi.org/v2/everything?q=${company}&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&qInTitle=${company}&pageSize=15&sortBy=publishedAt&apiKey=${NewsKey}`
   const fetch_response = await fetch(url);
   const json = await fetch_response.json();
   res.json(json);
