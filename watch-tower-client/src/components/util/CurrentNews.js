@@ -27,9 +27,14 @@ export async function headlineNews() {
 }
 
 export function companyNews(company) {
-  const url = `https://newsapi.org/v2/everything?q=${company}&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&qInTitle=${company}&pageSize=15&sortBy=publishedAt&apiKey=${newsKey}`
+  const url = `companynews`
   return (
-    axios.get(proxyurl + url).then(res => res.data.articles)
+    axios({
+      method: 'GET',
+      params: {q: company},
+      url: url,
+      baseURL: development ? `http://127.0.0.1:${port}` : `https://watch-tower-1.herokuapp.com/`
+    }).then(res => res.data.articles)
   )
 }
 
