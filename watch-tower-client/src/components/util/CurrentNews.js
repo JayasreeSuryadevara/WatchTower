@@ -10,7 +10,7 @@ export function currentNews() {
     axios({
       method: 'GET',
       url: url,
-      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.DATABASE_URL`
+      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.BASE_URL`
     }).then(res => res.data.articles)
   )
 }
@@ -21,7 +21,7 @@ export async function headlineNews() {
     axios({
       method: 'GET',
       url: url,
-      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.DATABASE_URL`
+      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.BASE_URL`
     }).then(res => res.data.articles)
   )
 }
@@ -33,7 +33,7 @@ export function companyNews(company) {
       method: 'GET',
       params: {q: company},
       url: url,
-      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.DATABASE_URL`
+      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.BASE_URL`
     }).then(res => res.data.articles)
   )
 }
@@ -44,7 +44,7 @@ export function technologyNews() {
     axios({
       method: 'GET',
       url: url,
-      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.DATABASE_URL`
+      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.BASE_URL`
     }).then(res => res.data.articles)
   )
 }
@@ -55,7 +55,7 @@ export function principlesInvestingNews() {
     axios({
       method: 'GET',
       url: url,
-      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.DATABASE_URL`
+      baseURL: development ? `http://127.0.0.1:${port}` : `process.env.BASE_URL`
     }).then(res => res.data.articles)
   )
 }
