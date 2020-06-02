@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const graphqlHTTP = require('express-graphql');
 const expressPlayground = require('graphql-playground-middleware-express').default;
 const fetch = require('node-fetch');
-const NewsKey = require("../watch-tower-client/src/config/keys").NewsApiKey;
+const NewsKey = require("./config/keys").NewsApiKey;
 
 
 require('./models');
