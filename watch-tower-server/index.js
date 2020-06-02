@@ -75,6 +75,13 @@ app.get(`/technologynews`, async (req, res) => {
   res.json(json);
 })
 
+app.get(`/technologynews`, async (req, res) => {
+  const url = `https://newsapi.org/v2/everything?q="investing principles"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey==9728360b8b3b4c58a97cc5de418daf3a`
+  const fetch_response = await fetch(url);
+  const json = await fetch_response.json();
+  res.json(json);
+})
+
 app.get(`/companynews`, async (req, res) => {
   const company = req.params;
   const url = `https://newsapi.org/v2/everything?q=${company}&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&qInTitle=${company}&pageSize=15&sortBy=publishedAt&apiKey=9728360b8b3b4c58a97cc5de418daf3a`

@@ -52,6 +52,10 @@ export function technologyNews() {
 export function principlesInvestingNews() {
   const url = `https://newsapi.org/v2/everything?q="investing principles"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey=${newsKey}`
   return (
-    axios.get(proxyurl + url).then(res => res.data.articles)
+    axios({
+      method: 'GET',
+      url: url,
+      baseURL: development ? `http://127.0.0.1:${port}` : `https://watch-tower-1.herokuapp.com/`
+    }).then(res => res.data.articles)
   )
 }
