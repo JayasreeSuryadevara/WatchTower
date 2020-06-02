@@ -75,7 +75,7 @@ app.get(`/technologynews`, async (req, res) => {
   res.json(json);
 })
 
-app.get(`/technologynews`, async (req, res) => {
+app.get(`/principlesofinvesting`, async (req, res) => {
   const url = `https://newsapi.org/v2/everything?q="investing principles"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,fool.com,seekingalpha.com,businessinsider.com,cnn.com&pageSize=50&sortBy=publishedAt&apiKey=${NewsKey}`
   const fetch_response = await fetch(url);
   const json = await fetch_response.json();
