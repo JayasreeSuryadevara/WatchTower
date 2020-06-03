@@ -22,7 +22,7 @@ export function headlineNews() {
       method: 'GET',
       url: url
       // baseURL: development ? `http://127.0.0.1:${port}` : process.env.BASEURL
-    }).then(res => res)
+    }).then(res => res.data.articles)
   )
 }
 

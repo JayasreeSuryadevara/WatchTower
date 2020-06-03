@@ -16,7 +16,7 @@ export default () => {
     const news = await headlineNews()
     setHeadlineNews(news)
   }
-console.log("------>",headlines); 
+  
   useEffect(() => {
     fetchHeadlineNews()
   }, [])
