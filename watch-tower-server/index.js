@@ -54,7 +54,7 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
-app.get(`/headlinenews`, async (req, res) => {
+app.get(`/api/headlinenews`, async (req, res) => {
   const url = `https://newsapi.org/v2/everything?q="headline"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${NewsKey}`
   await fetch(url)
   .then(response => response.json())

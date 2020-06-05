@@ -8,7 +8,8 @@
     "start": "node index.js",
     "seeds": "node seeds/index.js",
     "dev": "nodemon --inspect index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",

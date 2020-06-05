@@ -23,12 +23,12 @@ export function currentNews() {
 // }
 
 export function headlineNews() {
-  const url = `/headlinenews`
+  const url = `/api/headlinenews`
   return (
     axios({
       method: 'GET',
       url: url,
-      // baseURL: development ? `http://127.0.0.1:${port}` : process.env.BASEURL
+      baseURL: development ? `http://127.0.0.1:${port}` : null
     }).then(res => res.data.articles)
     .catch(err => console.log("--->",err))
   )
