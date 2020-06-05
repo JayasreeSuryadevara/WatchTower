@@ -27,8 +27,8 @@ export function headlineNews() {
   return (
     axios({
       method: 'GET',
-      url: url,
-      baseURL: development ? `http://127.0.0.1:${port}` : null
+      url: url
+      // baseURL: development ? `http://127.0.0.1:${port}` : null
     }).then(res => res.data.articles)
     .catch(err => console.log("--->",err))
   )
