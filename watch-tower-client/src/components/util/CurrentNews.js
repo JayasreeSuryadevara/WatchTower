@@ -15,20 +15,13 @@ export function currentNews() {
   )
 }
 
-// export function headlineNews() {
-//   const url = `https://newsapi.org/v2/everything?q="headline"&language=en&domains=wsj.com,nytimes.com,cnbc.com,foxbusiness.com,businessinsider.com&pageSize=50&sortBy=publishedAt&apiKey=${newsKey}`
-//   return (
-//     axios.get(url).then(res => res.data.articles)
-//   )
-// }
-
 export function headlineNews() {
-  const url = `/api/headlinenews`
+  const url = `/headlinenews`
   return (
     axios({
       method: 'GET',
-      url: url
-      // baseURL: development ? `http://127.0.0.1:${port}` : null
+      url: url,
+      baseURL: development ? `http://127.0.0.1:${port}` : null
     }).then(res => res.data.articles)
     .catch(err => console.log("--->",err))
   )
